@@ -1,0 +1,157 @@
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tanaos/tanaos-docs/blob/master/blueprints/synthex/housing_market_analysis_dataset.ipynb)
+
+# Create your first Synthetic Dataset with Synthex
+
+In this tutorial we will use [Synthex](https://github.com/tanaos/synthex) to generate a dataset for Real Estate market analysis. 
+
+This dataset can be used to train ML models for Real Estate price forecasting, to run analytics or data visualizations.
+
+## Our goal
+
+We want to generate a dataset containing property features, such as its size, number of rooms and construction year, as well as their market price. In particular, let's say that for each record in the dataset, we want the following features:
+
+| Field Name | Field Type |
+| ---------- | ----------------- |
+| surface | `float` |
+| number_of_rooms | `int` |
+| construction_year | `int` |
+| city | `str` |
+| market_price | `float` |
+
+## Dataset Generation
+
+### 1. Install Synthex
+
+Let's get started by installing Synthex
+
+```bash
+pip install --upgrade synthex
+```
+
+### 2. Define the data generation job
+
+Once that is done, let's instantiate the Synthex client.
+
+```python
+from synthex import Synthex
+
+client = Synthex()
+```
+
+In order to trigger a data generation job, we will use the `client.jobs.generate_data()` function, which takes the following arguments (for the full method's documentation, [see this documentation page](https://docs.tanaos.com/synthex/jobs/generate-data)):
+
+- **schema_definition**: The structure or schema of the output dataset. It defines the fields and their respective data types.
+- **examples**: A few sample datapoints that illustrate the kind of data the generator should produce.
+- **requirements**: Specific conditions or constraints that need to be applied to the generated data.
+- **output_path**: The location where the generated dataset will be saved.
+- **number_of_samples**: The number of data points you want in your output dataset.
+- **output_type**: The format in which you want the dataset. Currently, CSV is the only supported format.
+
+Let's go ahead and assign a value to each argument.
+
+#### 2.1. `schema_definition` argument
+
+We have already described which fields we would like each record in our dataset to have. Let's go ahead and declare a variable for it
+
+```python
+schema_definition = {
+    "surface": {"type": "float"},
+    "number_of_rooms": {"type": "integer"},
+    "construction_year": {"type": "integer"},
+    "city": {"type": "string"},
+    "market_price": {"type": "float"}
+}
+```
+
+#### 2.2 `examples` argument
+
+This is a simple data generation job and the data generation model should be smart enough to figure out what we want from the `schema_definition` parameter alone. Just to be safe, we will still provide the model with a few examples:
+
+```python
+examples = [
+    {
+        "surface": 104.00,
+        "number_of_rooms": 3,
+        "construction_year": 1985,
+        "city": "Nashville",
+        "market_price": 218000.00
+    },
+    {
+        "surface": 98.00,
+        "number_of_rooms": 2,
+        "construction_year": 1999,
+        "city": "Springfield",
+        "market_price": 177000.00
+    },
+    {
+        "surface": 52.00,
+        "number_of_rooms": 1,
+        "construction_year": 2014,
+        "city": "Denver",
+        "market_price": 230000.00
+    }
+]
+```
+
+#### 2.3. `requirements` argument
+
+We will instruct the data generation model to be as realistic as possible when choosing a property's market price given its characteristics. As an additional requirement, we will ask the model to only include cities in the USA.
+
+```python
+requirements = [
+    "The 'market price' field should be realistic and should depend on the characteristics of the property.",
+    "The 'city' field should specify cities in the USA, and the USA only"
+]
+```
+
+#### 2.4. The remaining arguments
+
+The three remaining arguments (`output_path`, `number_of_samples` and `output_type`) are straightforward. Let's go ahead and define them.
+
+```python
+output_path = "output_data/housing_market_analysis.csv"
+number_of_samples = 500
+output_type = "csv"
+```
+
+### 3. Start the job
+
+Once all 6 arguments have been defined, let's trigger the data generation job
+
+```python
+client.jobs.generate_data(
+    schema_definition=schema_definition,
+    examples=examples,
+    requirements=requirements,
+    output_path=output_path,
+    number_of_samples=number_of_samples,
+    output_type=output_type
+)
+```
+
+### 4. Check job status
+
+The job will take some time to complete. We can periodically check its progress by using the `client.jobs.status()` method. If no job is currently running, an error will be raised.
+
+> ⚠️ **WARNING**   
+>
+> Each Synthex client can only run **one data generation job at a time**.
+
+## Inspect the output dataset
+
+The output dataset can be found [at this link](https://github.com/tanaos/synthex-blueprints/blob/master/output_data/housing_market_analysis.csv).
+
+Let's use Pandas to inspect the output dataset
+
+```bash
+pip install pandas
+```
+
+```python
+import pandas as pd
+
+df = pd.read_csv(output_path)
+df.head()
+```
+
+And that's exactly what we wanted. We could generate a new dataset by specifying more constraints such as the properties being in a specific state, or in different areas of the same city. But since the purpose of this tutorial was merely to display Synthex's capabilities, we will stop here.

@@ -1,0 +1,68 @@
+---
+hide_table_of_contents: true
+---
+
+import Link from '@docusaurus/Link';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import { APIDescriptionSection } from '../../src/components/APIDescriptionSection';
+import { PLATFORM_BASE_URL, SYNTHEX_GENERATE_DATA_URL } from '../../consts';
+import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } from '../../src/components/ParameterBadge';
+
+
+<div className='responsive-container'>
+	<div className='text-container'>
+        # Train Guardrail
+
+        Train a Guardrail model. **No training data is needed**, as the model uses 
+		<Link to={SYNTHEX_GENERATE_DATA_URL}>`synthex.jobs.generate_data()`</Link> under the
+		hood to generate a synthetic training dataset based on the provided requirements.
+
+		<APIDescriptionSection title='Arguments'>
+			- **instructions** <ParameterTypeBadge>list[str]</ParameterTypeBadge>\
+				A list of strings, where each string describes a something that the Guardrail should prevent
+				the chatbot from doing, or allow it to do.
+			- **output_path** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge />\
+				A string which specifies the path where the output files will be generated. The output files consist of:
+				- The training dataset
+				- The output model `safetensor` and configuration files
+			- **num_samples** <ParameterTypeBadge>int</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='500' />\
+				An integer which specifies the number of datapoints that the synthetic training dataset should consist of, and 
+				that the model will be trained on. The maximum number of datapoints you can train your model on depends on 
+				whether you are on a free or paid plan.
+			- **num_epochs** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='3' />\
+				An integer which specifies the number of epochs to train the model for.
+		</APIDescriptionSection>
+	</div>
+	<div className='code-container'>
+		<div className='tabs-code'>
+			<Tabs>
+				<TabItem value='python' label='Python'>
+```python
+from artifex import Artifex
+
+guardrail = Artifex().guardrail
+
+guardrail.train(
+    instructions=[
+        "Soft medical advice is allowed, but it should be general and not specific to any individual.",
+        "Anything that is about cosmetic products, including available products or their usage, is allowed.",
+        "Anything else, including hard medical advice, is not allowed under any circumstances.",
+    ]
+)
+```
+				</TabItem>
+			</Tabs>
+		</div>
+		<div className='tabs-code'>
+			<Tabs groupId="language">
+				<TabItem value="response" label="Response">
+```python
+None
+```
+				</TabItem>
+			</Tabs>		
+		</div>
+	</div>
+</div>

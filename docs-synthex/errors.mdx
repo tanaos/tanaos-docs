@@ -1,0 +1,67 @@
+---
+hide_table_of_contents: false
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import { WEBSITE_BASE_URL, PLATFORM_BASE_URL } from '../consts';
+import { Annex } from '../src/components/Annex';
+
+
+# Errors
+
+We use standard HTTP error codes to provide information on the outcome of each request.
+		
+As per the HTTP standard, `2xx` codes indicate success, `4xx` codes indicate that the request 
+cannot be fulfilled due to either bad synthax or wrong parameters, and `5xx` codes indicate 
+that the server failed to fulfill a valid request (these are errors on our side and should be rare).
+
+### HTTP Status Codes
+
+<Annex title='HTTP Status Codes'>
+	<table>
+		<tbody>
+			<tr>
+				<td><b>200</b></td>
+				<td>Ok</td>
+				<td>Successful request.</td>
+			</tr>
+			<tr>
+				<td><b>400</b></td>
+				<td>Bad Request</td>
+				<td>The request is malformed, typically due to a missing or incorrect parameter.</td>
+			</tr>
+			<tr>
+				<td><b>402</b></td>
+				<td>Request Failed</td>
+				<td>The request failed, even though the parameters are valid.</td>
+			</tr>
+			<tr>
+				<td><b>403</b></td>
+				<td>Forbidden</td>
+				<td>The provided authentication method does not have the necessary permissions to perform this request.</td>
+			</tr>
+			<tr>
+				<td><b>404</b></td>
+				<td>Not Found</td>
+				<td>The requested resource could not be found.</td>
+			</tr>
+			<tr>
+				<td><b>409</b></td>
+				<td>Conflict</td>
+				<td>This request conflicts with another request.</td>
+			</tr>
+			<tr>
+				<td><b>429</b></td>
+				<td>Too Many Requests</td>
+				<td>You have sent too many requests in a given amount of time.</td>
+			</tr>
+			<tr>
+				<td><b>5xx</b></td>
+				<td>Server Errors</td>
+				<td>Something went wrong on our end.</td>
+			</tr>
+		</tbody>
+	</table>
+</Annex>

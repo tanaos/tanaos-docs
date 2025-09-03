@@ -1,0 +1,38 @@
+---
+hide_table_of_contents: true
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import { WEBSITE_BASE_URL, PLATFORM_BASE_URL } from '../consts';
+import { Annex } from '../src/components/Annex';
+
+
+# Authentication
+
+<div className='responsive-container'>
+	<div className='text-container'>
+		We use API Keys to authenticate requests. In order to generate an API Key, create a **free account** on the
+		<a href={PLATFORM_BASE_URL} target='_blank' rel='noreferrer'>Tanaos Platform</a>, then navigate to the **API Keys** 
+		section.
+
+		Your API key must be attached to every request you make. Requests made without an API key will fail.
+
+		Your API keys carry many privileges. Do not share them in publicly accessible areas such as client-side code, code repositories and so forth.
+	</div>
+	<div className='code-container'>
+		<div className='tabs-code'>
+			<Tabs>
+				<TabItem value='python' label='Python'>
+```python
+from artifex import Artifex
+
+# Replace this with your own API key
+art = Artifex()
+```
+				</TabItem>
+			</Tabs>		
+		</div>
+	</div>
+</div>

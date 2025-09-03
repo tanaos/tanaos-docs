@@ -1,0 +1,67 @@
+---
+hide_table_of_contents: true
+---
+
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import { APIDescriptionSection } from '../../src/components/APIDescriptionSection';
+import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
+import { InfoBox } from '../../src/components/InfoBox';
+import { PLATFORM_BASE_URL } from '../../consts';
+
+
+<div style={{ display: 'flex', gap: '4rem' }}>
+	<div style={{ flex: 1 }}>
+        # Get promotional credits
+
+        <InfoBox type='warning'>
+            This method is only available to users who have signed up on the 
+            <a href={PLATFORM_BASE_URL} rel='noreferrer' target='_blank'>Tanaos platform</a> and generated
+            an API Key. If you are using Synthex without an API Key, this method will return an authentication
+			error.
+        </InfoBox>
+
+		Retrieves the current credits balance of the user whose API key is used to authenticate
+		the request.
+
+		<APIDescriptionSection title='Arguments'>
+			No parameters.
+		</APIDescriptionSection>
+
+		<APIDescriptionSection title='Response'>
+			- **amount** <ParameterTypeBadge>int</ParameterTypeBadge>\
+			The amount of credits you have in your account, expressed in the smallest currency
+			unit. For example, `amount: 125` and `currency: "USD"` means you have $1.25 in your account.
+			- **currency** <ParameterTypeBadge>str</ParameterTypeBadge>\
+			Code of the currency that the credits are in.
+		</APIDescriptionSection>
+	</div>
+	<div style={{ flex: 1, maxWidth: '500px' }}>
+		<div className='tabs-code'>
+			<Tabs groupId="language">
+				<TabItem value="python" label="Python">
+				```python
+				from synthex import Synthex
+
+                client = Synthex()
+				client.credits.promotional()
+				```
+				</TabItem>
+			</Tabs>		
+		</div>
+		<div className='tabs-code'>
+			<Tabs groupId="language">
+				<TabItem value="200-response" label="200 Response">
+```json
+{
+    "amount": 125,
+    "currency": "USD"
+}
+```
+				</TabItem>
+			</Tabs>		
+		</div>
+	</div>
+</div>

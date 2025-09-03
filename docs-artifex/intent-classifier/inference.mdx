@@ -1,0 +1,60 @@
+---
+hide_table_of_contents: true
+---
+
+import Link from '@docusaurus/Link';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import { APIDescriptionSection } from '../../src/components/APIDescriptionSection';
+import { PLATFORM_BASE_URL, SYNTHEX_GENERATE_DATA_URL } from '../../consts';
+import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } from '../../src/components/ParameterBadge';
+
+
+<div className='responsive-container'>
+	<div className='text-container'>
+        # Perform Inference with Intent Classifier
+
+        Perform inference with an Intent Classifier model, on a single input string or a list of input strings. 
+        For each input string, this will return the predicted intent label, which is one of the user-defined 
+		classes that the model was trained on.
+
+		<APIDescriptionSection title='Arguments'>
+			- **text** <ParameterTypeBadge>str | list[str]</ParameterTypeBadge>\
+                A string or a list of strings to classify. The model will return a label for each input string.
+		</APIDescriptionSection>
+
+		<APIDescriptionSection title='Response'>
+			A `list[str]`, each being the predicted intent label for the corresponding input string.
+		</APIDescriptionSection>
+
+	</div>
+	<div className='code-container'>
+		<div className='tabs-code'>
+			<Tabs>
+				<TabItem value='python' label='Python'>
+```python
+from artifex import Artifex
+
+intent_classifier = Artifex().intent_classifier
+
+# NOTE: train your Intent Classifier model before 
+# using it for inference.
+
+label = intent_classifier("I forgot to set up that meeting with John, could you do that for me?")
+print(label)
+```
+				</TabItem>
+			</Tabs>
+		</div>
+		<div className='tabs-code'>
+			<Tabs groupId="language">
+				<TabItem value="response" label="Response">
+```python
+["schedule_meeting"]
+```
+				</TabItem>
+			</Tabs>		
+		</div>
+	</div>
+</div>

@@ -1,0 +1,69 @@
+---
+hide_table_of_contents: true
+---
+
+import Link from '@docusaurus/Link';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import { APIDescriptionSection } from '../../src/components/APIDescriptionSection';
+import { PLATFORM_BASE_URL, SYNTHEX_GENERATE_DATA_URL } from '../../consts';
+import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } from '../../src/components/ParameterBadge';
+
+
+<div className='responsive-container'>
+	<div className='text-container'>
+        # Train Intent Classifier
+
+        Train an Intent Classifier model. **No training data is needed**, as the model uses 
+		<Link to={SYNTHEX_GENERATE_DATA_URL}>`synthex.jobs.generate_data()`</Link> under the
+		hood to generate a synthetic training dataset based on the provided requirements.
+
+		<APIDescriptionSection title='Arguments'>
+			- **classes** <ParameterTypeBadge>dict[str, str]</ParameterTypeBadge>\
+				A dictionary, where each key is the name of an intent (must be maximum 10 characters with no
+				spaces), and each value is the description of that intent.
+			- **output_path** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge />\
+				A string which specifies the path where the output files will be generated. The output files consist of:
+				- The training dataset
+				- The output model `safetensor` and configuration files
+			- **num_samples** <ParameterTypeBadge>int</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='500' />\
+				An integer which specifies the number of datapoints that the synthetic training dataset should consist of, and 
+				that the model will be trained on. The maximum number of datapoints you can train your model on depends on 
+				whether you are on a free or paid plan.
+			- **num_epochs** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='3' />\
+				An integer which specifies the number of epochs to train the model for.
+		</APIDescriptionSection>
+	</div>
+	<div className='code-container'>
+		<div className='tabs-code'>
+			<Tabs>
+				<TabItem value='python' label='Python'>
+```python
+from artifex import Artifex
+
+intent_classifier = Artifex().intent_classifier
+
+intent_classifier.train(
+    classes={
+        "send_email": "Intent to send an email to someone.",
+        "schedule_meeting": "Intent to schedule a meeting with someone.",
+        "cancel_meeting": "Intent to cancel a previously scheduled meeting.",
+        "reschedule_meeting": "Intent to change the date or time of a previously scheduled meeting.",
+    }
+)
+```
+				</TabItem>
+			</Tabs>
+		</div>
+		<div className='tabs-code'>
+			<Tabs groupId="language">
+				<TabItem value="response" label="Response">
+```python
+None
+```
+				</TabItem>
+			</Tabs>		
+		</div>
+	</div>
+</div>

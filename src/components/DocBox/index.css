@@ -1,0 +1,23 @@
+.doc-box {
+    max-width: 300px;
+    border: 0.5px solid #ccc;
+    padding: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s, border 0.3s;
+
+    .doc-box-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.doc-box:hover {
+    background-color: var(--grey-100);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 0.5px solid var(--primary);
+}
+
+.doc-box:hover h4 {
+    color: var(--primary);
+    transition: color 0.2s;
+}

@@ -1,0 +1,41 @@
+---
+hide_table_of_contents: true
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import { APIDescriptionSection } from '../src/components/APIDescriptionSection';
+import { ParameterTypeBadge } from '../src/components/ParameterBadge';
+
+
+# Action Result
+
+<div className='responsive-container'>
+	<div className='text-container'>
+        An `ActionResult` is an object which contains the result of an action. It is used to clarify the outcome of services 
+        whose effect may be ambiguous or not immediately obvious from the request itself, such as services that generate data or 
+        perform long-running tasks.
+
+        <APIDescriptionSection title='Content'>
+            - **success** <ParameterTypeBadge>bool</ParameterTypeBadge>\
+            Indicates whether the action was successful or not.
+            - **message** <ParameterTypeBadge>str</ParameterTypeBadge>\
+            A message describing the result of the action. This can be used to provide additional information about the success or failure of the action.
+        </APIDescriptionSection>
+	</div>
+	<div className='code-container'>
+		<div className='tabs-code'>
+			<Tabs>
+				<TabItem value='json' label='Action Result'>
+```json
+{
+    "success": true,
+    "message": "The action was successful",
+}
+```
+				</TabItem>
+			</Tabs>		
+		</div>
+	</div>
+</div>
