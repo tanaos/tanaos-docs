@@ -1,5 +1,0 @@
-*.html linguist-detectable=false
-blueprints/* linguist-vendored
-docs/* -linguist-documentation
-docs-artifex/* -linguist-documentation
-docs-synthex/* -linguist-documentation
