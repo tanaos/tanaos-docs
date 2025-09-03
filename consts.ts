@@ -17,4 +17,4 @@ export const ARTIFEX_INTRO_URL: string = '/artifex/intro';
 export const ARTIFEX_AUTHENTICATION_URL: string = '/artifex/authentication';
 export const ARTIFEX_GUARDRAIL_INTRO_URL: string = '/artifex/guardrail/intro';
 export const ARTIFEX_GUARDRAIL_TUTORIAL_URL: string = "https://colab.research.google.com/github/tanaos/tanaos-docs/blob/master/blueprints/artifex/guardrail.ipynb";
-export const ARTIFEX_INTENT_CLASSIFIER_TUTORIAL_URL: string = "https://colab.research.google.com/github/tanaos/tanaos-docs/blob/master/blueprints/artifex/intent-classifier.ipynb";
+export const ARTIFEX_INTENT_CLASSIFIER_TUTORIAL_URL: string = "https://colab.research.google.com/github/tanaos/tanaos-docs/blob/master/blueprints/artifex/intent_classifier.ipynb";
