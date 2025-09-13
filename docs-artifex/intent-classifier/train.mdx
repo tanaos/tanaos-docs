@@ -7,7 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import { APIDescriptionSection } from '../../src/components/APIDescriptionSection';
-import { PLATFORM_BASE_URL, SYNTHEX_GENERATE_DATA_URL } from '../../consts';
+import { PLATFORM_BASE_URL, SYNTHEX_GENERATE_DATA_URL, ARTIFEX_LOAD_INTENT_CLASSIFIER_URL } from '../../consts';
 import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } from '../../src/components/ParameterBadge';
 
 
@@ -18,6 +18,19 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
         Train an Intent Classifier model. **No training data is needed**, as the model uses 
 		<Link to={SYNTHEX_GENERATE_DATA_URL}>`synthex.jobs.generate_data()`</Link> under the
 		hood to generate a synthetic training dataset based on the provided requirements.
+
+		Training can be performed on both:
+		- An untrained base model: 
+			```python
+			Artifex().intent_classifier.train()
+			```
+		- A previously trained model, in order to train it further: 
+			```python
+			Artifex().intent_classifier.load("trained/model/path").train()
+			```
+
+			For more information on the `load()` method, see the
+			<Link to={ARTIFEX_LOAD_INTENT_CLASSIFIER_URL}>`load()` method documentation</Link>.
 
 		<APIDescriptionSection title='Arguments'>
 			- **classes** <ParameterTypeBadge>dict[str, str]</ParameterTypeBadge>\
@@ -43,6 +56,13 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 from artifex import Artifex
 
 intent_classifier = Artifex().intent_classifier
+
+"""
+If you want to fine-tune an already trained model, 
+load it first:
+
+intent_classifier.load("path/to/trained/model")
+"""
 
 intent_classifier.train(
     classes={

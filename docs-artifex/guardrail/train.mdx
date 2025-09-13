@@ -7,7 +7,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import { APIDescriptionSection } from '../../src/components/APIDescriptionSection';
-import { PLATFORM_BASE_URL, SYNTHEX_GENERATE_DATA_URL } from '../../consts';
+import { PLATFORM_BASE_URL, SYNTHEX_GENERATE_DATA_URL, ARTIFEX_LOAD_GUARDRAIL_URL } from '../../consts';
 import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } from '../../src/components/ParameterBadge';
 
 
@@ -18,6 +18,19 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
         Train a Guardrail model. **No training data is needed**, as the model uses 
 		<Link to={SYNTHEX_GENERATE_DATA_URL}>`synthex.jobs.generate_data()`</Link> under the
 		hood to generate a synthetic training dataset based on the provided requirements.
+
+		Training can be performed on both:
+		- An untrained base model: 
+			```python
+			Artifex().guardrail.train()
+			```
+		- A previously trained model, in order to train it further: 
+			```python
+			Artifex().guardrail.load("trained/model/path").train()
+			```
+
+			For more information on the `load()` method, see the
+			<Link to={ARTIFEX_LOAD_GUARDRAIL_URL}>`load()` method documentation</Link>.
 
 		<APIDescriptionSection title='Arguments'>
 			- **instructions** <ParameterTypeBadge>list[str]</ParameterTypeBadge>\
@@ -43,6 +56,13 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 from artifex import Artifex
 
 guardrail = Artifex().guardrail
+
+"""
+If you want to fine-tune an already trained model, 
+load it first:
+
+guardrail.load("path/to/trained/model")
+"""
 
 guardrail.train(
     instructions=[
