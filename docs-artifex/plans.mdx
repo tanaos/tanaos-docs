@@ -1,0 +1,54 @@
+---
+title: Artifex – Train task-specific LLMs without training data; get started for free.
+description: Artifex is a Python library to create task-specific LLMs without training data, for offline NLP and Text Classification tasks, such as Guardrail Models and Intent Classification
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, guardrail models, intent classification, offline nlp ]
+id: plans
+hide_table_of_contents: false
+---
+
+import Link from '@docusaurus/Link';
+import { ARTIFEX_INTRO_URL } from '../consts';
+
+# Plans
+
+We have made Artifex free to use within certain limits. Beyond these limits, you can opt for a pay-as-you-go plan.
+
+## How pricing works
+
+Pricing in Artifex is based on the number of training datapoints you use. As explained 
+in the <Link to={ARTIFEX_INTRO_URL}>introduction section</Link>, creating a model with Artifex **does not** require that you provide
+any training data, because synthetic training data is generated under the hood. 
+
+When you train any model, you can specify how many training datapoints you want to use. The more datapoints you use, the better 
+the model will be, but also the more time it will take to train it (and the more expensive it will be 🤑). For most purposes, 
+using between 300 and 500 training datapoints is enough to get good results.
+
+## Free plan
+
+The free plan is mainly aimed at individual users and small projects. Each user enjoys **1500 training datapoints per month** and 
+**500 training datapoints per job** for free; this is enough to train 3-5 good-performing models per month for free.
+
+## Pay-as-you-go
+
+The pay-as-you-go plan is aimed at professional users and larger projects. It has no monthly limit, you simply pay for what you use. 
+To use it, you need to:
+
+1. create an account on [our platform](https://platform.tanaos.com) 
+2. add credits to it
+3. create an Api Key and pass it to Artifex at instantiation, then use it normally:
+
+    ```python
+    from artifex import Artifex
+
+    guardrail = Artifex(api_key="<your-api-key>").guardrail
+    ```
+
+Your credits will be deducted as you use the service, in the measure of **1$ per 100 datapoints**.
+
+## Automatic downgrade to free plan
+
+If you finish your credits, the following will happen:
+
+- If you have not exceeded the monthly limit, you will be **automatically switched to the free plan**.
+- If you have exceeded the monthly limit, you will not be able to create new models until the next month, when your monthly 
+quota will be reset.
