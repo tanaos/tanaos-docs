@@ -5,7 +5,7 @@ import { DOCS_BASE_URL, SYNTHEX_GITHUB_URL, ARTIFEX_GITHUB_URL } from './consts'
 
 
 const config: Config = {
-	title: 'Tanaos Docs',
+	title: 'Tanaos – Developing tools to create task-specific LLMs without training data',
 	tagline: 'The official Tanaos documentation',
 	favicon: 'img/favicon.ico',
 
