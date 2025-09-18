@@ -12,7 +12,7 @@ const config: Config = {
 	url: DOCS_BASE_URL,
 	baseUrl: '/',
 
-	organizationName: 'tanaos',
+	organizationName: 'Tanaos',
 	projectName: 'tanaos-docs',
 
 	onBrokenLinks: 'throw',
@@ -74,7 +74,10 @@ const config: Config = {
 	],
 
 	themeConfig: {
-		image: 'img/docusaurus-social-card.jpg',
+		metadata: [
+			{ name: 'keywords', content: 'tanaos, documentation, artifex, synthex' },
+			{ name: 'description', content: 'Train task-specific LLMs without training data, for offline NLP and Text Classification tasks, such as Guardrail Models and Intent Classification' },
+		],
 		navbar: {
 			items: [
 				{
@@ -94,11 +97,6 @@ const config: Config = {
 					label: 'Artifex',
 					position: 'left',
 					showOnRoutes: ['/artifex'],
-				},
-				{
-					href: 'https://github.com/tanaos/synthex-docs',
-					label: 'GitHub',
-					position: 'right',
 				},
 			],
 		},
