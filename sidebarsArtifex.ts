@@ -15,6 +15,11 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'doc',
+			id: 'plans',
+			label: 'Plans',
+		},
+		{
+			type: 'doc',
 			id: 'tutorials',
 			label: 'Tutorials',
 		},
@@ -45,7 +50,7 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'html',
-			value: '<div class="section-name">Intent Classifier</div>',
+			value: '<div class="section-name">Intent Classification</div>',
 			defaultStyle: true,
 		},
 		{

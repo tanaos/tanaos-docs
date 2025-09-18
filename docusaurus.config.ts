@@ -1,18 +1,18 @@
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 
-import { DOCS_BASE_URL, SYNTHEX_INTRO_URL, ARTIFEX_INTRO_URL } from './consts';
+import { DOCS_BASE_URL, SYNTHEX_GITHUB_URL, ARTIFEX_GITHUB_URL } from './consts';
 
 
 const config: Config = {
-	title: 'Tanaos Docs',
+	title: 'Tanaos – Developing tools to create task-specific LLMs without training data',
 	tagline: 'The official Tanaos documentation',
 	favicon: 'img/favicon.ico',
 
 	url: DOCS_BASE_URL,
 	baseUrl: '/',
 
-	organizationName: 'tanaos',
+	organizationName: 'Tanaos',
 	projectName: 'tanaos-docs',
 
 	onBrokenLinks: 'throw',
@@ -58,7 +58,6 @@ const config: Config = {
 				path: 'docs-synthex',
 				routeBasePath: 'synthex',
 				sidebarPath: require.resolve('./sidebarsSynthex.ts'),
-				editUrl: 'https://github.com/tanaos/tanaos-docs/tree/master/synthex',
 			},
 		],
 		[
@@ -68,13 +67,15 @@ const config: Config = {
 				path: 'docs-artifex',
 				routeBasePath: 'artifex',
 				sidebarPath: require.resolve('./sidebarsArtifex.ts'),
-				editUrl: 'https://github.com/tanaos/tanaos-docs/tree/master/artifex',
 			},
 		],
 	],
 
 	themeConfig: {
-		image: 'img/docusaurus-social-card.jpg',
+		metadata: [
+			{ name: 'keywords', content: 'tanaos, documentation, artifex, synthex' },
+			{ name: 'description', content: 'Train task-specific LLMs without training data, for offline NLP and Text Classification tasks, such as Guardrail Models and Intent Classification' },
+		],
 		navbar: {
 			items: [
 				{
@@ -83,22 +84,17 @@ const config: Config = {
 				},
 				{
 					type: 'custom-ConditionalNavbarItem',
-					to: '/synthex/intro',
+					to: SYNTHEX_GITHUB_URL,
 					label: 'Synthex',
 					position: 'left',
 					showOnRoutes: ['/synthex'],
 				},
 				{
 					type: 'custom-ConditionalNavbarItem',
-					to: '/artifex/intro',
+					to: ARTIFEX_GITHUB_URL,
 					label: 'Artifex',
 					position: 'left',
 					showOnRoutes: ['/artifex'],
-				},
-				{
-					href: 'https://github.com/tanaos/synthex-docs',
-					label: 'GitHub',
-					position: 'right',
 				},
 			],
 		},

@@ -1,4 +1,7 @@
 ---
+title: Artifex – Perform Inference with a local Intent Classification Model, without the need for a GPU
+description: Learn how to use Artifex to perform inference with Intent Classification Models without the need for a GPU.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no gpu, intent classification models, chatbot intent classification, inference ] 
 hide_table_of_contents: true
 ---
 
@@ -13,9 +16,9 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 
 <div className='responsive-container'>
 	<div className='text-container'>
-        # Perform Inference with Intent Classifier
+        # Perform Inference with the Intent Classification Model
 
-        Perform inference with an Intent Classifier model, on a single input string or a list of input strings. 
+        Perform inference with an Intent Classification model, on a single input string or a list of input strings. 
         For each input string, this will return the predicted intent label, which is one of the user-defined 
 		classes that the model was trained on.
 
@@ -38,7 +41,7 @@ from artifex import Artifex
 
 intent_classifier = Artifex().intent_classifier
 
-# NOTE: train your Intent Classifier model before 
+# NOTE: train your Intent Classification model before 
 # using it for inference.
 
 label = intent_classifier("I forgot to set up that meeting with John, could you do that for me?")

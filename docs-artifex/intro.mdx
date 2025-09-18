@@ -1,4 +1,7 @@
 ---
+title: Artifex – Train task-specific LLMs without training data
+description: Artifex is a Python library to create task-specific LLMs without training data, for offline NLP and Text Classification tasks, such as Guardrail Models and Intent Classification
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, guardrail models, intent classification, offline nlp ]
 id: intro
 hide_table_of_contents: true
 ---
@@ -17,12 +20,12 @@ import { ARTIFEX_AUTHENTICATION_URL, SYNTHEX_INTRO_URL } from '../consts';
 <div className='responsive-container'>
     <div className='text-container'>
         Artifex is an [open-source Python library](https://github.com/tanaos/artifex) developed 
-        by <a href={WEBSITE_BASE_URL} target='_blank' rel='noreferrer'>Tanaos</a> for training small, private 
-        AI models **without data**. How is it even possible, you might ask? Because synthetic training data
-        is generated under the hood through our <Link to={SYNTHEX_INTRO_URL}>Synthex library</Link>. 
+        by <a href={WEBSITE_BASE_URL} target='_blank' rel='noopener'>Tanaos</a> for creating **task-specific LLMs
+        without training data**, for offline NLP and Text Classification tasks, such as Guardrail Models and Intent
+        Classification. 
         
-        All you need to do is select one of the AI models that are implemented by Artifex and describe **in natural 
-        language** how the model should behave. Artifex will take care of the rest.
+        How is it even possible to train LLMs without training data, you might ask? Because synthetic training data
+        is generated under the hood through our <Link to={SYNTHEX_INTRO_URL}>Synthex library</Link>. 
     </div>
     <div className='code-container'>
 		<div className='tabs-code'>
