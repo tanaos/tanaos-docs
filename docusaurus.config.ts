@@ -1,7 +1,7 @@
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 
-import { DOCS_BASE_URL, SYNTHEX_INTRO_URL, ARTIFEX_INTRO_URL } from './consts';
+import { DOCS_BASE_URL, SYNTHEX_GITHUB_URL, ARTIFEX_GITHUB_URL } from './consts';
 
 
 const config: Config = {
@@ -58,7 +58,6 @@ const config: Config = {
 				path: 'docs-synthex',
 				routeBasePath: 'synthex',
 				sidebarPath: require.resolve('./sidebarsSynthex.ts'),
-				editUrl: 'https://github.com/tanaos/tanaos-docs/tree/master/synthex',
 			},
 		],
 		[
@@ -68,7 +67,6 @@ const config: Config = {
 				path: 'docs-artifex',
 				routeBasePath: 'artifex',
 				sidebarPath: require.resolve('./sidebarsArtifex.ts'),
-				editUrl: 'https://github.com/tanaos/tanaos-docs/tree/master/artifex',
 			},
 		],
 	],
@@ -86,14 +84,14 @@ const config: Config = {
 				},
 				{
 					type: 'custom-ConditionalNavbarItem',
-					to: '/synthex/intro',
+					to: SYNTHEX_GITHUB_URL,
 					label: 'Synthex',
 					position: 'left',
 					showOnRoutes: ['/synthex'],
 				},
 				{
 					type: 'custom-ConditionalNavbarItem',
-					to: '/artifex/intro',
+					to: ARTIFEX_GITHUB_URL,
 					label: 'Artifex',
 					position: 'left',
 					showOnRoutes: ['/artifex'],
