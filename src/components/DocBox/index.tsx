@@ -15,5 +15,6 @@ export const DocBox = ({ icon, title, description, link }: DocBoxProps): ReactEl
         <div className='doc-box-icon'>{ icon }</div>
         <h4>{ title }</h4>
         <p>{ description }</p>
+        <span className='link'>Read the docs <i className='bi bi-arrow-right'></i></span>
     </div>
 };

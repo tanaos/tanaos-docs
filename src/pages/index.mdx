@@ -1,3 +1,9 @@
+---
+title: Create Task-Specific LLMs without training data | Tanaos Docs
+description: Learn how to use our Python libaries to create task-specific LLMs without training data, for offline NLP and Text Classification tasks.
+keywords: [ synthex, artifex, tanaos, task specific llm, nlp, text classification, no training data, guardrail models, intent classification, python, library ] 
+---
+
 import Link from '@docusaurus/Link';
 
 import { DocBox } from '../components/DocBox';
@@ -7,24 +13,27 @@ import { WEBSITE_BASE_URL } from '../../consts';
 # Welcome to Tanaos Docs
 
 <div style={{ marginTop: '3rem', marginBottom: '3rem' }}>
-    At <Link to={WEBSITE_BASE_URL}>Tanaos</Link>, we develop tools that allow anyone to train task-specific LLMs without 
-    training data, for offline NLP and Text Classification tasks, such as Guardrail Models and Intent Classification 🤖🚀. 
+    At <Link to={WEBSITE_BASE_URL}>Tanaos</Link>, we develop tools that allow anyone to create 
+    task-specific LLMs without training data, for offline NLP and Text Classification tasks, 
+    such as Guardrail Models and Intent Classification 🤖🚀.
 
-    Below you can find links to our documentation, which will help you get started with our products.
+    We have created two open-source Python libraries to achieve this:
+    - [Synthex](/synthex/intro): A library for generating large, high-quality synthetic datasets for any purpose.
+    - [Artifex](/artifex/intro): A Python library to create task-specific LLMs without training data, for offline NLP and Text Classification tasks, such as Guardrail Models and Intent Classification.
 </div>
 
 <div className='docbox-row'>
     <DocBox
         title="Synthex"
-        description="Synthex is a Python library for generating large, high-quality synthetic datasets for any purpose."
+        description="Generate large, high-quality synthetic datasets for any purpose."
         icon='📊'
         link="/synthex/intro"
     />
 
     <DocBox
         title="Artifex"
-        description="Artifex is a Python library that allows you to train small, fast and private AI models without data."
-        icon='⚡'
+        description="Create task-specific LLMs without training data, for offline NLP and Text Classification tasks."
+        icon='🤖'
         link="/artifex/intro"
     />
 </div>
