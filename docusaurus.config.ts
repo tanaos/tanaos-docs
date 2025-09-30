@@ -1,13 +1,17 @@
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 
-import { DOCS_BASE_URL, SYNTHEX_GITHUB_URL, ARTIFEX_GITHUB_URL } from './consts';
+import { 
+	DOCS_BASE_URL, SYNTHEX_GITHUB_URL, ARTIFEX_GITHUB_URL, SYNTHEX_INTRO_URL, ARTIFEX_INTRO_URL
+} from './consts';
 
 
 const config: Config = {
 	title: 'Tanaos – Developing tools to create task-specific LLMs without training data',
 	tagline: 'The official Tanaos documentation',
 	favicon: 'img/favicon.ico',
+
+	trailingSlash: true,
 
 	url: DOCS_BASE_URL,
 	baseUrl: '/',
@@ -42,11 +46,19 @@ const config: Config = {
 				redirects: [
 					{
 						from: '/synthex',
-						to: '/synthex/intro',
+						to: `${SYNTHEX_INTRO_URL}`,
+					},
+					{
+						from: '/synthex/',
+						to: `${SYNTHEX_INTRO_URL}`,
 					},
 					{
 						from: '/artifex',
-						to: '/artifex/intro',
+						to: `${ARTIFEX_INTRO_URL}`,
+					},
+					{
+						from: '/artifex/',
+						to: `${ARTIFEX_INTRO_URL}`,
 					}
 				]
 			}
@@ -106,11 +118,11 @@ const config: Config = {
 					items: [
 						{
 							label: 'Synthex',
-							to: '/synthex/intro',
+							to: `${SYNTHEX_INTRO_URL}`,
 						},
 						{
 							label: 'Artifex',
-							to: '/artifex/intro',
+							to: `${ARTIFEX_INTRO_URL}`,
 						},
 					],
 				},

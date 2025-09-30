@@ -7,7 +7,7 @@ hide_table_of_contents: false
 ---
 
 import Link from '@docusaurus/Link';
-import { ARTIFEX_INTRO_URL } from '../consts';
+import { ARTIFEX_INTRO_URL, PLATFORM_BASE_URL } from '../consts';
 
 # Plans
 
@@ -33,7 +33,7 @@ The free plan is mainly aimed at individual users and small projects. Each user 
 The pay-as-you-go plan is aimed at professional users and larger projects. It has no monthly limit, you simply pay for what you use. 
 To use it, you need to:
 
-1. create an account on [our platform](https://platform.tanaos.com) 
+1. create an account on <a href={PLATFORM_BASE_URL} target='_blank' rel='noopener'>our platform</a>
 2. add credits to it
 3. create an Api Key and pass it to Artifex at instantiation, then use it normally:
 
