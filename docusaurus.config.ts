@@ -49,17 +49,9 @@ const config: Config = {
 						to: `${SYNTHEX_INTRO_URL}`,
 					},
 					{
-						from: '/synthex/',
-						to: `${SYNTHEX_INTRO_URL}`,
-					},
-					{
 						from: '/artifex',
 						to: `${ARTIFEX_INTRO_URL}`,
 					},
-					{
-						from: '/artifex/',
-						to: `${ARTIFEX_INTRO_URL}`,
-					}
 				]
 			}
 		],
