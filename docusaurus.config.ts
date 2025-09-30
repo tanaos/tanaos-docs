@@ -46,19 +46,19 @@ const config: Config = {
 				redirects: [
 					{
 						from: '/synthex',
-						to: {SYNTHEX_INTRO_URL},
+						to: `${SYNTHEX_INTRO_URL}`,
 					},
 					{
 						from: '/synthex/',
-						to: {SYNTHEX_INTRO_URL},
+						to: `${SYNTHEX_INTRO_URL}`,
 					},
 					{
 						from: '/artifex',
-						to: {ARTIFEX_INTRO_URL},
+						to: `${ARTIFEX_INTRO_URL}`,
 					},
 					{
 						from: '/artifex/',
-						to: {ARTIFEX_INTRO_URL},
+						to: `${ARTIFEX_INTRO_URL}`,
 					}
 				]
 			}
@@ -118,11 +118,11 @@ const config: Config = {
 					items: [
 						{
 							label: 'Synthex',
-							to: {SYNTHEX_INTRO_URL},
+							to: `${SYNTHEX_INTRO_URL}`,
 						},
 						{
 							label: 'Artifex',
-							to: {ARTIFEX_INTRO_URL},
+							to: `${ARTIFEX_INTRO_URL}`,
 						},
 					],
 				},
