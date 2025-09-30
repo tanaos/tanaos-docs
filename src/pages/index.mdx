@@ -8,6 +8,7 @@ import Link from '@docusaurus/Link';
 
 import { DocBox } from '../components/DocBox';
 import { WEBSITE_BASE_URL } from '../../consts';
+import { SYNTHEX_INTRO_URL, ARTIFEX_INTRO_URL } from '../../consts';
 
 
 # Welcome to Tanaos Docs
@@ -18,22 +19,22 @@ import { WEBSITE_BASE_URL } from '../../consts';
     such as Guardrail Models and Intent Classification 🤖🚀.
 
     We have created two open-source Python libraries to achieve this:
-    - [Synthex](/synthex/intro): A library for generating large, high-quality synthetic datasets for any purpose.
-    - [Artifex](/artifex/intro): A Python library to create task-specific LLMs without training data, for offline NLP and Text Classification tasks, such as Guardrail Models and Intent Classification.
+    - <Link to={SYNTHEX_INTRO_URL}>Synthex</Link>: A library for generating large, high-quality synthetic datasets for any purpose.
+    - <Link to={ARTIFEX_INTRO_URL}>Artifex</Link>: A Python library to create task-specific LLMs without training data, for offline NLP and Text Classification tasks, such as Guardrail Models and Intent Classification.
 </div>
 
 <div className='docbox-row'>
     <DocBox
-        title="Synthex"
-        description="Generate large, high-quality synthetic datasets for any purpose."
+        title='Synthex'
+        description='Generate large, high-quality synthetic datasets for any purpose.'
         icon='📊'
-        link="/synthex/intro"
+        link={SYNTHEX_INTRO_URL}
     />
 
     <DocBox
-        title="Artifex"
-        description="Create task-specific LLMs without training data, for offline NLP and Text Classification tasks."
+        title='Artifex'
+        description='Create task-specific LLMs without training data, for offline NLP and Text Classification tasks.'
         icon='🤖'
-        link="/artifex/intro"
+        link={ARTIFEX_INTRO_URL}
     />
 </div>
