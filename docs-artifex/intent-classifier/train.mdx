@@ -10,7 +10,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import { APIDescriptionSection } from '../../src/components/APIDescriptionSection';
-import { SYNTHEX_GENERATE_DATA_URL, ARTIFEX_LOAD_INTENT_CLASSIFIER_URL } from '../../consts';
+import { SYNTHEX_GENERATE_DATA_URL } from '../../consts';
 import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } from '../../src/components/ParameterBadge';
 
 
@@ -18,10 +18,10 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 	<div className='text-container'>
         # `intent_classifier.train()`
 
-        Fine-tunes a pre-trained Intent Classification model on user-specified instructions. 
+        Fine-tunes a pre-trained Intent Classification model on user-specified classes and domain. 
 		**No training data is needed**, as the model uses 
 		<Link to={SYNTHEX_GENERATE_DATA_URL}>`synthex.jobs.generate_data()`</Link> under the
-		hood to generate a synthetic training dataset based on the provided requirements.
+		hood to generate a synthetic training dataset based on the provided classes and domain.
 
 		Both the base Intent Classification model [tanaos/tanaos-intent-classifier-v1](https://huggingface.co/tanaos/tanaos-intent-classifier-v1) 
 		and previously trained models can be further trained using this method:
@@ -34,10 +34,9 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 			Artifex().intent_classifier.load("trained/model/path").train()
 			```
 
-			For more information on the `load()` method, see the
-			<Link to={ARTIFEX_LOAD_INTENT_CLASSIFIER_URL}>`load()` method documentation</Link>.
-
 		<APIDescriptionSection title='Arguments'>
+			- **domain** <ParameterTypeBadge>str</ParameterTypeBadge>\
+				A string which specifies the domain or area that the model will be specialized in.
 			- **classes** <ParameterTypeBadge>dict[str, str]</ParameterTypeBadge>\
 				A dictionary, where each key is the name of an intent (must be maximum 10 characters with no
 				spaces), and each value is the description of that intent.
@@ -64,6 +63,7 @@ from artifex import Artifex
 intent_classifier = Artifex().intent_classifier
 
 intent_classifier.train(
+    domain="office assistant",
     classes={
         "send_email": "Intent to send an email to someone.",
         "schedule_meeting": "Intent to schedule a meeting with someone.",

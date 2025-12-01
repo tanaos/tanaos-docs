@@ -1,7 +1,7 @@
 ---
-title: artifex.guardrail.train() | Tanaos Artifex
-description: Learn how to use the .train() method to train a Guardrail model with the Artifex library.
-keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, guardrail models, chatbot guardrail, train ] 
+title: artifex.reranker.train() | Tanaos Artifex
+description: Learn how to use the .train() method to train a Reranker model with the Artifex library.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, reranker models, search result reranking, train ]
 hide_table_of_contents: true
 ---
 
@@ -16,29 +16,29 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 
 <div className='responsive-container'>
 	<div className='text-container'>
-        # `guardrail.train()`
+        # `reranker.train()`
 
-        Fine-tunes a pre-trained Guardrail model on user-specified instructions. **No training data 
-		is needed**, as the model uses <Link to={SYNTHEX_GENERATE_DATA_URL}>`synthex.jobs.generate_data()`</Link> under the
-		hood to generate a synthetic training dataset based on the provided instructions.
+        Fine-tunes a pre-trained Reranker model on a user-specified domain. **No training data is needed**, as 
+		the model uses <Link to={SYNTHEX_GENERATE_DATA_URL}>`synthex.jobs.generate_data()`</Link> 
+		under the hood to generate a synthetic training dataset based on the provided domain.
 
-		Both the base Guardrail model [tanaos/tanaos-guardrail-v1](https://huggingface.co/tanaos/tanaos-guardrail-v1) 
+		Both the base Reranker model [cross-encoder/mmarco-mMiniLMv2-L12-H384-v1](https://huggingface.co/cross-encoder/mmarco-mMiniLMv2-L12-H384-v1) 
 		and previously trained models can be further trained using this method:
-		- Fine-tune the base Guardrail model:
+		- Fine-tune the base Reranker model: 
 			```python
-			Artifex().guardrail.train()
+			Artifex().reranker.train()
 			```
 		- Fine-tune a model that was previously trained with Artifex, in order to train it further: 
 			```python
-			Artifex().guardrail.load("trained/model/path").train()
+			Artifex().reranker.load("trained/model/path").train()
 			```
 
 		<APIDescriptionSection title='Arguments'>
-			- **instructions** <ParameterTypeBadge>list[str]</ParameterTypeBadge>\
-				A list of strings, where each string describes a something that the Guardrail should prevent
-				the chatbot from doing, or allow it to do.
+			- **domain** <ParameterTypeBadge>str</ParameterTypeBadge>\
+				A string which specifies the domain or area that the model will be specialized in.
 			- **output_path** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge />\
-				A string which specifies the path where the output files will be generated. The output files consist of:
+				A string which specifies the path where the output files will be generated. 
+				The output files consist of:
 				- The training dataset
 				- The output model `safetensor` and configuration files
 			- **num_samples** <ParameterTypeBadge>int</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='500' />\
@@ -56,15 +56,10 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 ```python
 from artifex import Artifex
 
-guardrail = Artifex().guardrail
+reranker = Artifex().reranker
 
-guardrail.train(
-    instructions=[
-        "Discussing a competitor's products or services is not allowed.",
-        "Sharing our employees' personal information is prohibited.",
-        "Providing instructions for illegal activities is forbidden.",
-        "Everything else is allowed.",
-    ]
+reranker.train(
+    domain="e-commerce product search",
 )
 ```
 				</TabItem>

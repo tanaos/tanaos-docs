@@ -68,6 +68,26 @@ const sidebars: SidebarsConfig = {
 			id: 'intent-classifier/load',
 			label: 'Load',
 		},
+		{
+			type: 'html',
+			value: '<div class="section-name">🔀 Reranker</div>',
+			defaultStyle: true,
+		},
+		{
+			type: 'doc',
+			id: 'reranker/train',
+			label: 'Train',
+		},
+		{
+			type: 'doc',
+			id: 'reranker/inference',
+			label: 'Inference',
+		},
+		{
+			type: 'doc',
+			id: 'reranker/load',
+			label: 'Load',
+		},
 	],
 };
 
