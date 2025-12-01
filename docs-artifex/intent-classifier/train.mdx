@@ -16,18 +16,20 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 
 <div className='responsive-container'>
 	<div className='text-container'>
-        # Train an Intent Classification Model
+        # `intent_classifier.train()`
 
-        Train an Intent Classification Model. **No training data is needed**, as the model uses 
+        Fine-tunes a pre-trained Intent Classification model on user-specified instructions. 
+		**No training data is needed**, as the model uses 
 		<Link to={SYNTHEX_GENERATE_DATA_URL}>`synthex.jobs.generate_data()`</Link> under the
 		hood to generate a synthetic training dataset based on the provided requirements.
 
-		Training can be performed on both:
-		- An untrained base model: 
+		Both the base Intent Classification model [tanaos/tanaos-intent-classifier-v1](https://huggingface.co/tanaos/tanaos-intent-classifier-v1) 
+		and previously trained models can be further trained using this method:
+		- Fine-tune the base Intent Classification model: 
 			```python
 			Artifex().intent_classifier.train()
 			```
-		- A model that was previously trained with Artifex, in order to train it further: 
+		- Fine-tune a model that was previously trained with Artifex, in order to train it further: 
 			```python
 			Artifex().intent_classifier.load("trained/model/path").train()
 			```
@@ -40,7 +42,8 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 				A dictionary, where each key is the name of an intent (must be maximum 10 characters with no
 				spaces), and each value is the description of that intent.
 			- **output_path** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge />\
-				A string which specifies the path where the output files will be generated. The output files consist of:
+				A string which specifies the path where the output files will be generated. 
+				The output files consist of:
 				- The training dataset
 				- The output model `safetensor` and configuration files
 			- **num_samples** <ParameterTypeBadge>int</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='500' />\
@@ -59,13 +62,6 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 from artifex import Artifex
 
 intent_classifier = Artifex().intent_classifier
-
-"""
-If you want to fine-tune an already trained model, 
-load it first:
-
-intent_classifier.load("path/to/trained/model")
-"""
 
 intent_classifier.train(
     classes={

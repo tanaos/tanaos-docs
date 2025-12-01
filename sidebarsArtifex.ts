@@ -15,17 +15,12 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'doc',
-			id: 'plans',
-			label: 'Plans',
-		},
-		{
-			type: 'doc',
 			id: 'tutorials',
 			label: 'Tutorials',
 		},
 		{
 			type: 'html',
-			value: '<div class="section-name">Guardrail</div>',
+			value: '<div class="section-name">🛡️ Guardrail</div>',
 			defaultStyle: true,
 		},
 		{
@@ -50,7 +45,7 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'html',
-			value: '<div class="section-name">Intent Classification</div>',
+			value: '<div class="section-name">🗣️ Intent Classification</div>',
 			defaultStyle: true,
 		},
 		{

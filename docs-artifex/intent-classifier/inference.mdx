@@ -14,11 +14,15 @@ import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
 
 <div className='responsive-container'>
 	<div className='text-container'>
-        # Perform Inference with the Intent Classification Model
+        # `intent_classifier()`
 
         Perform inference with an Intent Classification model, on a single input string or a list of input strings. 
         For each input string, this will return the predicted intent label, which is one of the user-defined 
 		classes that the model was trained on.
+
+		If no model is loaded, the base Intent Classification model [tanaos/tanaos-intent-classifier-v1](https://huggingface.co/tanaos/tanaos-intent-classifier-v1) 
+		will be used by default. For more information on what intents the base Intent Classification model 
+		is trained to recognize, see the [model's Hugging Face page](https://huggingface.co/tanaos/tanaos-intent-classifier-v1).
 
 		<APIDescriptionSection title='Arguments'>
 			- **text** <ParameterTypeBadge>str | list[str]</ParameterTypeBadge>\
@@ -26,7 +30,9 @@ import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
 		</APIDescriptionSection>
 
 		<APIDescriptionSection title='Response'>
-			A `list[str]`, each being the predicted intent label for the corresponding input string.
+			A `list[dict]`, each `dict` containing a `"label"` key with the predicted intent 
+			label for the corresponding input string, and a `"score"` key with a float value 
+			representing the model's confidence in its prediction.
 		</APIDescriptionSection>
 
 	</div>
@@ -39,10 +45,7 @@ from artifex import Artifex
 
 intent_classifier = Artifex().intent_classifier
 
-# NOTE: train your Intent Classification model before 
-# using it for inference.
-
-label = intent_classifier("I forgot to set up that meeting with John, could you do that for me?")
+label = intent_classifier("Hey there, how are you doing?")
 print(label)
 ```
 				</TabItem>
@@ -52,7 +55,7 @@ print(label)
 			<Tabs groupId="language">
 				<TabItem value="response" label="Response">
 ```python
-["schedule_meeting"]
+[{'label': 'greeting', 'score': 0.9955}]
 ```
 				</TabItem>
 			</Tabs>		

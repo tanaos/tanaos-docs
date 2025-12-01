@@ -14,10 +14,10 @@ import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
 
 <div className='responsive-container'>
 	<div className='text-container'>
-        # Load a Model Checkpoint
+        # `guardrail.load()`
 
-        Load a model checkpoint to perform inference with it. Only model that were trained with Artifex can
-        be loaded.
+        Load a model checkpoint to perform inference with it, or to train it further. Only models
+		that were trained with Artifex can be loaded.
 
 		<APIDescriptionSection title='Arguments'>
 			- **model_path** <ParameterTypeBadge>str</ParameterTypeBadge>\
@@ -33,9 +33,6 @@ import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
 from artifex import Artifex
 
 guardrail = Artifex().guardrail
-
-# NOTE: you must have a model checkpoint to load. Only
-# models that were trained with Artifex can be loaded.
 
 guardrail.load("/path/to/model/checkpoint")
 ```

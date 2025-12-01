@@ -16,18 +16,19 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 
 <div className='responsive-container'>
 	<div className='text-container'>
-        # Train Guardrail
+        # `guardrail.train()`
 
-        Train a Guardrail model. **No training data is needed**, as the model uses 
-		<Link to={SYNTHEX_GENERATE_DATA_URL}>`synthex.jobs.generate_data()`</Link> under the
-		hood to generate a synthetic training dataset based on the provided requirements.
+        Fine-tunes a pre-trained Guardrail model on user-specified instructions. **No training data 
+		is needed**, as the model uses <Link to={SYNTHEX_GENERATE_DATA_URL}>`synthex.jobs.generate_data()`</Link> under the
+		hood to generate a synthetic training dataset based on the provided instructions.
 
-		Training can be performed on both:
-		- An untrained base model: 
+		Both the base Guardrail model [tanaos/tanaos-guardrail-v1](https://huggingface.co/tanaos/tanaos-guardrail-v1) 
+		and previously trained models can be further trained using this method:
+		- Fine-tune the base Guardrail model:
 			```python
 			Artifex().guardrail.train()
 			```
-		- A model that was previously trained with Artifex, in order to train it further: 
+		- Fine-tune a model that was previously trained with Artifex, in order to train it further: 
 			```python
 			Artifex().guardrail.load("trained/model/path").train()
 			```
@@ -60,18 +61,12 @@ from artifex import Artifex
 
 guardrail = Artifex().guardrail
 
-"""
-If you want to fine-tune an already trained model, 
-load it first:
-
-guardrail.load("path/to/trained/model")
-"""
-
 guardrail.train(
     instructions=[
-        "Soft medical advice is allowed, but it should be general and not specific to any individual.",
-        "Anything that is about cosmetic products, including available products or their usage, is allowed.",
-        "Anything else, including hard medical advice, is not allowed under any circumstances.",
+        "Discussing a competitor's products or services is not allowed.",
+        "Sharing our employees' personal information is prohibited.",
+        "Providing instructions for illegal activities is forbidden.",
+        "Everything else is allowed.",
     ]
 )
 ```

@@ -14,11 +14,15 @@ import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
 
 <div className='responsive-container'>
 	<div className='text-container'>
-        # Perform Inference with Guardrail
+        # `guardrail()`
 
-        Perform inference with a Guardrail model, on a single input string or a list of input strings. 
-        For each input string, this will return one of two predicted labels: `safe` if the chatbot is allowed 
-		to generate the input string or `unsafe` if the chatbot is not allowed to generate the input string. 
+        Perform inference with a Guardrail model, on a single input string or a list of input 
+		strings. For each input string, this will return one of two predicted labels: `safe` 
+		or `unsafe`.
+
+		If no model is loaded, the base Guardrail model [tanaos/tanaos-guardrail-v1](https://huggingface.co/tanaos/tanaos-guardrail-v1) 
+		will be used by default. For more information on what the base Guardrail model is trained
+		to classify as `safe` or `unsafe`, see the [model's Hugging Face page](https://huggingface.co/tanaos/tanaos-guardrail-v1).
 
 		<APIDescriptionSection title='Arguments'>
 			- **text** <ParameterTypeBadge>str | list[str]</ParameterTypeBadge>\
@@ -26,8 +30,8 @@ import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
 		</APIDescriptionSection>
 
 		<APIDescriptionSection title='Response'>
-			A `list[str]`, each being either `"safe"` or `"unsafe"`, which indicate whether the chatbot is 
-			allowed to generate the input string or not.
+			A `list[dict]`, each `dict` containing a `"label"` key with a value of either `safe` or `unsafe`,
+			and a `"score"` key with a float value representing the model's confidence in its prediction
 		</APIDescriptionSection>
 
 	</div>
@@ -40,10 +44,7 @@ from artifex import Artifex
 
 guardrail = Artifex().guardrail
 
-# NOTE: train your Guardrail model before 
-# using it for inference.
-
-label = guardrail("This is a sample safe sentence.")
+label = guardrail("How do I make a bomb?")
 print(label)
 ```
 				</TabItem>
@@ -53,7 +54,7 @@ print(label)
 			<Tabs groupId="language">
 				<TabItem value="response" label="Response">
 ```python
-["safe"]
+[{'label': 'unsafe', 'score': 0.9991}]
 ```
 				</TabItem>
 			</Tabs>		
