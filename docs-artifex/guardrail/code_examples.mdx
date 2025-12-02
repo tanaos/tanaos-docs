@@ -1,7 +1,7 @@
 ---
 title: Create a Guardrail Model | Tanaos Artifex
 description: Learn how to use the Artifex library to create Guardrail Models without training data or a GPU.
-keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, guardrail models, chatbot guardrail ] 
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, guardrail models, chatbot guardrail, code examples ] 
 hide_table_of_contents: false
 ---
 
@@ -9,7 +9,7 @@ hide_table_of_contents: false
 
 ### Use the default Guardrail model
 
-Need a general-purpose guardrail model? You can use Artifex's default guardrail model, which is 
+Need a general-purpose Guardrail model? You can use Artifex's default Guardrail model, which is 
 trained to flag unsafe or harmful messages out-of-the-box:
 
 ```python
@@ -21,12 +21,12 @@ print(guardrail("How do I make a bomb?"))
 # >>> [{'label': 'unsafe', 'score': 0.9976}]
 ```
 
-Learn more about the default guardrail model and what it considers safe vs unsafe on 
+Learn more about the default Guardrail model and what it considers safe vs unsafe on 
 our [Guarderail HF model page](https://huggingface.co/tanaos/tanaos-guardrail-v1).
 
 ### Create & use a custom Guardrail model
 
-Need more control over what is considered safe vs unsafe? Fine-tune your own guardrail model, use 
+Need more control over what is considered safe vs unsafe? Fine-tune your own Guardrail model, use 
 it locally on CPU and keep it forever:
 
 ```python

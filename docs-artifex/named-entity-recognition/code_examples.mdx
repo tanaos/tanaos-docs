@@ -1,0 +1,77 @@
+---
+title: Create Named Entity Recognition Models | Tanaos Artifex
+description: Learn how to use the Artifex library to create Named Entity Recognition Models without training data or a GPU.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, named entity recognition, ner, code examples ] 
+hide_table_of_contents: false
+---
+
+# 🏷️ Named Entity Recognition model
+
+### Use the default Named Entity Recognition model
+
+Need a general-purpose Named Entity Recognition model? You can use Artifex's default Named Entity 
+Recognition model, which is trained to recognize fourteen named entities out-of-the-box:
+- `PERSON`
+- `ORG`
+- `LOCATION`
+- `DATE`
+- `TIME`
+- `PERCENT`
+- `NUMBER`
+- `FACILITY`
+- `PRODUCT`
+- `WORK_OF_ART`
+- `LANGUAGE`
+- `NORP` (Nationalities or religious/political groups)
+- `ADDRESS`
+- `PHONE_NUMBER`
+
+
+```python
+from artifex import Artifex
+
+ner = Artifex().named_entity_recognition
+
+print(ner("John landed in Barcelona at 15:45."))
+
+# >>> [[{'entity_group': 'PERSON', 'score': 0.92174554, 'word': 'John', 'start': 0, 'end': 4}, {'entity_group': 'LOCATION', 'score': 0.9853817, 'word': ' Barcelona', 'start': 15, 'end': 24}, {'entity_group': 'TIME', 'score': 0.98645407, 'word': ' 15:45.', 'start': 28, 'end': 34}]]
+```
+
+Learn more about the default Named Entity Recognition model on our [Named Entity Recognition HF model page](https://huggingface.co/tanaos/tanaos-NER-v1).
+
+### Create & use a custom Named Entity Recognition model
+
+Need more control over the named entities recognized, or do you want to tailor the model to your specific 
+domain for better results? Fine-tune your own Named Entity Recognition model, use it locally on CPU 
+and keep it forever:
+
+```python
+from artifex import Artifex
+
+ner = Artifex().named_entity_recognition
+
+model_output_path = "./output_model/"
+
+ner.train(
+    domain="medical documents",
+    named_entities={
+        "PERSON": "Individual people, fictional characters",
+        "ORG": "Companies, institutions, agencies",
+        "LOCATION": "Geographical areas",
+        "DATE": "Absolute or relative dates, including years, months and/or days",
+        "TIME": "Specific time of the day",
+        "NUMBER": "Numeric measurements or expressions",
+        "WORK_OF_ART": "Titles of creative works",
+        "LANGUAGE": "Natural or programming languages",
+        "NORP": "National, religious or political groups",
+        "ADDRESS": "full addresses",
+        "PHONE_NUMBER": "telephone numbers",
+    },
+    output_path=model_output_path,
+)
+
+ner.load(model_output_path)
+print(ner("The patient John Doe visited New York on 12th March 2023 at 10:30 AM."))
+
+# >>> [[{'entity_group': 'PERSON', 'score': 0.9456123, 'word': 'John Doe', 'start': 12, 'end': 20}, {'entity_group': 'LOCATION', 'score': 0.9783456, 'word': ' New York', 'start': 29, 'end': 38}, {'entity_group': 'DATE', 'score': 0.9654321, 'word': ' 12th March 2023', 'start': 42, 'end': 58}, {'entity_group': 'TIME', 'score': 0.9543210, 'word': ' 10:30 AM.', 'start': 62, 'end': 71}]]
+```

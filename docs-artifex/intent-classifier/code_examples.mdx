@@ -9,8 +9,21 @@ hide_table_of_contents: false
 
 ### Use the default Intent Classification model
 
-Need a general-purpose intent classification model? You can use Artifex's default intent 
-classification model, which is trained to recognize common intents out-of-the-box:
+Need a general-purpose Intent Classification model? You can use Artifex's default intent 
+classification model, which is trained to recognize twelve intents out-of-the-box:
+
+- `greeting`
+- `farewell`
+- `thank_you`
+- `affirmation`
+- `negation`
+- `small_talk`
+- `bot_capabilities`
+- `feedback_positive`
+- `feedback_negative`
+- `clarification`
+- `suggestion`
+- `language_change`
 
 ```python
 from artifex import Artifex
@@ -22,13 +35,13 @@ print(intent_classifier("Hey there, how are you doing?"))
 # >>> [{'label': 'greeting', 'score': 0.9955}]
 ```
 
-Learn more about the default intent classification model and what intents it is trained to 
+Learn more about the default Intent Classification model and what intents it is trained to 
 recognize on our [Intent Classification HF model page](https://huggingface.co/tanaos/tanaos-intent-classifier-v1).
 
 ### Create & use a custom Intent Classification model
 
 Need more control over the intents recognized, or do you want to tailor the model to your specific 
-domain for better results? Fine-tune your own intent classification model, use it locally on CPU 
+domain for better results? Fine-tune your own Intent Classification model, use it locally on CPU 
 and keep it forever:
 
 ```python

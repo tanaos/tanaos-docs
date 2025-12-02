@@ -114,6 +114,11 @@ const sidebars: SidebarsConfig = {
 			label: 'Load',
 		},
 		{
+			type: 'doc',
+			id: 'sentiment-analysis/code_examples',
+			label: 'Code Examples',
+		},
+		{
 			type: 'html',
 			value: '<div class="section-name">😡 Emotion Detection</div>',
 			defaultStyle: true,
@@ -132,6 +137,11 @@ const sidebars: SidebarsConfig = {
 			type: 'doc',
 			id: 'emotion-detection/load',
 			label: 'Load',
+		},
+		{
+			type: 'doc',
+			id: 'emotion-detection/code_examples',
+			label: 'Code Examples',
 		},
 		{
 			type: 'html',
@@ -154,6 +164,11 @@ const sidebars: SidebarsConfig = {
 			label: 'Load',
 		},
 		{
+			type: 'doc',
+			id: 'named-entity-recognition/code_examples',
+			label: 'Code Examples',
+		},
+		{
 			type: 'html',
 			value: '<div class="section-name">🥸 Text Anonymization</div>',
 			defaultStyle: true,
@@ -172,6 +187,11 @@ const sidebars: SidebarsConfig = {
 			type: 'doc',
 			id: 'text-anonymization/load',
 			label: 'Load',
+		},
+		{
+			type: 'doc',
+			id: 'text-anonymization/code_examples',
+			label: 'Code Examples',
 		},
 	],
 };

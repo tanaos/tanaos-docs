@@ -1,7 +1,7 @@
 ---
 title: Create Reranker Models | Tanaos Artifex
 description: Learn how to use the Artifex library to create Reranker Models without training data or a GPU.
-keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, reranker models, chatbot reranker ] 
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, reranker models, code examples ] 
 hide_table_of_contents: false
 ---
 
@@ -9,7 +9,7 @@ hide_table_of_contents: false
 
 ### Use the default Reranker model
 
-Need a general-purpose reranker model? You can use Artifex's default reranker model, which is 
+Need a general-purpose Reranker model? You can use Artifex's default Reranker model, which is 
 trained to rank items based on relevance out-of-the-box:
 
 ```python
@@ -30,12 +30,12 @@ print(ranked_documents)
 # >>> [('Python is widely used for data science due to its simplicity and extensive libraries.', 3.83454), ('Java is a versatile language typically used for building large-scale applications.', -0.83086), ('JavaScript is primarily used for web development.', -1.37813)]
 ```
 
-Learn more about the default reranker model on the [Reranker HF model page](https://huggingface.co/cross-encoder/mmarco-mMiniLMv2-L12-H384-v1).
+Learn more about the default Reranker model on the [Reranker HF model page](https://huggingface.co/cross-encoder/mmarco-mMiniLMv2-L12-H384-v1).
 
 ### Create & use a custom Reranker model
 
 Want to fine-tune the Reranker model on a specific domain for better accuracy? Fine-tune your own 
-reranker model, use it locally on CPU and keep it forever:
+Reranker model, use it locally on CPU and keep it forever:
 
 ```python
 from artifex import Artifex

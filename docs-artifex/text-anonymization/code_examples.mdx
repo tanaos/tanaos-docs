@@ -1,0 +1,54 @@
+---
+title: Create Text Anonymization Models | Tanaos Artifex
+description: Learn how to use the Artifex library to create Text Anonymization Models without training data or a GPU.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, named entity recognition, text anonymization, code examples ] 
+hide_table_of_contents: false
+---
+
+# 🥸 Text Anonymization model
+
+### Use the default Text Anonymization model
+
+Need a general-purpose Text Anonymization model? You can use Artifex's default Text Anonymization 
+model, which is trained to recognize and remove five Personal Identifiable Information (PII) types
+out-of-the-box:
+- `PERSON`
+- `LOCATION`
+- `DATE`
+- `ADDRESS`
+- `PHONE_NUMBER`
+
+
+```python
+from artifex import Artifex
+
+ta = Artifex().text_anonymization
+
+print(ta("John Doe lives at 123 Main St, New York. His phone number is (555) 123-4567."))
+# >>> ["[MASKED] lives at [MASKED]. His phone number is [MASKED]."]
+```
+
+Learn more about the default Text Anonymization model on our [Text Anonymization HF model page](https://huggingface.co/tanaos/tanaos-text-anonymizer-v1).
+
+### Create & use a custom Text Anonymization model
+
+Do you want to tailor the model to your specific domain for better results? Fine-tune your own Text 
+Anonymization model, use it locally on CPU and keep it forever:
+
+```python
+from artifex import Artifex
+
+ta = Artifex().text_anonymization
+
+model_output_path = "./output_model/"
+
+ta.train(
+    domain="medical documents",
+    output_path=model_output_path,
+)
+
+ta.load(model_output_path)
+print(ta("The patient John Doe visited New York on 12th March 2023 at 10:30 AM."))
+
+# >>> ["The patient [MASKED] visited [MASKED] on [MASKED] at [MASKED]."]
+```
