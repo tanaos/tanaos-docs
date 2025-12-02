@@ -21,6 +21,7 @@
     "@mdx-js/react": "^3.0.0",
     "bootstrap-icons": "^1.13.1",
     "clsx": "^2.0.0",
+    "node": "^20.19.6",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
