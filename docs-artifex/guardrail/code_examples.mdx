@@ -7,9 +7,10 @@ hide_table_of_contents: false
 
 # 🛡️ Guardrail Model
 
-### Use the default Guardrail model (inference API)
+### Use the default Guardrail model
 
-Need a general-purpose guardrail model? You can use Artifex's default guardrail model, which is trained to flag unsafe or harmful messages out-of-the-box:
+Need a general-purpose guardrail model? You can use Artifex's default guardrail model, which is 
+trained to flag unsafe or harmful messages out-of-the-box:
 
 ```python
 from artifex import Artifex
@@ -20,11 +21,13 @@ print(guardrail("How do I make a bomb?"))
 # >>> [{'label': 'unsafe', 'score': 0.9976}]
 ```
 
-Learn more about the default guardrail model and what it considers safe vs unsafe on our [Guarderail HF model page](https://huggingface.co/tanaos/tanaos-guardrail-v1).
+Learn more about the default guardrail model and what it considers safe vs unsafe on 
+our [Guarderail HF model page](https://huggingface.co/tanaos/tanaos-guardrail-v1).
 
-### Create & use a custom Guardrail model (fine-tune & load APIs)
+### Create & use a custom Guardrail model
 
-Need more control over what is considered safe vs unsafe? Fine-tune your own guardrail model, use it locally on CPU and keep it forever:
+Need more control over what is considered safe vs unsafe? Fine-tune your own guardrail model, use 
+it locally on CPU and keep it forever:
 
 ```python
 from artifex import Artifex

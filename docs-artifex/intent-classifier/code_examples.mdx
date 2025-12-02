@@ -1,0 +1,56 @@
+---
+title: Create Intent Classification Models | Tanaos Artifex
+description: Learn how to use the Artifex library to create Intent Classification Models without training data or a GPU.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, intent classification models, chatbot intent classification ] 
+hide_table_of_contents: false
+---
+
+# 🗣️ Intent Classification model
+
+### Use the default Intent Classification model
+
+Need a general-purpose intent classification model? You can use Artifex's default intent 
+classification model, which is trained to recognize common intents out-of-the-box:
+
+```python
+from artifex import Artifex
+
+intent_classifier = Artifex().intent_classifier
+
+print(intent_classifier("Hey there, how are you doing?"))
+
+# >>> [{'label': 'greeting', 'score': 0.9955}]
+```
+
+Learn more about the default intent classification model and what intents it is trained to 
+recognize on our [Intent Classification HF model page](https://huggingface.co/tanaos/tanaos-intent-classifier-v1).
+
+### Create & use a custom Intent Classification model
+
+Need more control over the intents recognized, or do you want to tailor the model to your specific 
+domain for better results? Fine-tune your own intent classification model, use it locally on CPU 
+and keep it forever:
+
+```python
+from artifex import Artifex
+
+intent_classifier = Artifex().intent_classifier
+
+model_output_path = "./output_model/"
+
+intent_classifier.train(
+    domain="e-commerce customer support",
+    intents={
+        "order_status": "Inquiries about the status of an order.",
+        "return_item": "Requests to return a purchased item.",
+        "product_info": "Questions about product details or specifications.",
+        "greeting": "Friendly greetings or salutations.",
+    }
+    output_path=model_output_path
+)
+
+intent_classifier.load(model_output_path)
+print(intent_classifier("I want to return an item I bought last week."))
+
+# >>> [{'label': 'return_item', 'score': 0.9914}]
+```

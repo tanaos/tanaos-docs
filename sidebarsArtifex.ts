@@ -50,11 +50,6 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'doc',
-			id: 'intent-classifier/intro',
-			label: 'Introduction',
-		},
-		{
-			type: 'doc',
 			id: 'intent-classifier/train',
 			label: 'Train',
 		},
@@ -67,6 +62,11 @@ const sidebars: SidebarsConfig = {
 			type: 'doc',
 			id: 'intent-classifier/load',
 			label: 'Load',
+		},
+		{
+			type: 'doc',
+			id: 'intent-classifier/code_examples',
+			label: 'Code Examples',
 		},
 		{
 			type: 'html',
@@ -87,6 +87,11 @@ const sidebars: SidebarsConfig = {
 			type: 'doc',
 			id: 'reranker/load',
 			label: 'Load',
+		},
+		{
+			type: 'doc',
+			id: 'reranker/code_examples',
+			label: 'Code Examples',
 		},
 		{
 			type: 'html',
