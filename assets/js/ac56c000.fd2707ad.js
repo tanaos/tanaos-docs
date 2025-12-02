@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksynthex_docs=self.webpackChunksynthex_docs||[]).push([[8379],{8307:s=>{s.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"artifex"}')}}]);

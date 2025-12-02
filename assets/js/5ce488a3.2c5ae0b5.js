@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksynthex_docs=self.webpackChunksynthex_docs||[]).push([[472],{6947:s=>{s.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"synthex"}')}}]);
