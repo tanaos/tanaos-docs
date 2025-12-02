@@ -148,6 +148,26 @@ const sidebars: SidebarsConfig = {
 			id: 'named-entity-recognition/load',
 			label: 'Load',
 		},
+		{
+			type: 'html',
+			value: '<div class="section-name">🥸 Text Anonymization</div>',
+			defaultStyle: true,
+		},
+		{
+			type: 'doc',
+			id: 'text-anonymization/train',
+			label: 'Train',
+		},
+		{
+			type: 'doc',
+			id: 'text-anonymization/inference',
+			label: 'Inference',
+		},
+		{
+			type: 'doc',
+			id: 'text-anonymization/load',
+			label: 'Load',
+		},
 	],
 };
 

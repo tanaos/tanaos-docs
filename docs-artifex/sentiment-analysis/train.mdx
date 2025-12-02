@@ -20,7 +20,7 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 
         Fine-tunes a pre-trained Sentiment Analysis model on a user-specified domain. **No training data is needed**, as 
 		the model uses <Link to={SYNTHEX_GENERATE_DATA_URL}>`synthex.jobs.generate_data()`</Link> 
-		under the hood to generate a synthetic training dataset based on the provided domain.
+		under the hood to generate a synthetic training dataset based on the provided classes and domain.
 
 		Both the base Sentiment Analysis model [tanaos/tanaos-sentiment-analysis-v1](https://huggingface.co/tanaos/tanaos-sentiment-analysis-v1) 
 		and previously trained models can be further trained using this method:

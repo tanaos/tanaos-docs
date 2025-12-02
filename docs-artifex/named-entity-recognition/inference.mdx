@@ -1,7 +1,7 @@
 ---
 title: artifex.named_entity_recognition() | Tanaos Artifex
 description: Learn how to use artifex.named_entity_recognition() to perform inference with a Named Entity Recognition model, without using a GPU.
-keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no gpu, named entity recognition models, NER, inference ] 
+keywords: [ artifex, tanaos, task specific llm, nlp, token classification, no gpu, named entity recognition models, NER, inference ] 
 hide_table_of_contents: true
 ---
 
@@ -17,8 +17,8 @@ import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
         # `named_entity_recognition()`
 
         Perform inference with a Named Entity Recognition model, on a single input string or a list of input strings. 
-        For each input string, this will return the predicted intent label, which is one of the  
-		classes that the model was trained on.
+        For each input string, this will return the extracted named entities, which is one or more  
+		of the named entities that the model was trained on.
 
 		If no model is loaded, the base Named Entity Recognition model [tanaos/tanaos-NER-v1](https://huggingface.co/tanaos/tanaos-NER-v1) 
 		will be used by default. For more information on what named entities the base Named Entity 
@@ -51,7 +51,8 @@ from artifex import Artifex
 
 ner = Artifex().named_entity_recognition
 
-print(ner("John landed in Barcelona at 15:45."))
+named_entities = ner("John landed in Barcelona at 15:45.")
+print(named_entities)
 ```
 				</TabItem>
 			</Tabs>
