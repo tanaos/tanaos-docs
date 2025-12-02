@@ -88,6 +88,46 @@ const sidebars: SidebarsConfig = {
 			id: 'reranker/load',
 			label: 'Load',
 		},
+		{
+			type: 'html',
+			value: '<div class="section-name">🙂 Sentiment Analysis</div>',
+			defaultStyle: true,
+		},
+		{
+			type: 'doc',
+			id: 'sentiment-analysis/train',
+			label: 'Train',
+		},
+		{
+			type: 'doc',
+			id: 'sentiment-analysis/inference',
+			label: 'Inference',
+		},
+		{
+			type: 'doc',
+			id: 'sentiment-analysis/load',
+			label: 'Load',
+		},
+		{
+			type: 'html',
+			value: '<div class="section-name">😡 Emotion Detection</div>',
+			defaultStyle: true,
+		},
+		{
+			type: 'doc',
+			id: 'emotion-detection/train',
+			label: 'Train',
+		},
+		{
+			type: 'doc',
+			id: 'emotion-detection/inference',
+			label: 'Inference',
+		},
+		{
+			type: 'doc',
+			id: 'emotion-detection/load',
+			label: 'Load',
+		},
 	],
 };
 
