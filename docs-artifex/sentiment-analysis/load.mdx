@@ -1,7 +1,7 @@
 ---
-title: artifex.guardrail.load() | Tanaos Artifex
-description: Learn how to use the .load() method to load a Guardrail model in memory, without using a GPU, with the Artifex library.
-keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no gpu, guardrail models, chatbot guardrail, load, in memory ] 
+title: artifex.sentiment_analysis.load() | Tanaos Artifex
+description: Learn how to use the .load() method to load a Sentiment Analysis model in memory, without using a GPU, with the Artifex library.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no gpu, sentiment analysis models, sentiment classification model, load, in memory ] 
 hide_table_of_contents: true
 ---
 
@@ -14,9 +14,9 @@ import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
 
 <div className='responsive-container'>
 	<div className='text-container'>
-        # `guardrail.load()`
+        # `sentiment_analysis.load()`
 
-        Load a model checkpoint to perform inference with it, or to train it further. Only models
+        Load a model checkpoint to perform inference with, or to fine-tune it further. Only models 
 		that were trained with Artifex can be loaded.
 
 		<APIDescriptionSection title='Arguments'>
@@ -32,9 +32,9 @@ import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
 ```python
 from artifex import Artifex
 
-guardrail = Artifex().guardrail
+sentiment_analysis = Artifex().sentiment_analysis
 
-guardrail.load("/path/to/model/checkpoint")
+sentiment_analysis.load("/path/to/model/checkpoint")
 ```
 				</TabItem>
 			</Tabs>

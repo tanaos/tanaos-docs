@@ -1,0 +1,63 @@
+---
+title: Create Reranker Models | Tanaos Artifex
+description: Learn how to use the Artifex library to create Reranker Models without training data or a GPU.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, reranker models, code examples ] 
+hide_table_of_contents: false
+---
+
+# 🔀 Reranker model
+
+### Use the default Reranker model
+
+Need a general-purpose Reranker model? You can use Artifex's default Reranker model, which is 
+trained to rank items based on relevance out-of-the-box:
+
+```python
+from artifex import Artifex
+
+reranker = Artifex().reranker
+
+ranked_documents = reranker(
+    query="Best programming language for data science",
+    documents=[
+        "Java is a versatile language typically used for building large-scale applications.",
+        "Python is widely used for data science due to its simplicity and extensive libraries.",
+        "JavaScript is primarily used for web development.",
+    ]
+)
+print(ranked_documents)
+
+# >>> [('Python is widely used for data science due to its simplicity and extensive libraries.', 3.83454), ('Java is a versatile language typically used for building large-scale applications.', -0.83086), ('JavaScript is primarily used for web development.', -1.37813)]
+```
+
+Learn more about the default Reranker model on the [Reranker HF model page](https://huggingface.co/cross-encoder/mmarco-mMiniLMv2-L12-H384-v1).
+
+### Create & use a custom Reranker model
+
+Want to fine-tune the Reranker model on a specific domain for better accuracy? Fine-tune your own 
+Reranker model, use it locally on CPU and keep it forever:
+
+```python
+from artifex import Artifex
+
+reranker = Artifex().reranker
+
+model_output_path = "./output_model/"
+
+reranker.train(
+    domain="e-commerce product search",
+    output_path=model_output_path
+)
+
+reranker.load(model_output_path)
+print(reranker(
+    query="Laptop with long battery life",
+    documents=[
+        "A powerful gaming laptop with high-end graphics and performance.",
+        "An affordable laptop suitable for basic tasks and web browsing.",
+        "This laptop features a battery life of up to 12 hours, perfect for all-day use.",
+    ]
+))
+
+# >>> [('This laptop features a battery life of up to 12 hours, perfect for all-day use.', 4.7381), ('A powerful gaming laptop with high-end graphics and performance.', -1.8824), ('An affordable laptop suitable for basic tasks and web browsing.', -2.7585)]
+```

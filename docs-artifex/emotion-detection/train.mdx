@@ -1,7 +1,7 @@
 ---
-title: artifex.intent_classifier.train() | Tanaos Artifex
-description: Learn how to use the .train() method to train an Intent Classification model with the Artifex library.
-keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, intent classification models, chatbot intent classification, train ]
+title: artifex.emotion_detection.train() | Tanaos Artifex
+description: Learn how to use the .train() method to train an Emotion Detection model with the Artifex library.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, emotion detection models, emotion classification, train ]
 hide_table_of_contents: true
 ---
 
@@ -16,30 +16,30 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 
 <div className='responsive-container'>
 	<div className='text-container'>
-        # `intent_classifier.train()`
+        # `emotion_detection.train()`
 
-        Fine-tunes a pre-trained Intent Classification model on user-specified classes and domain. 
+        Fine-tunes a pre-trained Emotion Detection model on user-specified classes and domain. 
 		**No training data is needed**, as the model uses 
 		<Link to={SYNTHEX_GENERATE_DATA_URL}>`synthex.jobs.generate_data()`</Link> under the
 		hood to generate a synthetic training dataset based on the provided classes and domain.
 
-		Both the base Intent Classification model [tanaos/tanaos-intent-classifier-v1](https://huggingface.co/tanaos/tanaos-intent-classifier-v1) 
+		Both the base Emotion Detection model [tanaos/tanaos-emotion-detection-v1](https://huggingface.co/tanaos/tanaos-emotion-detection-v1) 
 		and previously trained models can be further trained using this method:
-		- Fine-tune the base Intent Classification model: 
+		- Fine-tune the base Emotion Detection model: 
 			```python
-			Artifex().intent_classifier.train()
+			Artifex().emotion_detection.train()
 			```
 		- Fine-tune a model that was previously trained with Artifex, in order to train it further: 
 			```python
-			Artifex().intent_classifier.load("trained/model/path").train()
+			Artifex().emotion_detection.load("trained/model/path").train()
 			```
 
 		<APIDescriptionSection title='Arguments'>
 			- **domain** <ParameterTypeBadge>str</ParameterTypeBadge>\
 				A string which specifies the domain or area that the model will be specialized in.
 			- **classes** <ParameterTypeBadge>dict[str, str]</ParameterTypeBadge>\
-				A dictionary, where each key is the name of an intent (must be maximum 20 characters with no
-				spaces) to classify, and each value is the description of that intent.
+				A dictionary, where each key is the name of an emotion (must be maximum 20 characters with no
+				spaces) to classify, and each value is the description of that emotion.
 			- **output_path** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge />\
 				A string which specifies the path where the output files will be generated. 
 				The output files consist of:
@@ -60,15 +60,18 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 ```python
 from artifex import Artifex
 
-intent_classifier = Artifex().intent_classifier
+emotion_detection = Artifex().emotion_detection
 
-intent_classifier.train(
-    domain="office assistant",
+emotion_detection.train(
+    domain="customer support for an e-commerce platform",
     classes={
-        "send_email": "Intent to send an email to someone.",
-        "schedule_meeting": "Intent to schedule a meeting with someone.",
-        "cancel_meeting": "Intent to cancel a previously scheduled meeting.",
-        "reschedule_meeting": "Intent to change the date or time of a previously scheduled meeting.",
+        "joy": "text that expresses happiness or positivity",
+        "anger": "text that expresses anger or frustration",
+        "sadness": "text that expresses sadness or sorrow",
+        "surprise": "text that expresses surprise or shock",
+        "disgust": "text that expresses disgust or revulsion",
+        "excitement": "text that expresses excitement or enthusiasm",
+        "neutral": "text that either expresses a neutral or indifferent emotion, or that does not express any emotion at all on account of being purely factual or descriptive."
     }
 )
 ```

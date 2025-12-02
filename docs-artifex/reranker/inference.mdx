@@ -1,0 +1,74 @@
+---
+title: artifex.reranker() | Tanaos Artifex
+description: Learn how to use artifex.reranker() to perform inference with a Reranker model, without using a GPU.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no gpu, reranker models, search result reranking, inference ] 
+hide_table_of_contents: true
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import { APIDescriptionSection } from '../../src/components/APIDescriptionSection';
+import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
+
+
+<div className='responsive-container'>
+	<div className='text-container'>
+        # `reranker()`
+
+        Perform inference with a Reranker model, on a pair of inputs: a query string and a
+		list of document strings. The model will rank the documents based on their relevance 
+		to the input query, returning the documents sorted from most to least relevant and a
+		relevance score for each document.
+
+		If no model is loaded, the base Reranker model [cross-encoder/mmarco-mMiniLMv2-L12-H384-v1](https://huggingface.co/cross-encoder/mmarco-mMiniLMv2-L12-H384-v1) 
+		will be used by default. For more information on the base Reranker model,
+		see the [model's Hugging Face page](https://huggingface.co/cross-encoder/mmarco-mMiniLMv2-L12-H384-v1).
+
+		<APIDescriptionSection title='Arguments'>
+			- **query** <ParameterTypeBadge>str</ParameterTypeBadge>\
+                The input query string to rank the documents against.
+			- **documents** <ParameterTypeBadge>str | list[str]</ParameterTypeBadge>\
+				A string or list of strings to be ranked based on their relevance to the input query.
+		</APIDescriptionSection>
+
+		<APIDescriptionSection title='Response'>
+			A `list[tuple]`, each `tuple` containing a document string and a float value 
+			representing the model's confidence in its relevance to the input query. The list 
+			is sorted in descending order of relevance, with the most relevant document first.
+		</APIDescriptionSection>
+
+	</div>
+	<div className='code-container'>
+		<div className='tabs-code'>
+			<Tabs>
+				<TabItem value='python' label='Python'>
+```python
+from artifex import Artifex
+
+reranker = Artifex().reranker
+
+ranked_documents = reranker(
+    query="Best programming language for data science",
+    documents=[
+        "Java is a versatile language typically used for building large-scale applications.",
+        "Python is widely used for data science due to its simplicity and extensive libraries.",
+        "JavaScript is primarily used for web development.",
+    ]
+)
+print(ranked_documents)
+```
+				</TabItem>
+			</Tabs>
+		</div>
+		<div className='tabs-code'>
+			<Tabs groupId="language">
+				<TabItem value="response" label="Response">
+```python
+[('Python is widely used for data science due to its simplicity and extensive libraries.', 3.83454), ('Java is a versatile language typically used for building large-scale applications.', -0.83086), ('JavaScript is primarily used for web development.', -1.37813)]
+```
+				</TabItem>
+			</Tabs>		
+		</div>
+	</div>
+</div>

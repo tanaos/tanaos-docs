@@ -1,0 +1,59 @@
+---
+title: Create Sentiment Analysis Models | Tanaos Artifex
+description: Learn how to use the Artifex library to create Sentiment Analysis Models without training data or a GPU.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, sentiment analysis, sentiment classification, code examples ] 
+hide_table_of_contents: false
+---
+
+# 🙂 Sentiment Analysis model
+
+### Use the default Sentiment Analysis model
+
+Need a general-purpose Sentiment Analysis model? You can use Artifex's default Sentiment Analysis 
+model, which is trained to recognize five sentiments out-of-the-box:
+- `very_positive`
+- `positive`
+- `neutral`
+- `negative`
+- `very_negative`
+
+```python
+from artifex import Artifex
+
+sentiment_analysis = Artifex().sentiment_analysis
+
+print(sentiment_analysis("The product exceeded my expectations and works flawlessly!"))
+
+# >>> [{'label': 'very_positive', 'score': 0.9955}]
+```
+
+Learn more about the default Sentiment Analysis model on our [Sentiment Analysis HF model page](https://huggingface.co/tanaos/tanaos-sentiment-analysis-v1).
+
+### Create & use a custom Sentiment Analysis model
+
+Need more control over the sentiments recognized, or do you want to tailor the model to your specific 
+domain for better results? Fine-tune your own Sentiment Analysis model, use it locally on CPU 
+and keep it forever:
+
+```python
+from artifex import Artifex
+
+sentiment_analysis = Artifex().sentiment_analysis
+
+model_output_path = "./output_model/"
+
+sentiment_analysis.train(
+    domain="e-commerce product reviews",
+    classes={
+        "positive": "Indicates a positive sentiment towards the product.",
+        "negative": "Indicates a negative sentiment towards the product.",
+        "neutral": "Indicates a neutral sentiment towards the product, or the absence of strong feelings.",
+    },
+    output_path=model_output_path
+)
+
+sentiment_analysis.load(model_output_path)
+print(sentiment_analysis("The product exceeded my expectations and works flawlessly!"))
+
+# >>> [{'label': 'positive', 'score': 0.9914}]
+```

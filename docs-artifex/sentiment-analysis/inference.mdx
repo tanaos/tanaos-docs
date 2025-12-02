@@ -1,0 +1,65 @@
+---
+title: artifex.sentiment_analysis() | Tanaos Artifex
+description: Learn how to use artifex.sentiment_analysis() to perform inference with a Sentiment Analysis model, without using a GPU.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no gpu, sentiment analysis model, sentiment classification model, inference ] 
+hide_table_of_contents: true
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import { APIDescriptionSection } from '../../src/components/APIDescriptionSection';
+import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
+
+
+<div className='responsive-container'>
+	<div className='text-container'>
+        # `sentiment_analysis()`
+
+        Perform inference with a Sentiment Analysis model, on a single input string or a list of 
+		input strings. For each input string, this will return the predicted sentiment label, which 
+		is one of the classes that the model was trained on.
+
+		If no model is loaded, the base Sentiment Analysis model [tanaos/tanaos-sentiment-analysis-v1](https://huggingface.co/tanaos/tanaos-sentiment-analysis-v1) 
+		will be used by default. For more information on the base Sentiment Analysis model,
+		see the [model's Hugging Face page](https://huggingface.co/tanaos/tanaos-sentiment-analysis-v1).
+
+		<APIDescriptionSection title='Arguments'>
+			- **text** <ParameterTypeBadge>str | list[str]</ParameterTypeBadge>\
+                A string or a list of strings to classify. The model will return a label for each 
+				input string.
+		</APIDescriptionSection>
+
+		<APIDescriptionSection title='Response'>
+			A `list[dict]`, each `dict` containing a `"label"` key with the predicted sentiment 
+			label for the corresponding input string, and a `"score"` key with a float value 
+			representing the model's confidence in its prediction.
+		</APIDescriptionSection>
+
+	</div>
+	<div className='code-container'>
+		<div className='tabs-code'>
+			<Tabs>
+				<TabItem value='python' label='Python'>
+```python
+from artifex import Artifex
+
+sentiment_analysis = Artifex().sentiment_analysis
+
+label = sentiment_analysis("While the battery life is average, the camera quality is great.")
+print(label)
+```
+				</TabItem>
+			</Tabs>
+		</div>
+		<div className='tabs-code'>
+			<Tabs groupId="language">
+				<TabItem value="response" label="Response">
+```python
+[{'label': 'positive', 'score': 0.9254}]
+```
+				</TabItem>
+			</Tabs>		
+		</div>
+	</div>
+</div>

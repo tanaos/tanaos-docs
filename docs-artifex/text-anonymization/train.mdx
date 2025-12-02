@@ -1,7 +1,7 @@
 ---
-title: artifex.intent_classifier.train() | Tanaos Artifex
-description: Learn how to use the .train() method to train an Intent Classification model with the Artifex library.
-keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, intent classification models, chatbot intent classification, train ]
+title: artifex.text_anonymization.train() | Tanaos Artifex
+description: Learn how to use the .train() method to train a Text Anonymization model with the Artifex library.
+keywords: [ artifex, tanaos, task specific llm, nlp, token classification, no training data, text anonymization, named entity recognition, train ]
 hide_table_of_contents: true
 ---
 
@@ -16,30 +16,27 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 
 <div className='responsive-container'>
 	<div className='text-container'>
-        # `intent_classifier.train()`
+        # `text_anonymization.train()`
 
-        Fine-tunes a pre-trained Intent Classification model on user-specified classes and domain. 
-		**No training data is needed**, as the model uses 
+        Fine-tunes a pre-trained Text Anonymization model on a user-specified domain. **No 
+		training data is needed**, as the model uses 
 		<Link to={SYNTHEX_GENERATE_DATA_URL}>`synthex.jobs.generate_data()`</Link> under the
-		hood to generate a synthetic training dataset based on the provided classes and domain.
+		hood to generate a synthetic training dataset based on the provided domain.
 
-		Both the base Intent Classification model [tanaos/tanaos-intent-classifier-v1](https://huggingface.co/tanaos/tanaos-intent-classifier-v1) 
+		Both the base Text Anonymization model [tanaos/tanaos-text-anonymizer-v1](https://huggingface.co/tanaos/tanaos-text-anonymizer-v1) 
 		and previously trained models can be further trained using this method:
-		- Fine-tune the base Intent Classification model: 
+		- Fine-tune the base Text Anonymization model: 
 			```python
-			Artifex().intent_classifier.train()
+			Artifex().text_anonymization.train()
 			```
 		- Fine-tune a model that was previously trained with Artifex, in order to train it further: 
 			```python
-			Artifex().intent_classifier.load("trained/model/path").train()
+			Artifex().text_anonymization.load("trained/model/path").train()
 			```
 
 		<APIDescriptionSection title='Arguments'>
 			- **domain** <ParameterTypeBadge>str</ParameterTypeBadge>\
 				A string which specifies the domain or area that the model will be specialized in.
-			- **classes** <ParameterTypeBadge>dict[str, str]</ParameterTypeBadge>\
-				A dictionary, where each key is the name of an intent (must be maximum 20 characters with no
-				spaces) to classify, and each value is the description of that intent.
 			- **output_path** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge />\
 				A string which specifies the path where the output files will be generated. 
 				The output files consist of:
@@ -60,16 +57,10 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 ```python
 from artifex import Artifex
 
-intent_classifier = Artifex().intent_classifier
+text_anonym = Artifex().text_anonymization
 
-intent_classifier.train(
-    domain="office assistant",
-    classes={
-        "send_email": "Intent to send an email to someone.",
-        "schedule_meeting": "Intent to schedule a meeting with someone.",
-        "cancel_meeting": "Intent to cancel a previously scheduled meeting.",
-        "reschedule_meeting": "Intent to change the date or time of a previously scheduled meeting.",
-    }
+text_anonym.train(
+    domain="medical documents",
 )
 ```
 				</TabItem>

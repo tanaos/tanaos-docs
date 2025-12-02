@@ -1,0 +1,66 @@
+---
+title: Create Emotion Detection Models | Tanaos Artifex
+description: Learn how to use the Artifex library to create Emotion Detection Models without training data or a GPU.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, Emotion Detection, emotion classification, code examples ] 
+hide_table_of_contents: false
+---
+
+# 😡 Emotion Detection model
+
+### Use the default Emotion Detection model
+
+Need a general-purpose Emotion Detection model? You can use Artifex's default Emotion Detection 
+model, which is trained to recognize eight emotions out-of-the-box:
+- `joy`
+- `anger`
+- `fear`
+- `sadness`
+- `surprise`
+- `disgust`
+- `excitement`
+- `neutral`
+
+```python
+from artifex import Artifex
+
+emotion_detection = Artifex().emotion_detection
+
+print(emotion_detection("I am absolutely thrilled with the results of my project."))
+
+# >>> [{'label': 'joy', 'score': 0.9916}]
+```
+
+Learn more about the default Emotion Detection model on our [Emotion Detection HF model page](https://huggingface.co/tanaos/tanaos-emotion-detection-v1).
+
+### Create & use a custom Emotion Detection model
+
+Need more control over the emotions recognized, or do you want to tailor the model to your specific 
+domain for better results? Fine-tune your own Emotion Detection model, use it locally on CPU 
+and keep it forever:
+
+```python
+from artifex import Artifex
+
+emotion_detection = Artifex().emotion_detection
+
+model_output_path = "./output_model/"
+
+emotion_detection.train(
+    domain="customer support for an e-commerce platform",
+    classes={
+        "joy": "text that expresses happiness or positivity",
+        "anger": "text that expresses anger or frustration",
+        "sadness": "text that expresses sadness or sorrow",
+        "surprise": "text that expresses surprise or shock",
+        "disgust": "text that expresses disgust or revulsion",
+        "excitement": "text that expresses excitement or enthusiasm",
+        "neutral": "text that either expresses a neutral or indifferent emotion, or that does not express any emotion at all on account of being purely factual or descriptive."
+    },
+    output_path=model_output_path
+)
+
+emotion_detection.load(model_output_path)
+print(emotion_detection("This is unacceptable, I want a refund!"))
+
+# >>> [{'label': 'anger', 'score': 0.9965}]
+```

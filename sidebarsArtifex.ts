@@ -15,24 +15,14 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'doc',
-			id: 'plans',
-			label: 'Plans',
-		},
-		{
-			type: 'doc',
-			id: 'tutorials',
-			label: 'Tutorials',
+			id: 'base_models',
+			label: 'Base models',
 		},
 		{
 			type: 'html',
-			value: '<div class="section-name">Guardrail</div>',
+			value: '<div class="section-name">🛡️ Guardrail</div>',
 			defaultStyle: true,
 		},
-		{
-			type: 'doc',
-			id: 'guardrail/intro',
-			label: 'Introduction',
-		},		
 		{
 			type: 'doc',
 			id: 'guardrail/train',
@@ -49,14 +39,14 @@ const sidebars: SidebarsConfig = {
 			label: 'Load',
 		},
 		{
-			type: 'html',
-			value: '<div class="section-name">Intent Classification</div>',
-			defaultStyle: true,
+			type: 'doc',
+			id: 'guardrail/code_examples',
+			label: 'Code Examples',
 		},
 		{
-			type: 'doc',
-			id: 'intent-classifier/intro',
-			label: 'Introduction',
+			type: 'html',
+			value: '<div class="section-name">🗣️ Intent Classification</div>',
+			defaultStyle: true,
 		},
 		{
 			type: 'doc',
@@ -72,6 +62,136 @@ const sidebars: SidebarsConfig = {
 			type: 'doc',
 			id: 'intent-classifier/load',
 			label: 'Load',
+		},
+		{
+			type: 'doc',
+			id: 'intent-classifier/code_examples',
+			label: 'Code Examples',
+		},
+		{
+			type: 'html',
+			value: '<div class="section-name">🔀 Reranker</div>',
+			defaultStyle: true,
+		},
+		{
+			type: 'doc',
+			id: 'reranker/train',
+			label: 'Train',
+		},
+		{
+			type: 'doc',
+			id: 'reranker/inference',
+			label: 'Inference',
+		},
+		{
+			type: 'doc',
+			id: 'reranker/load',
+			label: 'Load',
+		},
+		{
+			type: 'doc',
+			id: 'reranker/code_examples',
+			label: 'Code Examples',
+		},
+		{
+			type: 'html',
+			value: '<div class="section-name">🙂 Sentiment Analysis</div>',
+			defaultStyle: true,
+		},
+		{
+			type: 'doc',
+			id: 'sentiment-analysis/train',
+			label: 'Train',
+		},
+		{
+			type: 'doc',
+			id: 'sentiment-analysis/inference',
+			label: 'Inference',
+		},
+		{
+			type: 'doc',
+			id: 'sentiment-analysis/load',
+			label: 'Load',
+		},
+		{
+			type: 'doc',
+			id: 'sentiment-analysis/code_examples',
+			label: 'Code Examples',
+		},
+		{
+			type: 'html',
+			value: '<div class="section-name">😡 Emotion Detection</div>',
+			defaultStyle: true,
+		},
+		{
+			type: 'doc',
+			id: 'emotion-detection/train',
+			label: 'Train',
+		},
+		{
+			type: 'doc',
+			id: 'emotion-detection/inference',
+			label: 'Inference',
+		},
+		{
+			type: 'doc',
+			id: 'emotion-detection/load',
+			label: 'Load',
+		},
+		{
+			type: 'doc',
+			id: 'emotion-detection/code_examples',
+			label: 'Code Examples',
+		},
+		{
+			type: 'html',
+			value: '<div class="section-name">🏷️ Named Entity Recognition</div>',
+			defaultStyle: true,
+		},
+		{
+			type: 'doc',
+			id: 'named-entity-recognition/train',
+			label: 'Train',
+		},
+		{
+			type: 'doc',
+			id: 'named-entity-recognition/inference',
+			label: 'Inference',
+		},
+		{
+			type: 'doc',
+			id: 'named-entity-recognition/load',
+			label: 'Load',
+		},
+		{
+			type: 'doc',
+			id: 'named-entity-recognition/code_examples',
+			label: 'Code Examples',
+		},
+		{
+			type: 'html',
+			value: '<div class="section-name">🥸 Text Anonymization</div>',
+			defaultStyle: true,
+		},
+		{
+			type: 'doc',
+			id: 'text-anonymization/train',
+			label: 'Train',
+		},
+		{
+			type: 'doc',
+			id: 'text-anonymization/inference',
+			label: 'Inference',
+		},
+		{
+			type: 'doc',
+			id: 'text-anonymization/load',
+			label: 'Load',
+		},
+		{
+			type: 'doc',
+			id: 'text-anonymization/code_examples',
+			label: 'Code Examples',
 		},
 	],
 };

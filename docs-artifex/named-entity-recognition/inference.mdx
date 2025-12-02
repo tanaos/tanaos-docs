@@ -1,0 +1,70 @@
+---
+title: artifex.named_entity_recognition() | Tanaos Artifex
+description: Learn how to use artifex.named_entity_recognition() to perform inference with a Named Entity Recognition model, without using a GPU.
+keywords: [ artifex, tanaos, task specific llm, nlp, token classification, no gpu, named entity recognition models, NER, inference ] 
+hide_table_of_contents: true
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import { APIDescriptionSection } from '../../src/components/APIDescriptionSection';
+import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
+
+
+<div className='responsive-container'>
+	<div className='text-container'>
+        # `named_entity_recognition()`
+
+        Perform inference with a Named Entity Recognition model, on a single input string or a list of input strings. 
+        For each input string, this will return the extracted named entities, which is one or more  
+		of the named entities that the model was trained on.
+
+		If no model is loaded, the base Named Entity Recognition model [tanaos/tanaos-NER-v1](https://huggingface.co/tanaos/tanaos-NER-v1) 
+		will be used by default. For more information on what named entities the base Named Entity 
+		Recognition model is trained to extract, see the [model's Hugging Face page](https://huggingface.co/tanaos/tanaos-NER-v1).
+
+		<APIDescriptionSection title='Arguments'>
+			- **text** <ParameterTypeBadge>str | list[str]</ParameterTypeBadge>\
+                A string or a list of strings to extract named entities from. The model will 
+				return a list of extracted named entities for each input string.
+		</APIDescriptionSection>
+
+		<APIDescriptionSection title='Response'>
+			A `list[list[dict]]`, one `list[dict]` per input text. For each input text, each 
+			`list[dict]` contains a number of dictionaries, one per named entity extracted from
+			the input text. Each entity's dictionary contains the following keys:
+			- `entity_group` <ParameterTypeBadge>str</ParameterTypeBadge>: The named entity label predicted by the model.
+			- `score` <ParameterTypeBadge>float</ParameterTypeBadge>: The confidence score of the prediction, between 0 and 1.
+			- `word` <ParameterTypeBadge>str</ParameterTypeBadge>: The extracted named entity from the input text.
+			- `start` <ParameterTypeBadge>int</ParameterTypeBadge>: The starting character index of the extracted named entity in the input text.
+			- `end` <ParameterTypeBadge>int</ParameterTypeBadge>: The ending character index of the extracted named entity in the 
+		</APIDescriptionSection>
+
+	</div>
+	<div className='code-container'>
+		<div className='tabs-code'>
+			<Tabs>
+				<TabItem value='python' label='Python'>
+```python
+from artifex import Artifex
+
+ner = Artifex().named_entity_recognition
+
+named_entities = ner("John landed in Barcelona at 15:45.")
+print(named_entities)
+```
+				</TabItem>
+			</Tabs>
+		</div>
+		<div className='tabs-code'>
+			<Tabs groupId="language">
+				<TabItem value="response" label="Response">
+```python
+[[{'entity_group': 'PERSON', 'score': 0.92174554, 'word': 'John', 'start': 0, 'end': 4}, {'entity_group': 'LOCATION', 'score': 0.9853817, 'word': ' Barcelona', 'start': 15, 'end': 24}, {'entity_group': 'TIME', 'score': 0.98645407, 'word': ' 15:45.', 'start': 28, 'end': 34}]]
+```
+				</TabItem>
+			</Tabs>		
+		</div>
+	</div>
+</div>

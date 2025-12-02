@@ -15,25 +15,56 @@ import { WEBSITE_BASE_URL, SYNTHEX_INTRO_URL, ARTIFEX_GITHUB_URL } from '../cons
 
 # About Artifex
 
-<div className='responsive-container'>
-    <div className='text-container'>
-        Artifex is an <a href={ARTIFEX_GITHUB_URL} target='_blank' rel='noopener'>open-source Python library</a> developed 
-        by us at <a href={WEBSITE_BASE_URL} target='_blank' rel='noopener'>Tanaos</a> for creating **task-specific LLMs
-        without training data**, for offline NLP and Text Classification tasks, such as Guardrail Models and Intent
-        Classification. 
-        
-        How is it even possible to train LLMs without training data, you might ask? Because synthetic training data
-        is generated under the hood through our <Link to={SYNTHEX_INTRO_URL}>Synthex library</Link>. 
-    </div>
-    <div className='code-container'>
-		<div className='tabs-code'>
-			<Tabs>
-				<TabItem value='python' label='Python'>
-				```bash
-                pip install --upgrade artifex
-				```
-				</TabItem>
-			</Tabs>		
-		</div>
-    </div>
-</div>
+Artifex is an <a href={ARTIFEX_GITHUB_URL} target='_blank' rel='noopener'>open-source Python library</a> developed 
+by us at <a href={WEBSITE_BASE_URL} target='_blank' rel='noopener'>Tanaos</a> for:
+1. Using **small, pre-trained task-specific LLMs locally on CPU** 
+2. **Fine-tuning them on CPU without any training data** — just based on your instructions for the task at hand.
+
+## The problem
+
+LLMs available on the market can be broadly classified into two categories:
+
+- <ins>General-purpose LLMs</ins> (GPT, Claude, Llama, etc.) have two main limitations:
+  1. They are designed for open-ended tasks, which makes them **overkill and often suboptimal** for simpler, specific use cases.
+  2. If open-source, they require **expensive GPUs** for training and inference; if not open-source, they incur **high costs** for usage via APIs and have **data privacy concerns** since your data is sent to 3rd-party servers.
+
+- <ins>Smaller LLMs</ins> (DistilBERT, TinyBERT, etc.) can sometimes be trained and run locally on CPU, but they require **large amounts of labeled training data** to perform well on specific tasks — which is often **not available**.
+
+## Artifex's solution
+
+Artifex overcomes these limitations by enabling you to: 
+- Use small (capped at 500 Mb in size), pre-trained task-specific LLMs **locally on CPU**, thereby eliminating costs and data privacy concerns.
+- Fine-tune these models based on your requirements, **without any training data** — just based on your instructions for the task at hand — thereby obtaining higher accuracy on your specific use case.
+
+  <details>
+    <summary>How is it possible?</summary>
+    Artifex generates synthetic training data on-the-fly based on your instructions, and uses this data to fine-tune small LLMs for your specific task. This approach allows you to create effective models without the need for large labeled datasets.
+  </details>
+
+## Installation
+
+Install Artifex via pip:
+
+```bash
+pip install artifex
+```
+
+## Available Tasks
+
+At this time, we support 7 main tasks:
+- **🛡️ Guardrail**: Flags unsafe, harmful, or off-topic messages.
+- **🗣️ Intent Classification**: Classifies user messages into predefined intent categories.
+- **🔀 Reranker**: Ranks a list of items or search results based on relevance to a query.
+- **🙂 Sentiment Analysis**: Determines the sentiment (positive, negative, neutral) of a given text.
+- **😡 Emotion Detection**: Identifies the emotion expressed in a given text.
+- **🏷️ Named Entity Recognition (NER)**: Detects and classifies named entities in text (e.g., persons, organizations, locations).
+- **🥸 Text Anonymization**: Removes personally identifiable information (PII) from text.   
+
+We will be adding more tasks soon, based on user feedback. Want Artifex to perform a specific task? [Suggest one](https://github.com/tanaos/artifex/discussions/new?category=task-suggestions) or [vote one up](https://github.com/tanaos/artifex/discussions/categories/task-suggestions).
+
+## Available APIs
+
+For each task, Artifex provides three easy-to-use APIs:
+1. **Inference API** to use a default, pre-trained small LLM to perform that task out-of-the-box locally on CPU.
+2. **Fine-tune (or *train*) API** to fine-tune the default model based on your requirements, without any training data and on CPU. The fine-tuned model is generated on your machine and is yours to keep.
+3. **Load API** to load your fine-tuned model locally on CPU, and use it for inference or further fine-tuning.

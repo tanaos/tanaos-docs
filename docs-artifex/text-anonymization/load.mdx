@@ -1,7 +1,7 @@
 ---
-title: artifex.guardrail.load() | Tanaos Artifex
-description: Learn how to use the .load() method to load a Guardrail model in memory, without using a GPU, with the Artifex library.
-keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no gpu, guardrail models, chatbot guardrail, load, in memory ] 
+title: artifex.text_anonymization.load() | Tanaos Artifex
+description: Learn how to use the .load() method to load a Text Anonymization model in memory, without using a GPU, with the Artifex library.
+keywords: [ artifex, tanaos, task specific llm, nlp, token classification, no gpu, text anonymization, named entity recognition, NER, load, in memory ] 
 hide_table_of_contents: true
 ---
 
@@ -14,9 +14,9 @@ import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
 
 <div className='responsive-container'>
 	<div className='text-container'>
-        # `guardrail.load()`
+        # `text_anonymization.load()`
 
-        Load a model checkpoint to perform inference with it, or to train it further. Only models
+        Load a model checkpoint to perform inference with, or to fine-tune it further. Only models 
 		that were trained with Artifex can be loaded.
 
 		<APIDescriptionSection title='Arguments'>
@@ -32,9 +32,9 @@ import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
 ```python
 from artifex import Artifex
 
-guardrail = Artifex().guardrail
+text_anonym = Artifex().text_anonymization
 
-guardrail.load("/path/to/model/checkpoint")
+text_anonym.load("/path/to/model/checkpoint")
 ```
 				</TabItem>
 			</Tabs>

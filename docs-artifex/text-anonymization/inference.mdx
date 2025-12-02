@@ -1,0 +1,74 @@
+---
+title: artifex.text_anonymization() | Tanaos Artifex
+description: Learn how to use artifex.text_anonymization() to perform inference with a Text Anonymization model, without using a GPU.
+keywords: [ artifex, tanaos, task specific llm, nlp, token classification, no gpu, text anonymization, named entity recognition, inference ] 
+hide_table_of_contents: true
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import { APIDescriptionSection } from '../../src/components/APIDescriptionSection';
+import { 
+	ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge 
+} from '../../src/components/ParameterBadge';
+
+
+<div className='responsive-container'>
+	<div className='text-container'>
+        # `text_anonymization()`
+
+        Perform inference with a Text Anonymization model, on a single input string or a list of input 
+		strings. For each input string, this will return an anonymized version of the string, in
+		which all Personally Identifiable Information (PII) have been replaced with a placeholder.
+
+		If no model is loaded, the base Text Anonymization model [tanaos/tanaos-text-anonymizer-v1](https://huggingface.co/tanaos/tanaos-text-anonymizer-v1) 
+		will be used by default. For more information on what Personal Identifiable Information 
+		(PII) the base Text Anonymization model is trained to extract, see the [model's Hugging Face page](https://huggingface.co/tanaos/tanaos-text-anonymizer-v1).
+
+		<APIDescriptionSection title='Arguments'>
+			- **text** <ParameterTypeBadge>str | list[str]</ParameterTypeBadge>\
+                A string or a list of strings to remove Personally Identifiable Information (PII) 
+				from. The model will return a version of the input text(s) in which all 
+				detected PII have been replaced with a placeholder.
+			- **entities_to_mask** <ParameterTypeBadge>list[str]</ParameterTypeBadge> <OptionalParameterBadge>optional</OptionalParameterBadge>\
+				A list of entity types to mask in the input text(s). If not provided, all 
+				supported entity types will be masked. Supported entity types are 
+				`"PERSON"`, `"LOCATION"`, `"DATE"`, `"ADDRESS"` and `"PHONE_NUMBER"`.
+			- **mask_token** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge>optional</OptionalParameterBadge> <DefaultParameterBadge value="'[MASKED]'"/>\
+				The placeholder string to use for masking detected PII. Default is `"[MASKED]"`.
+		</APIDescriptionSection>
+
+		<APIDescriptionSection title='Response'>
+			A `list[str]`, one per input text. Each string is a version of the corresponding input
+			string in which all detected Personally Identifiable Information (PII) have been replaced
+			with a placeholder. 
+		</APIDescriptionSection>
+
+	</div>
+	<div className='code-container'>
+		<div className='tabs-code'>
+			<Tabs>
+				<TabItem value='python' label='Python'>
+```python
+from artifex import Artifex
+
+ta = Artifex().text_anonymization
+
+anonymized_text = ta("John Doe lives at 123 Main St, New York. His phone number is (555) 123-4567.")
+print(anonymized_text)
+```
+				</TabItem>
+			</Tabs>
+		</div>
+		<div className='tabs-code'>
+			<Tabs groupId="language">
+				<TabItem value="response" label="Response">
+```python
+["[MASKED] lives at [MASKED]. His phone number is [MASKED]."]
+```
+				</TabItem>
+			</Tabs>		
+		</div>
+	</div>
+</div>
