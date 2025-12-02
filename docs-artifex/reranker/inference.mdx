@@ -16,9 +16,10 @@ import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
 	<div className='text-container'>
         # `reranker()`
 
-        Perform inference with a Reranker model, on a single input string or a list of input strings. 
-        For each input string, this will return the predicted intent label, which is one of the user-defined 
-		classes that the model was trained on.
+        Perform inference with a Reranker model, on a pair of inputs: a query string and a
+		list of document strings. The model will rank the documents based on their relevance 
+		to the input query, returning the documents sorted from most to least relevant and a
+		relevance score for each document.
 
 		If no model is loaded, the base Reranker model [cross-encoder/mmarco-mMiniLMv2-L12-H384-v1](https://huggingface.co/cross-encoder/mmarco-mMiniLMv2-L12-H384-v1) 
 		will be used by default. For more information on the base Reranker model,
