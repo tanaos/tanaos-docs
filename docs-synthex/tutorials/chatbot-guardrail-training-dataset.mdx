@@ -6,17 +6,8 @@ import Link from '@docusaurus/Link';
 
 import { InfoBox } from '../../src/components/InfoBox';
 import { 
-    ARTIFEX_GUARDRAIL_INTRO_URL, ARTIFEX_GITHUB_URL, SYNTHEX_GITHUB_URL, SYNTHEX_GENERATE_DATA_URL
+    SYNTHEX_GITHUB_URL, SYNTHEX_GENERATE_DATA_URL
 } from '../../consts';
-
-
-<InfoBox type='info'>
-    Since creating this tutorial, we have released our new <a href={ARTIFEX_GITHUB_URL} target='_blank' rel='noopener'>Artifex library</a>,
-    which makes it easier to create AI models, including Guardrails, from scratch. If you are interested in learning how to
-    create a dataset for Guardrail training, keep reading this tutorial, but if you want to learn how to create a Guardrail model,
-    we recommend you check out the <Link to={ARTIFEX_GUARDRAIL_INTRO_URL}>Artifex Documentation</Link> or
-    the <a href={ARTIFEX_GITHUB_URL} target='_blank' rel='noopener'>Artifex GitHub page</a> instead.
-</InfoBox>
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/tanaos/tanaos-docs/blob/master/blueprints/synthex/chatbot_guardrail_training_dataset.ipynb)
 
@@ -218,11 +209,3 @@ The result looks great. The model seems to have done a great job even with poten
 > I heard lemon water can help with weight loss, but I'm not a nutritionist. Consult a professional for advice.
 
 was correctly labeled as *unsafe*: even though the LLM is stating that it is not a specialist and that the user should consult a professional, it is still giving some kind of medical advice, which we don't want.
-
-## The trained Guardrail model
-
-Although model training is out of the scope of this demo, we did train an actual Guardrail Model using the dataset we just generated. You can find it here:
-
-- **Guardrail Model weights:** [![Static Badge](https://img.shields.io/badge/_-Open_Model_in_HuggingFace-red?logo=huggingface&labelColor=grey)](https://huggingface.co/tanaos/online-store-chatbot-guardrail-model)
-- **Guardrail Model demo:** [![Static Badge](https://img.shields.io/badge/_-Open_Demo_1_in_HuggingFace-blue?logo=huggingface&labelColor=grey)](https://huggingface.co/spaces/tanaos/online-store-chatbot-guardrail-demo)
-- **Regular vs Guardrailed Chatbot demo:** [![Static Badge](https://img.shields.io/badge/_-Open_Demo_2_in_HuggingFace-green?logo=huggingface&labelColor=grey)](https://huggingface.co/spaces/tanaos/guardrailed-online-store-chatbot-demo)
