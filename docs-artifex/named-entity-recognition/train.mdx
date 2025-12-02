@@ -1,0 +1,95 @@
+---
+title: artifex.named_entity_recognition.train() | Tanaos Artifex
+description: Learn how to use the .train() method to train a Named Entity Recognition model with the Artifex library.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, named entity recognition, NER, train ]
+hide_table_of_contents: true
+---
+
+import Link from '@docusaurus/Link';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import { APIDescriptionSection } from '../../src/components/APIDescriptionSection';
+import { SYNTHEX_GENERATE_DATA_URL } from '../../consts';
+import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } from '../../src/components/ParameterBadge';
+
+
+<div className='responsive-container'>
+	<div className='text-container'>
+        # `named_entity_recognition.train()`
+
+        Fine-tunes a pre-trained Named Entity Recognition model on user-specified named entities
+		and domain. **No training data is needed**, as the model uses 
+		<Link to={SYNTHEX_GENERATE_DATA_URL}>`synthex.jobs.generate_data()`</Link> under the
+		hood to generate a synthetic training dataset based on the provided classes and domain.
+
+		Both the base Named Entity Recognition model [tanaos/tanaos-NER-v1](https://huggingface.co/tanaos/tanaos-NER-v1) 
+		and previously trained models can be further trained using this method:
+		- Fine-tune the base Named Entity Recognition model: 
+			```python
+			Artifex().named_entity_recognition.train()
+			```
+		- Fine-tune a model that was previously trained with Artifex, in order to train it further: 
+			```python
+			Artifex().named_entity_recognition.load("trained/model/path").train()
+			```
+
+		<APIDescriptionSection title='Arguments'>
+			- **domain** <ParameterTypeBadge>str</ParameterTypeBadge>\
+				A string which specifies the domain or area that the model will be specialized in.
+			- **named_entities** <ParameterTypeBadge>dict[str, str]</ParameterTypeBadge>\
+				A dictionary, where each key is the name of a named entity (must be maximum 20 characters with no
+				spaces) to recognize, and each value is the description of that named entity.
+			- **output_path** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge />\
+				A string which specifies the path where the output files will be generated. 
+				The output files consist of:
+				- The training dataset
+				- The output model `safetensor` and configuration files
+			- **num_samples** <ParameterTypeBadge>int</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='500' />\
+				An integer which specifies the number of datapoints that the synthetic training dataset should consist of, and 
+				that the model will be trained on. The maximum number of datapoints you can train your model on depends on 
+				whether you are on a free or paid plan.
+			- **num_epochs** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='3' />\
+				An integer which specifies the number of epochs to train the model for.
+		</APIDescriptionSection>
+	</div>
+	<div className='code-container'>
+		<div className='tabs-code'>
+			<Tabs>
+				<TabItem value='python' label='Python'>
+```python
+from artifex import Artifex
+
+ner = Artifex().named_entity_recognition
+
+ner.train(
+    domain="medical documents",
+    named_entities={
+        "PERSON": "Individual people, fictional characters",
+        "ORG": "Companies, institutions, agencies",
+        "LOCATION": "Geographical areas",
+        "DATE": "Absolute or relative dates, including years, months and/or days",
+        "TIME": "Specific time of the day",
+        "NUMBER": "Numeric measurements or expressions",
+        "WORK_OF_ART": "Titles of creative works",
+        "LANGUAGE": "Natural or programming languages",
+        "NORP": "National, religious or political groups",
+        "ADDRESS": "full addresses",
+        "PHONE_NUMBER": "telephone numbers",
+    }
+)
+```
+				</TabItem>
+			</Tabs>
+		</div>
+		<div className='tabs-code'>
+			<Tabs groupId="language">
+				<TabItem value="response" label="Response">
+```python
+None
+```
+				</TabItem>
+			</Tabs>		
+		</div>
+	</div>
+</div>

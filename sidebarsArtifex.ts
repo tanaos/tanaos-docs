@@ -128,6 +128,26 @@ const sidebars: SidebarsConfig = {
 			id: 'emotion-detection/load',
 			label: 'Load',
 		},
+		{
+			type: 'html',
+			value: '<div class="section-name">🏷️ Named Entity Recognition</div>',
+			defaultStyle: true,
+		},
+		{
+			type: 'doc',
+			id: 'named-entity-recognition/train',
+			label: 'Train',
+		},
+		{
+			type: 'doc',
+			id: 'named-entity-recognition/inference',
+			label: 'Inference',
+		},
+		{
+			type: 'doc',
+			id: 'named-entity-recognition/load',
+			label: 'Load',
+		},
 	],
 };
 
