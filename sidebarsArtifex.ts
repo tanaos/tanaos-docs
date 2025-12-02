@@ -15,19 +15,14 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'doc',
-			id: 'tutorials',
-			label: 'Tutorials',
+			id: 'base_models',
+			label: 'Base models',
 		},
 		{
 			type: 'html',
 			value: '<div class="section-name">🛡️ Guardrail</div>',
 			defaultStyle: true,
 		},
-		{
-			type: 'doc',
-			id: 'guardrail/intro',
-			label: 'Introduction',
-		},		
 		{
 			type: 'doc',
 			id: 'guardrail/train',
@@ -42,6 +37,11 @@ const sidebars: SidebarsConfig = {
 			type: 'doc',
 			id: 'guardrail/load',
 			label: 'Load',
+		},
+		{
+			type: 'doc',
+			id: 'guardrail/code_examples',
+			label: 'Code Examples',
 		},
 		{
 			type: 'html',
