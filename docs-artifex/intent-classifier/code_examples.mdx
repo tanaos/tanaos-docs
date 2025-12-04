@@ -52,13 +52,13 @@ intent_classifier = Artifex().intent_classifier
 model_output_path = "./output_model/"
 
 intent_classifier.train(
-    domain="e-commerce customer support",
-    intents={
+    domain="e-commerce customer support", # change to your desired domain
+    classes={ # define your custom intents
         "order_status": "Inquiries about the status of an order.",
         "return_item": "Requests to return a purchased item.",
         "product_info": "Questions about product details or specifications.",
         "greeting": "Friendly greetings or salutations.",
-    }
+    },
     output_path=model_output_path
 )
 

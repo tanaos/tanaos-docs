@@ -43,8 +43,8 @@ sentiment_analysis = Artifex().sentiment_analysis
 model_output_path = "./output_model/"
 
 sentiment_analysis.train(
-    domain="e-commerce product reviews",
-    classes={
+    domain="e-commerce product reviews", # change to your desired domain
+    classes={ # define your custom sentiments
         "positive": "Indicates a positive sentiment towards the product.",
         "negative": "Indicates a negative sentiment towards the product.",
         "neutral": "Indicates a neutral sentiment towards the product, or the absence of strong feelings.",

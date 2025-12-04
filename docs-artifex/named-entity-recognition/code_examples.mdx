@@ -53,8 +53,8 @@ ner = Artifex().named_entity_recognition
 model_output_path = "./output_model/"
 
 ner.train(
-    domain="medical documents",
-    named_entities={
+    domain="medical documents", # change to your desired domain
+    named_entities={ # define your custom named entities
         "PERSON": "Individual people, fictional characters",
         "ORG": "Companies, institutions, agencies",
         "LOCATION": "Geographical areas",

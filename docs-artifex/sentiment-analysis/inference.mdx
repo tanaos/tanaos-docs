@@ -46,7 +46,7 @@ from artifex import Artifex
 
 sentiment_analysis = Artifex().sentiment_analysis
 
-label = sentiment_analysis("While the battery life is average, the camera quality is great.")
+label = sentiment_analysis("While the battery life is average, the camera quality is good.")
 print(label)
 ```
 				</TabItem>
@@ -56,7 +56,7 @@ print(label)
 			<Tabs groupId="language">
 				<TabItem value="response" label="Response">
 ```python
-[{'label': 'positive', 'score': 0.9254}]
+[{'label': 'neutral', 'score': 0.9254}]
 ```
 				</TabItem>
 			</Tabs>		

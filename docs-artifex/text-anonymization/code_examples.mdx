@@ -43,8 +43,8 @@ ta = Artifex().text_anonymization
 model_output_path = "./output_model/"
 
 ta.train(
-    domain="medical documents",
-    output_path=model_output_path,
+    domain="medical documents", # change to your desired domain
+    output_path=model_output_path
 )
 
 ta.load(model_output_path)

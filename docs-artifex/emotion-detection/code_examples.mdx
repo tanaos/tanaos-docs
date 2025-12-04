@@ -27,7 +27,7 @@ emotion_detection = Artifex().emotion_detection
 
 print(emotion_detection("I am absolutely thrilled with the results of my project."))
 
-# >>> [{'label': 'joy', 'score': 0.9916}]
+# >>> [{'label': 'excitement', 'score': 0.9916}]
 ```
 
 Learn more about the default Emotion Detection model on our [Emotion Detection HF model page](https://huggingface.co/tanaos/tanaos-emotion-detection-v1).
@@ -46,8 +46,8 @@ emotion_detection = Artifex().emotion_detection
 model_output_path = "./output_model/"
 
 emotion_detection.train(
-    domain="customer support for an e-commerce platform",
-    classes={
+    domain="customer support for an e-commerce platform", # change to your desired domain
+    classes={ # define your custom emotions
         "joy": "text that expresses happiness or positivity",
         "anger": "text that expresses anger or frustration",
         "sadness": "text that expresses sadness or sorrow",
@@ -60,7 +60,7 @@ emotion_detection.train(
 )
 
 emotion_detection.load(model_output_path)
-print(emotion_detection("This is unacceptable, I want a refund!"))
+print(emotion_detection("This is unacceptable, I want a refund."))
 
 # >>> [{'label': 'anger', 'score': 0.9965}]
 ```
