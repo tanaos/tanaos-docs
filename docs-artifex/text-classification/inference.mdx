@@ -1,0 +1,72 @@
+---
+title: artifex.emotion_detection() | Tanaos Artifex
+description: Learn how to use artifex.emotion_detection() to perform inference with an Emotion Detection model, without using a GPU.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no gpu, inference ] 
+hide_table_of_contents: true
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import { APIDescriptionSection } from '../../src/components/APIDescriptionSection';
+import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
+import { InfoBox } from '../../src/components/InfoBox';
+
+
+<div className='responsive-container'>
+	<div className='text-container'>
+        # `text_classification()`
+
+        Perform inference with a trained Emotion Detection model, on a single input string or a list 
+		of input strings. For each input string, this will return the predicted class label, which 
+		is one of the classes that the model was trained on.
+
+		<InfoBox type='warning'>
+			Prior to perform inference with this method, you **must train a model** using the 
+			[`emotion_detection.train()`](/artifex/text-classification/train) method. If you have 
+			not trained a model yet, calling this method will either raise an error or return 
+			unreliable results.
+		</InfoBox>
+
+		<APIDescriptionSection title='Arguments'>
+			- **text** <ParameterTypeBadge>str | list[str]</ParameterTypeBadge>\
+                A string or a list of strings to classify. The model will return a label for each input string.
+		</APIDescriptionSection>
+
+		<APIDescriptionSection title='Response'>
+			A `list[dict]`, each `dict` containing a `"label"` key with the predicted intent 
+			label for the corresponding input string, and a `"score"` key with a float value 
+			representing the model's confidence in its prediction.
+		</APIDescriptionSection>
+
+	</div>
+	<div className='code-container'>
+		<div className='tabs-code'>
+			<Tabs>
+				<TabItem value='python' label='Python'>
+```python
+from artifex import Artifex
+
+# IMPORTANT: Make sure to train your Emotion Detection model first using the
+# emotion_detection.train() method, before performing inference with it. If
+# you have not trained a model yet, calling this method will either raise an
+# error or return unreliable results.
+
+text_classification = Artifex().text_classification
+
+print(text_classification("How are you doing?"))
+```
+				</TabItem>
+			</Tabs>
+		</div>
+		<div className='tabs-code'>
+			<Tabs groupId="language">
+				<TabItem value="response" label="Response">
+```python
+[{'label': '<LABEL_NAME>', 'score': '<CONFIDENCE_SCORE>'}]
+```
+				</TabItem>
+			</Tabs>		
+		</div>
+	</div>
+</div>

@@ -1,0 +1,47 @@
+---
+title: Create Text Classification Models | Tanaos Artifex
+description: Learn how to use the Artifex library to create Text Classification Models without training data or a GPU.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, code examples ] 
+hide_table_of_contents: false
+---
+
+import { InfoBox } from '../../src/components/InfoBox';
+
+# Text Classification model
+
+<InfoBox type='warning'>
+    Unlike most other tasks that can be performed with Artifex, Text Classification **does 
+    not** come with a pre-trained model that can be used out-of-the-box. This is because
+    Text Classification is a general task that can be applied to a wide variety of domains
+    and use-cases, each requiring different classes to be recognized. Therefore, users
+    need to train their own Text Classification models 
+    using [the `train` method](/artifex/text-classification/train).
+</InfoBox>
+
+Train your own Text Classification model, use it locally on CPU and keep it forever:
+
+```python
+from artifex import Artifex
+
+model_output_path = "./output_model/"
+
+text_classification = Artifex().text_classification
+
+text_classification.train(
+    domain="chatbot conversations",
+    classes={
+        "politics": "Messages related to political topics and discussions.",
+        "sports": "Messages related to sports events and activities.",
+        "technology": "Messages about technology, gadgets, and software.",
+        "entertainment": "Messages about movies, music, and other entertainment forms.",
+        "health": "Messages related to health, wellness, and medical topics.",
+    },
+    output_path=model_output_path
+)
+
+text_classification.load(model_output_path)
+
+print(text_classification("What do you think about the latest AI advancements?"))
+
+# >>> [{'label': 'technology', 'score': 0.9913}]
+```

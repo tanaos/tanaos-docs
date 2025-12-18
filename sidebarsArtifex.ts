@@ -20,7 +20,32 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'html',
-			value: '<div class="section-name">🛡️ Guardrail</div>',
+			value: '<div class="section-name">Text Classification</div>',
+			defaultStyle: true,
+		},
+		{
+			type: 'doc',
+			id: 'text-classification/train',
+			label: 'Train',
+		},
+		{
+			type: 'doc',
+			id: 'text-classification/inference',
+			label: 'Inference',
+		},
+		{
+			type: 'doc',
+			id: 'text-classification/load',
+			label: 'Load',
+		},
+		{
+			type: 'doc',
+			id: 'text-classification/code_examples',
+			label: 'Code Examples',
+		},
+		{
+			type: 'html',
+			value: '<div class="section-name">Guardrail</div>',
 			defaultStyle: true,
 		},
 		{
@@ -45,7 +70,7 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'html',
-			value: '<div class="section-name">🗣️ Intent Classification</div>',
+			value: '<div class="section-name">Intent Classification</div>',
 			defaultStyle: true,
 		},
 		{
@@ -70,7 +95,7 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'html',
-			value: '<div class="section-name">🔀 Reranker</div>',
+			value: '<div class="section-name">Reranker</div>',
 			defaultStyle: true,
 		},
 		{
@@ -95,7 +120,7 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'html',
-			value: '<div class="section-name">🙂 Sentiment Analysis</div>',
+			value: '<div class="section-name">Sentiment Analysis</div>',
 			defaultStyle: true,
 		},
 		{
@@ -120,7 +145,7 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'html',
-			value: '<div class="section-name">😡 Emotion Detection</div>',
+			value: '<div class="section-name">Emotion Detection</div>',
 			defaultStyle: true,
 		},
 		{
@@ -145,7 +170,7 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'html',
-			value: '<div class="section-name">🏷️ Named Entity Recognition</div>',
+			value: '<div class="section-name">Named Entity Recognition</div>',
 			defaultStyle: true,
 		},
 		{
@@ -170,7 +195,7 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'html',
-			value: '<div class="section-name">🥸 Text Anonymization</div>',
+			value: '<div class="section-name">Text Anonymization</div>',
 			defaultStyle: true,
 		},
 		{

@@ -1,0 +1,87 @@
+---
+title: artifex.emotion_detection.train() | Tanaos Artifex
+description: Learn how to use the .train() method to train an Emotion Detection model with the Artifex library.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, train ]
+hide_table_of_contents: true
+---
+
+import Link from '@docusaurus/Link';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import { APIDescriptionSection } from '../../src/components/APIDescriptionSection';
+import { SYNTHEX_GENERATE_DATA_URL } from '../../consts';
+import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } from '../../src/components/ParameterBadge';
+import { InfoBox } from '../../src/components/InfoBox';
+
+
+<div className='responsive-container'>
+	<div className='text-container'>
+        # `text_classification.train()`
+
+        Trains a Text Classification model on user-specified classes and domain. 
+		**No training data is needed**, as the model uses 
+		<Link to={SYNTHEX_GENERATE_DATA_URL}>`synthex.jobs.generate_data()`</Link> under the
+		hood to generate a synthetic training dataset based on the provided classes and domain.
+
+		<InfoBox type='info'>
+			Unlike most other tasks that can be performed with Artifex, Text Classification **does 
+			not** come with a pre-trained model that can be used out-of-the-box. This is because
+			Text Classification is a general task that can be applied to a wide variety of domains
+			and use-cases, each requiring different classes to be recognized. Therefore, users
+			need to train their own Text Classification models using this method.
+		</InfoBox>
+
+		<APIDescriptionSection title='Arguments'>
+			- **domain** <ParameterTypeBadge>str</ParameterTypeBadge>\
+				A string which specifies the domain or area that the model will be specialized in.
+			- **classes** <ParameterTypeBadge>dict[str, str]</ParameterTypeBadge>\
+				A dictionary, where each key is the name of a class (must be maximum 20 characters with no
+				spaces), and each value is the description of that class.
+			- **output_path** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge />\
+				A string which specifies the path where the output files will be generated. 
+				The output files consist of:
+				- The training dataset
+				- The output model `safetensor` and configuration files
+			- **num_samples** <ParameterTypeBadge>int</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='500' />\
+				An integer which specifies the number of datapoints that the synthetic training dataset should consist of, and 
+				that the model will be trained on. The maximum number of datapoints you can train your model on depends on 
+				whether you are on a free or paid plan.
+			- **num_epochs** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='3' />\
+				An integer which specifies the number of epochs to train the model for.
+		</APIDescriptionSection>
+	</div>
+	<div className='code-container'>
+		<div className='tabs-code'>
+			<Tabs>
+				<TabItem value='python' label='Python'>
+```python
+from artifex import Artifex
+
+text_classification = Artifex().text_classification
+
+text_classification.train(
+    domain="chatbot conversations",
+    classes={
+        "politics": "Messages related to political topics and discussions.",
+        "sports": "Messages related to sports events and activities.",
+        "technology": "Messages about technology, gadgets, and software.",
+        "entertainment": "Messages about movies, music, and other entertainment forms.",
+        "health": "Messages related to health, wellness, and medical topics.",
+    }
+)
+```
+				</TabItem>
+			</Tabs>
+		</div>
+		<div className='tabs-code'>
+			<Tabs groupId="language">
+				<TabItem value="response" label="Response">
+```python
+None
+```
+				</TabItem>
+			</Tabs>		
+		</div>
+	</div>
+</div>
