@@ -15,7 +15,7 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'doc',
-			id: 'base_models',
+			id: 'base-models',
 			label: 'Base models',
 		},
 		{
@@ -40,7 +40,7 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'doc',
-			id: 'text-classification/code_examples',
+			id: 'text-classification/code-examples',
 			label: 'Code Examples',
 		},
 		{
@@ -65,7 +65,7 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'doc',
-			id: 'guardrail/code_examples',
+			id: 'guardrail/code-examples',
 			label: 'Code Examples',
 		},
 		{
@@ -90,7 +90,7 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'doc',
-			id: 'intent-classifier/code_examples',
+			id: 'intent-classifier/code-examples',
 			label: 'Code Examples',
 		},
 		{
@@ -115,7 +115,7 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'doc',
-			id: 'reranker/code_examples',
+			id: 'reranker/code-examples',
 			label: 'Code Examples',
 		},
 		{
@@ -140,7 +140,7 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'doc',
-			id: 'sentiment-analysis/code_examples',
+			id: 'sentiment-analysis/code-examples',
 			label: 'Code Examples',
 		},
 		{
@@ -165,7 +165,7 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'doc',
-			id: 'emotion-detection/code_examples',
+			id: 'emotion-detection/code-examples',
 			label: 'Code Examples',
 		},
 		{
@@ -190,7 +190,7 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'doc',
-			id: 'named-entity-recognition/code_examples',
+			id: 'named-entity-recognition/code-examples',
 			label: 'Code Examples',
 		},
 		{
@@ -215,7 +215,7 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'doc',
-			id: 'text-anonymization/code_examples',
+			id: 'text-anonymization/code-examples',
 			label: 'Code Examples',
 		},
 	],
