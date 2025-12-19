@@ -34,9 +34,9 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 			```
 
 		<APIDescriptionSection title='Arguments'>
-			- **instructions** <ParameterTypeBadge>list[str]</ParameterTypeBadge>\
-				A list of strings, where each string describes a something that the Guardrail should prevent
-				the chatbot from doing, or allow it to do.
+			- **unsafe_content** <ParameterTypeBadge>list[str]</ParameterTypeBadge>\
+				A list of strings, where each string describes a type of content that should be 
+				classified as `"unsafe"` by the guardrail.
 			- **output_path** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge />\
 				A string which specifies the path where the output files will be generated. The output files consist of:
 				- The training dataset
@@ -59,11 +59,10 @@ from artifex import Artifex
 guardrail = Artifex().guardrail
 
 guardrail.train(
-    instructions=[
-        "Discussing a competitor's products or services is not allowed.",
-        "Sharing our employees' personal information is prohibited.",
-        "Providing instructions for illegal activities is forbidden.",
-        "Everything else is allowed.",
+    unsafe_content=[
+        "Discussing a competitor's products or services.",
+        "Sharing our employees' personal information.",
+        "Providing instructions for illegal activities.",
     ]
 )
 ```
