@@ -1,0 +1,86 @@
+---
+title: artifex.spam_detection.train() | Tanaos Artifex
+description: Learn how to use the .train() method to train a Spam Detection model with the Artifex library.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, spam detection, train ] 
+hide_table_of_contents: true
+---
+
+import Link from '@docusaurus/Link';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import { APIDescriptionSection } from '../../src/components/APIDescriptionSection';
+import { SYNTHEX_GENERATE_DATA_URL } from '../../consts';
+import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } from '../../src/components/ParameterBadge';
+
+
+<div className='responsive-container'>
+	<div className='text-container'>
+        # `spam_detection.train()`
+
+        Fine-tunes a pre-trained Spam Detection model on user-specified instructions. **No training data 
+		is needed**, as the model uses <Link to={SYNTHEX_GENERATE_DATA_URL}>`synthex.jobs.generate_data()`</Link> under the
+		hood to generate a synthetic training dataset based on the provided instructions.
+
+		Both the base Spam Detection model [tanaos/tanaos-spam-detection-v1](https://huggingface.co/tanaos/tanaos-spam-detection-v1) 
+		and previously trained models can be further trained using this method:
+		- Fine-tune the base Spam Detection model:
+			```python
+			Artifex().spam_detection.train()
+			```
+		- Fine-tune a model that was previously trained with Artifex, in order to train it further: 
+			```python
+			Artifex().spam_detection.load("trained/model/path").train()
+			```
+
+		<APIDescriptionSection title='Arguments'>
+			- **spam_content** <ParameterTypeBadge>list[str]</ParameterTypeBadge>\
+				A list of strings, where each string describes a type of content that should be 
+				classified as `"spam"` by the spam detection model.
+			- **output_path** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge />\
+				A string which specifies the path where the output files will be generated. The output files consist of:
+				- The training dataset
+				- The output model `safetensor` and configuration files
+			- **num_samples** <ParameterTypeBadge>int</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='500' />\
+				An integer which specifies the number of datapoints that the synthetic training dataset should consist of, and 
+				that the model will be trained on. The maximum number of datapoints you can train your model on depends on 
+				whether you are on a free or paid plan.
+			- **num_epochs** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='3' />\
+				An integer which specifies the number of epochs to train the model for.
+		</APIDescriptionSection>
+	</div>
+	<div className='code-container'>
+		<div className='tabs-code'>
+			<Tabs>
+				<TabItem value='python' label='Python'>
+```python
+from artifex import Artifex
+
+spam_detection = Artifex().spam_detection
+
+spam_detection.train(
+    spam_content=[
+        "Unsolicited commercial advertisement or non-commercial proselytizing",
+        "Fraudulent schemes, including get-rich-quick and pyramid schemes",
+        "Phishing attempts, unrealistic offers or announcements",
+        "Content with deceptive or misleading information",
+        "Malware or harmful links",
+        "Adult content or explicit material",
+        "Excessive use of capitalization or punctuation to grab attention",
+    ]
+)
+```
+				</TabItem>
+			</Tabs>
+		</div>
+		<div className='tabs-code'>
+			<Tabs groupId="language">
+				<TabItem value="response" label="Response">
+```python
+None
+```
+				</TabItem>
+			</Tabs>		
+		</div>
+	</div>
+</div>

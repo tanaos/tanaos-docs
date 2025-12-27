@@ -1,0 +1,54 @@
+---
+title: Create a Spam Detection Model | Tanaos Artifex
+description: Learn how to use the Artifex library to create Spam Detection Models without training data or a GPU.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, spam detection models, code examples ] 
+hide_table_of_contents: false
+---
+
+# Spam Detection Model
+
+### Use the default Spam Detection model
+
+Need a general-purpose Spam Detection model? You can use Artifex's default Spam Detection model, which is 
+trained to flag spam messages out-of-the-box:
+
+```python
+from artifex import Artifex
+
+spam_detection = Artifex().spam_detection
+
+print(spam_detection("You won an IPhone 16! Click here to claim your prize."))
+
+# >>> [{'label': 'spam', 'score': 0.9999}]
+```
+
+Learn more about the default Spam Detection model and what it considers spam vs non-spam on 
+our [Spam Detection HF model page](https://huggingface.co/tanaos/tanaos-spam-detection-v1).
+
+### Create & use a custom Spam Detection model
+
+Need more control over what is considered spam vs non-spam? Fine-tune your own Spam Detection model, use 
+it locally on CPU and keep it forever:
+
+```python
+from artifex import Artifex
+
+spam_detection = Artifex().spam_detection
+
+model_output_path = "./output_model/"
+
+spam_detection.train(
+    spam_content=[ # define your own spam content
+        "All-caps text.",
+        "Limited-time, suspicious offers.",
+        "Links to unknown websites.",
+        "Requests for personal information.",
+    ],
+    output_path=model_output_path
+)
+
+spam_detection.load(model_output_path)
+print(spam_detection("Congratulations! You've won a free vacation to the Bahamas. Click here to claim your prize."))
+
+# >>> [{'label': 'spam', 'score': 0.9970}]
+```

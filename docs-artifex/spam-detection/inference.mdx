@@ -1,0 +1,62 @@
+---
+title: artifex.spam_detection() | Tanaos Artifex
+description: Learn how to use artifex.spam_detection() to perform inference with a Spam Detection model, without using a GPU.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no gpu, spam detection, inference ] 
+hide_table_of_contents: true
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import { APIDescriptionSection } from '../../src/components/APIDescriptionSection';
+import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
+
+
+<div className='responsive-container'>
+	<div className='text-container'>
+        # `guardrail()`
+
+        Perform inference with a Spam Detection model, on a single input string or a list of input 
+		strings. For each input string, this will return one of two predicted labels: `spam` 
+		or `not_spam`.
+
+		If no model is loaded, the base Spam Detection model [tanaos/tanaos-spam-detection-v1](https://huggingface.co/tanaos/tanaos-spam-detection-v1) 
+		will be used by default. For more information on what the base Spam Detection model is trained
+		to classify as `spam` or `not_spam`, see the [model's Hugging Face page](https://huggingface.co/tanaos/tanaos-spam-detection-v1).
+
+		<APIDescriptionSection title='Arguments'>
+			- **text** <ParameterTypeBadge>str | list[str]</ParameterTypeBadge>\
+                A string or a list of strings to classify. The model will return a label for each input string.
+		</APIDescriptionSection>
+
+		<APIDescriptionSection title='Response'>
+			A `list[dict]`, each `dict` containing a `"label"` key with a value of either `spam` or `not_spam`,
+			and a `"score"` key with a float value representing the model's confidence in its prediction
+		</APIDescriptionSection>
+
+	</div>
+	<div className='code-container'>
+		<div className='tabs-code'>
+			<Tabs>
+				<TabItem value='python' label='Python'>
+```python
+from artifex import Artifex
+
+spam_detection = Artifex().spam_detection
+
+print(spam_detection("You won an IPhone 16! Click here to claim your prize."))
+```
+				</TabItem>
+			</Tabs>
+		</div>
+		<div className='tabs-code'>
+			<Tabs groupId="language">
+				<TabItem value="response" label="Response">
+```python
+[{'label': 'spam', 'score': 0.9989}]
+```
+				</TabItem>
+			</Tabs>		
+		</div>
+	</div>
+</div>

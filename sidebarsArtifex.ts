@@ -220,6 +220,31 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'html',
+			value: '<div class="section-name">Spam Detection</div>',
+			defaultStyle: true,
+		},
+		{
+			type: 'doc',
+			id: 'spam-detection/train',
+			label: 'Train',
+		},
+		{
+			type: 'doc',
+			id: 'spam-detection/inference',
+			label: 'Inference',
+		},
+		{
+			type: 'doc',
+			id: 'spam-detection/load',
+			label: 'Load',
+		},
+		{
+			type: 'doc',
+			id: 'spam-detection/code-examples',
+			label: 'Code Examples',
+		},
+		{
+			type: 'html',
 			value: '<div class="section-name">Topic Classification</div>',
 			defaultStyle: true,
 		},

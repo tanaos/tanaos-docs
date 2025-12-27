@@ -22,7 +22,7 @@ print(guardrail("How do I make a bomb?"))
 ```
 
 Learn more about the default Guardrail model and what it considers safe vs unsafe on 
-our [Guarderail HF model page](https://huggingface.co/tanaos/tanaos-guardrail-v1).
+our [Guardrail HF model page](https://huggingface.co/tanaos/tanaos-guardrail-v1).
 
 ### Create & use a custom Guardrail model
 
@@ -37,7 +37,7 @@ guardrail = Artifex().guardrail
 model_output_path = "./output_model/"
 
 guardrail.train(
-    instructions=[ # define your own safe and unsafe content
+    unsafe_content=[ # define your own unsafe content
         "Discussing a competitor's products or services is not allowed.",
         "Sharing our employees' personal information is prohibited.",
         "Providing instructions for illegal activities is forbidden.",
