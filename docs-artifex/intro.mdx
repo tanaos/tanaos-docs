@@ -33,7 +33,7 @@ LLMs available on the market can be broadly classified into two categories:
 ## Artifex's solution
 
 Artifex overcomes these limitations by enabling you to: 
-- Use small (capped at 500 Mb in size), pre-trained task-specific LLMs **locally on CPU**, thereby eliminating costs and data privacy concerns.
+- Use small (capped at 500 MB in size), pre-trained task-specific LLMs **locally on CPU**, thereby eliminating costs and data privacy concerns.
 - Fine-tune these models based on your requirements, **without any training data** — just based on your instructions for the task at hand — thereby obtaining higher accuracy on your specific use case.
 
   <details>
@@ -51,7 +51,7 @@ pip install artifex
 
 ## Available Tasks
 
-At this time, we support 7 main tasks:
+We currently support the following tasks:
 - **Text Classification**: Performs general-purpose text classification based on the user requirements.
 - **Guardrail**: Flags unsafe, harmful, or off-topic messages.
 - **Intent Classification**: Classifies user messages into predefined intent categories.
@@ -59,7 +59,9 @@ At this time, we support 7 main tasks:
 - **Sentiment Analysis**: Determines the sentiment (positive, negative, neutral) of a given text.
 - **Emotion Detection**: Identifies the emotion expressed in a given text.
 - **Named Entity Recognition (NER)**: Detects and classifies named entities in text (e.g., persons, organizations, locations).
-- **Text Anonymization**: Removes personally identifiable information (PII) from text.   
+- **Text Anonymization**: Removes personally identifiable information (PII) from text.
+- **Spam Detection**: Identifies whether a message is spam or not.
+- **Topic Classification**: Classifies text into predefined topics.
 
 We will be adding more tasks soon, based on user feedback. Want Artifex to perform a specific task? [Suggest one](https://github.com/tanaos/artifex/discussions/new?category=task-suggestions) or [vote one up](https://github.com/tanaos/artifex/discussions/categories/task-suggestions).
 

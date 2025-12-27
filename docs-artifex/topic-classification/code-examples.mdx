@@ -1,0 +1,71 @@
+---
+title: Create Topic Classification Models | Tanaos Artifex
+description: Learn how to use the Artifex library to create Topic Classification Models without training data or a GPU.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, topic classification, topic classification, code examples ] 
+hide_table_of_contents: false
+---
+
+# Topic Classification model
+
+### Use the default Topic Classification model
+
+Need a general-purpose Topic Classification model? You can use Artifex's default Topic Classification 
+model, which is trained to recognize the following topics out-of-the-box:
+- `politics`
+- `health`
+- `technology`
+- `entertainment`
+- `money_finance`
+- `relationships_dating`
+- `education_learning`
+- `work_careers`
+- `science`
+- `society_culture`
+- `gaming`
+- `lifestyle_hobbies`
+- `sports`
+- `automotive`
+- `other`
+
+```python
+from artifex import Artifex
+
+topic_classification = Artifex().topic_classification
+
+print(topic_classification("What do you think about the latest AI advancements?"))
+
+# >>> [{'label': 'technology', 'score': 0.9910}]
+```
+
+Learn more about the default Topic Classification model on our [Topic Classification HF model page](https://huggingface.co/tanaos/tanaos-topic-classification-v1).
+
+### Create & use a custom Topic Classification model
+
+Need more control over the topics recognized, or do you want to tailor the model to your specific 
+domain for better results? Fine-tune your own Topic Classification model, use it locally on CPU 
+and keep it forever:
+
+```python
+from artifex import Artifex
+
+topic_classification = Artifex().topic_classification
+
+model_output_path = "./output_model/"
+
+topic_classification.train(
+    domain="messages posted on social media platforms", # change to your desired domain
+    classes={ # define your custom topics
+        "politics": "elections, policies, scandals, ideology",
+        "sports": "games, teams, players, scores, championships",
+        "personal_finance": "budgeting, saving, investing, debt management",
+        "entertainment": "movies, music, celebrities, TV shows",
+        "other": "miscellaneous topics not covered by the other categories."
+    },
+    output_path=model_output_path
+)
+
+topic_classification.load(model_output_path)
+print(topic_classification("Who do you think will win the championship this year?"))
+
+# >>> [{'label': 'sports', 'score': 0.9965}]
+```

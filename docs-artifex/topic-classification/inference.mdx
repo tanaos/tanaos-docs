@@ -1,7 +1,7 @@
 ---
-title: artifex.emotion_detection() | Tanaos Artifex
-description: Learn how to use artifex.emotion_detection() to perform inference with an Emotion Detection model, without using a GPU.
-keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no gpu, emotion detection models, emotion classification, inference ] 
+title: artifex.topic_classification() | Tanaos Artifex
+description: Learn how to use artifex.topic_classification() to perform inference with a Topic Classification model, without using a GPU.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no gpu, topic classification models, topic classification, inference ] 
 hide_table_of_contents: true
 ---
 
@@ -14,22 +14,22 @@ import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
 
 <div className='responsive-container'>
 	<div className='text-container'>
-        # `emotion_detection()`
+        # `topic_classification()`
 
-        Perform inference with an Emotion Detection model, on a single input string or a list of 
-		input strings. For each input string, this will return the predicted emotion label, which 
+        Perform inference with a Topic Classification model, on a single input string or a list of 
+		input strings. For each input string, this will return the predicted topic label, which 
 		is one of the classes that the model was trained on.
 
-		If no model is loaded, the base Emotion Detection model [tanaos/tanaos-emotion-detection-v1](https://huggingface.co/tanaos/tanaos-emotion-detection-v1) 
-		will be used by default. For more information on what emotions the base Emotion Detection model 
-		is trained to recognize, see the [model's Hugging Face page](https://huggingface.co/tanaos/tanaos-emotion-detection-v1).
+		If no model is loaded, the base Topic Classification model [tanaos/tanaos-topic-classification-v1](https://huggingface.co/tanaos/tanaos-topic-classification-v1) 
+		will be used by default. For more information on what topics the base Topic Classification model 
+		is trained to recognize, see the [model's Hugging Face page](https://huggingface.co/tanaos/tanaos-topic-classification-v1).
 		<APIDescriptionSection title='Arguments'>
 			- **text** <ParameterTypeBadge>str | list[str]</ParameterTypeBadge>\
                 A string or a list of strings to classify. The model will return a label for each input string.
 		</APIDescriptionSection>
 
 		<APIDescriptionSection title='Response'>
-			A `list[dict]`, each `dict` containing a `"label"` key with the predicted emotion 
+			A `list[dict]`, each `dict` containing a `"label"` key with the predicted topic 
 			label for the corresponding input string, and a `"score"` key with a float value 
 			representing the model's confidence in its prediction.
 		</APIDescriptionSection>
@@ -42,9 +42,10 @@ import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
 ```python
 from artifex import Artifex
 
-emotion_detection = Artifex().emotion_detection
+topic_classification = Artifex().topic_classification
 
-print(emotion_detection("I can't wait for the concert tonight!"))
+topic = topic_classification("What do you think about the latest AI advancements?")
+print(topic)
 ```
 				</TabItem>
 			</Tabs>
@@ -53,7 +54,7 @@ print(emotion_detection("I can't wait for the concert tonight!"))
 			<Tabs groupId="language">
 				<TabItem value="response" label="Response">
 ```python
-[{'label': 'excitement', 'score': 0.9941}]
+[{'label': 'technology', 'score': 0.9910}]
 ```
 				</TabItem>
 			</Tabs>		

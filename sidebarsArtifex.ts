@@ -218,6 +218,31 @@ const sidebars: SidebarsConfig = {
 			id: 'text-anonymization/code-examples',
 			label: 'Code Examples',
 		},
+		{
+			type: 'html',
+			value: '<div class="section-name">Topic Classification</div>',
+			defaultStyle: true,
+		},
+		{
+			type: 'doc',
+			id: 'topic-classification/train',
+			label: 'Train',
+		},
+		{
+			type: 'doc',
+			id: 'topic-classification/inference',
+			label: 'Inference',
+		},
+		{
+			type: 'doc',
+			id: 'topic-classification/load',
+			label: 'Load',
+		},
+		{
+			type: 'doc',
+			id: 'topic-classification/code-examples',
+			label: 'Code Examples',
+		},
 	],
 };
 
