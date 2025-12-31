@@ -37,6 +37,8 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 			- **spam_content** <ParameterTypeBadge>list[str]</ParameterTypeBadge>\
 				A list of strings, where each string describes a type of content that should be 
 				classified as `"spam"` by the spam detection model.
+			- **language** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='english' />\
+				A string which specifies the language that the model will be trained to understand and perform inference in.
 			- **output_path** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge />\
 				A string which specifies the path where the output files will be generated. The output files consist of:
 				- The training dataset
@@ -47,6 +49,15 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 				whether you are on a free or paid plan.
 			- **num_epochs** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='3' />\
 				An integer which specifies the number of epochs to train the model for.
+			- **device** <ParameterTypeBadge>int</ParameterTypeBadge> <OptionalParameterBadge />\
+				A string which specifies the device to use. It can be one of the following:
+				- `0` - Use the first GPU available
+				- `1` - Use the second GPU available
+				- ...
+				- `-1` - Use the CPU
+				
+				If not specified, the method will automatically select the GPU if available, otherwise it will use 
+				the CPU.
 		</APIDescriptionSection>
 	</div>
 	<div className='code-container'>
@@ -67,7 +78,8 @@ spam_detection.train(
         "Malware or harmful links",
         "Adult content or explicit material",
         "Excessive use of capitalization or punctuation to grab attention",
-    ]
+    ],
+    language="english"
 )
 ```
 				</TabItem>

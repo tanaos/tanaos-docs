@@ -9,7 +9,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 import { APIDescriptionSection } from '../../src/components/APIDescriptionSection';
-import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
+import { ParameterTypeBadge, OptionalParameterBadge } from '../../src/components/ParameterBadge';
 
 
 <div className='responsive-container'>
@@ -27,6 +27,15 @@ import { ParameterTypeBadge } from '../../src/components/ParameterBadge';
 		<APIDescriptionSection title='Arguments'>
 			- **text** <ParameterTypeBadge>str | list[str]</ParameterTypeBadge>\
                 A string or a list of strings to classify. The model will return a label for each input string.
+			- **device** <ParameterTypeBadge>int</ParameterTypeBadge> <OptionalParameterBadge />\
+				A string which specifies the device to use. It can be one of the following:
+				- `0` - Use the first GPU available
+				- `1` - Use the second GPU available
+				- ...
+				- `-1` - Use the CPU
+				
+				If not specified, the method will automatically select the GPU if available, otherwise it will use 
+				the CPU.
 		</APIDescriptionSection>
 
 		<APIDescriptionSection title='Response'>

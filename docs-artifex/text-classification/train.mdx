@@ -38,6 +38,8 @@ import { InfoBox } from '../../src/components/InfoBox';
 			- **classes** <ParameterTypeBadge>dict[str, str]</ParameterTypeBadge>\
 				A dictionary, where each key is the name of a class (must be maximum 20 characters with no
 				spaces), and each value is the description of that class.
+			- **language** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='english' />\
+				A string which specifies the language that the model will be trained to understand and perform inference in.
 			- **output_path** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge />\
 				A string which specifies the path where the output files will be generated. 
 				The output files consist of:
@@ -49,6 +51,15 @@ import { InfoBox } from '../../src/components/InfoBox';
 				whether you are on a free or paid plan.
 			- **num_epochs** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='3' />\
 				An integer which specifies the number of epochs to train the model for.
+			- **device** <ParameterTypeBadge>int</ParameterTypeBadge> <OptionalParameterBadge />\
+				A string which specifies the device to use. It can be one of the following:
+				- `0` - Use the first GPU available
+				- `1` - Use the second GPU available
+				- ...
+				- `-1` - Use the CPU
+				
+				If not specified, the method will automatically select the GPU if available, otherwise it will use 
+				the CPU.
 		</APIDescriptionSection>
 	</div>
 	<div className='code-container'>
@@ -62,6 +73,7 @@ text_classification = Artifex().text_classification
 
 text_classification.train(
     domain="chatbot conversations",
+    language="english",
     classes={
         "politics": "Messages related to political topics and discussions.",
         "sports": "Messages related to sports events and activities.",

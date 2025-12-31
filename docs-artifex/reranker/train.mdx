@@ -36,6 +36,8 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 		<APIDescriptionSection title='Arguments'>
 			- **domain** <ParameterTypeBadge>str</ParameterTypeBadge>\
 				A string which specifies the domain or area that the model will be specialized in.
+			- **language** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='english' />\
+				A string which specifies the language that the model will be trained to understand and perform inference in.
 			- **output_path** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge />\
 				A string which specifies the path where the output files will be generated. 
 				The output files consist of:
@@ -60,6 +62,7 @@ reranker = Artifex().reranker
 
 reranker.train(
     domain="e-commerce product search",
+    language="english"
 )
 ```
 				</TabItem>

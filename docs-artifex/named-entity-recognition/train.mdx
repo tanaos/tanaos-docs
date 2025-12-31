@@ -41,6 +41,8 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 			- **named_entities** <ParameterTypeBadge>dict[str, str]</ParameterTypeBadge>\
 				A dictionary, where each key is the name of a named entity (must be maximum 20 characters with no
 				spaces) to recognize, and each value is the description of that named entity.
+			- **language** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='english' />\
+				A string which specifies the language that the model will be trained to understand and perform inference in.
 			- **output_path** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge />\
 				A string which specifies the path where the output files will be generated. 
 				The output files consist of:
@@ -52,6 +54,15 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 				whether you are on a free or paid plan.
 			- **num_epochs** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='3' />\
 				An integer which specifies the number of epochs to train the model for.
+			- **device** <ParameterTypeBadge>int</ParameterTypeBadge> <OptionalParameterBadge />\
+				A string which specifies the device to use. It can be one of the following:
+				- `0` - Use the first GPU available
+				- `1` - Use the second GPU available
+				- ...
+				- `-1` - Use the CPU
+				
+				If not specified, the method will automatically select the GPU if available, otherwise it will use 
+				the CPU.
 		</APIDescriptionSection>
 	</div>
 	<div className='code-container'>
@@ -77,7 +88,8 @@ ner.train(
         "NORP": "National, religious or political groups",
         "ADDRESS": "full addresses",
         "PHONE_NUMBER": "telephone numbers",
-    }
+    },
+    language="english"
 )
 ```
 				</TabItem>
