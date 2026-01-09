@@ -49,6 +49,15 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 				whether you are on a free or paid plan.
 			- **num_epochs** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='3' />\
 				An integer which specifies the number of epochs to train the model for.
+			- **device** <ParameterTypeBadge>int</ParameterTypeBadge> <OptionalParameterBadge />\
+				A string which specifies the device to use. It can be one of the following:
+				- `0` - Use the first GPU available
+				- `1` - Use the second GPU available
+				- ...
+				- `-1` - Use the CPU
+				
+				If not specified, the method will automatically select the GPU if available, otherwise it will use 
+				the CPU.
 		</APIDescriptionSection>
 	</div>
 	<div className='code-container'>

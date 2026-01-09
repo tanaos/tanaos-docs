@@ -46,6 +46,18 @@ import {
 				
 				If not specified, the method will automatically select the GPU if available, otherwise it will use 
 				the CPU.
+			- **include_mask_type** <ParameterTypeBadge>bool</ParameterTypeBadge> <DefaultParameterBadge value='false'/>\
+				If `true`, the type of the masked entity will be included in the mask token. 
+				For example, if the mask token is `"[MASKED]"` and a person's name is masked, 
+				it will be replaced with `"[MASKED_PERSON]"`. Default is `false`.
+			- **include_mask_counter** <ParameterTypeBadge>bool</ParameterTypeBadge> <DefaultParameterBadge value='false'/>\
+				If `true`, a unique identifier will be added to each entity's mask token, 
+				singling out that particular entity in the anonymized text. <ins>In order for this 
+				parameter to have an effect, `include_mask_type` must also be set to `true`</ins>.
+				For example, if the mask token is `"[MASKED]"` and two different people are masked, they 
+				will be replaced with `"[MASKED_PERSON_0]"` and `"[MASKED_PERSON_1]"` respectively. This 
+				is useful to preserve relationships between multiple occurrences of the same entity in the 
+				anonymized text, which would otherwise be lost. Default is `false`.
 		</APIDescriptionSection>
 
 		<APIDescriptionSection title='Response'>
