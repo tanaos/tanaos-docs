@@ -1,6 +1,6 @@
 ---
-title: artifex.emotion_detection() | Tanaos Artifex
-description: Learn how to use artifex.emotion_detection() to perform inference with an Emotion Detection model, without using a GPU.
+title: artifex.text_classification() | Tanaos Artifex
+description: Learn how to use artifex.text_classification() to perform inference with a Text Classification model, without using a GPU.
 keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no gpu, inference ] 
 hide_table_of_contents: true
 ---
@@ -22,7 +22,7 @@ import { InfoBox } from '../../src/components/InfoBox';
 		is one of the classes that the model was trained on.
 
 		<InfoBox type='warning'>
-			Prior to perform inference with this method, you **must train a model** using the 
+			Before performing inference with this method, you **must train a model** using the 
 			[`emotion_detection.train()`](/artifex/text-classification/train) method. If you have 
 			not trained a model yet, calling this method will either raise an error or return 
 			unreliable results.
@@ -40,6 +40,8 @@ import { InfoBox } from '../../src/components/InfoBox';
 				
 				If not specified, the method will automatically select the GPU if available, otherwise it will use 
 				the CPU.
+			- **disable_logging** <ParameterTypeBadge>bool</ParameterTypeBadge> <OptionalParameterBadge />\
+				If set to `True`, disables inference metric logging for this call. By default, logging is enabled.
 		</APIDescriptionSection>
 
 		<APIDescriptionSection title='Response'>
