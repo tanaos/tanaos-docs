@@ -268,6 +268,16 @@ const sidebars: SidebarsConfig = {
 			id: 'topic-classification/code-examples',
 			label: 'Code Examples',
 		},
+		{
+			type: 'html',
+			value: '<div class="section-name">Monitoring, Evaluation & Observability</div>',
+			defaultStyle: true,
+		},
+		{
+			type: 'doc',
+			id: 'monitoring-evaluation-observability/intro',
+			label: 'Introduction',
+		},
 	],
 };
 
