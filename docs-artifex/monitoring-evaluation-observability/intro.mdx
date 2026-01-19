@@ -6,6 +6,11 @@ id: intro
 hide_table_of_contents: false
 ---
 
+import Link from '@docusaurus/Link';
+
+import { PLATFORM_BASE_URL, PLATFORM_API_KEY_URL, PLATFORM_TRACES_PAGE } from '../../consts';
+
+
 # Monitoring, Evaluation & Observability
 
 Artifex includes built-in tools to **automatically monitor and evaluate** the inference and 
@@ -61,6 +66,26 @@ Below is a list of all the metrics and warnings logged by Artifex:
 - Warning for high training loss (> 1.0)
 - Warning for slow training (> 5 minutes)
 - Warning for low training throughput (< 1 sample/second)
+
+## Centralized logging, monitoring and alerting
+
+Want to view, search, and correlate logs from all your models in one place, to easily debug production issues and understand system behavior over time, without digging through individual log files? Simply do the following:
+1. Create a free account <Link to={PLATFORM_BASE_URL}>on the Tanaos platform</Link>
+2. Create an API key from <Link to={PLATFORM_API_KEY_URL}>your profile page</Link>
+3. Instantiate Artifex with your API key:
+
+    ```python
+    from artifex import Artifex
+
+    guardrail = Artifex(
+        api_key="<YOUR_API_KEY_HERE>"
+    ).guardrail
+    ```
+4. Use Artifex as usual. All logs will be sent to your account on our platform. You can view them 
+on <Link to={PLATFORM_TRACES_PAGE}>your traces page</Link>.
+
+<img src="https://raw.githubusercontent.com/tanaos/artifex/master/assets/platform-inference-logs.png" width="600px" alt="Artifex – Centralized logging, monitoring and alerting for Small Language Models" />
+
 
 ## Opting out of logging
 

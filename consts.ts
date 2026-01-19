@@ -1,6 +1,8 @@
 // General
 export const WEBSITE_BASE_URL: string = 'https://tanaos.com/';
 export const PLATFORM_BASE_URL: string = 'https://platform.tanaos.com';
+export const PLATFORM_API_KEY_URL: string = `${PLATFORM_BASE_URL}/profile/api-keys`;
+export const PLATFORM_TRACES_PAGE: string = `${PLATFORM_BASE_URL}/profile/traces`;
 export const DOCS_BASE_URL: string = 'https://docs.tanaos.com/';
 export const ARTIFEX_GITHUB_URL: string = 'https://github.com/tanaos/artifex';
 export const SYNTHEX_GITHUB_URL: string = 'https://github.com/tanaos/synthex';
