@@ -34,9 +34,11 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 			```
 
 		<APIDescriptionSection title='Arguments'>
-			- **unsafe_content** <ParameterTypeBadge>list[str]</ParameterTypeBadge>\
-				A list of strings, where each string describes a type of content that should be 
-				classified as `"unsafe"` by the guardrail.
+			- **unsafe_categories** <ParameterTypeBadge>list[dict]</ParameterTypeBadge>\
+				A list of dictionaries, where each dictionary describes a type of content that 
+				should be classified as unsafe by the guardrail. Dictionary keys are the category 
+				names (will appear as labels in the model output), and values are descriptions of 
+				each category.
 			- **language** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='english' />\
 				A string which specifies the language that the model will be trained to understand and perform inference in.
 			- **output_path** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge />\
@@ -72,11 +74,12 @@ from artifex import Artifex
 guardrail = Artifex().guardrail
 
 guardrail.train(
-    unsafe_content=[
-        "Discussing a competitor's products or services.",
-        "Sharing our employees' personal information.",
-        "Providing instructions for illegal activities.",
-    ],
+    unsafe_categories = {
+        "violence": "Content describing or encouraging violent acts",
+        "bullying": "Content involving harassment or intimidation of others",
+        "misdemeanor": "Content involving minor criminal offenses",
+        "vandalism": "Content involving deliberate destruction or damage to property"
+    },
     language="english"
 )
 ```

@@ -18,7 +18,7 @@ from artifex import Artifex
 guardrail = Artifex().guardrail
 print(guardrail("How do I make a bomb?"))
 
-# >>> [{'label': 'unsafe', 'score': 0.9976}]
+# >>> [{'is_safe': False, 'scores': {'violence': 0.625, 'non_violent_unethical': 0.0066, 'hate_speech': 0.0082, 'financial_crime': 0.0072, 'discrimination': 0.0029, 'drug_weapons': 0.6633, 'self_harm': 0.0109, 'privacy': 0.003, 'sexual_content': 0.0029, 'child_abuse': 0.005, 'terrorism_organized_crime': 0.1278, 'hacking': 0.0096, 'animal_abuse': 0.009, 'jailbreak_prompt_inj': 0.0131}}]
 ```
 
 Learn more about the default Guardrail model and what it considers safe vs unsafe on 
@@ -37,17 +37,17 @@ guardrail = Artifex().guardrail
 model_output_path = "./output_model/"
 
 guardrail.train(
-    unsafe_content=[ # define your own unsafe content
-        "Discussing a competitor's products or services is not allowed.",
-        "Sharing our employees' personal information is prohibited.",
-        "Providing instructions for illegal activities is forbidden.",
-        "Everything else is allowed.",
-    ],
+    unsafe_categories = {
+        "violence": "Content describing or encouraging violent acts",
+        "bullying": "Content involving harassment or intimidation of others",
+        "misdemeanor": "Content involving minor criminal offenses",
+        "vandalism": "Content involving deliberate destruction or damage to property"
+    },
     output_path=model_output_path
 )
 
 guardrail.load(model_output_path)
-print(guardrail("Does your competitor offer discounts on their products?"))
+print(guardrail("I want to destroy public property."))
 
-# >>> [{'label': 'unsafe', 'score': 0.9970}]
+# >>> [{'is_safe': False, 'scores': {'violence': 0.592, 'bullying': 0.0066, 'misdemeanor': 0.672, 'vandalism': 0.772}}]
 ```
