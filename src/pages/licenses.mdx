@@ -1,0 +1,82 @@
+import { Link } from 'react-router-dom';
+
+import { InfoBox } from '../components/InfoBox';
+import { FAIR_CODE_LICENSE_URL, CONTACT_EMAIL } from '../../consts';
+
+# Tanaos Licenses
+
+<InfoBox type='info'>
+    Proprietary licenses are available for enterprise customers. Get in touch with us at
+    <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> for more information.
+</InfoBox>
+
+All of the publicly available software developed by Tanaos is distributed under the 
+[Sustainable Use License](/sustainable-use-license) and 
+[Tanaos Enterprise License](/tanaos-enterprise-license), which are based on the 
+<a href={FAIR_CODE_LICENSE_URL} target='_blank' rel='noopener noreferrer'>Fair Code License</a>.
+
+Our licensing model, as well as this very documentation page, is heavily inspired by the one used 
+by [n8n](https://n8n.io), which we believe strikes a good balance between making our software 
+widely and freely available, and ensuring we can build a sustainable, viable business.
+
+We thank n8n for open-sourcing their license, which has been a great resource for us in creating 
+our own.
+
+## What is the Sustainable Use License?
+
+The Sustainable Use License is a fair-code software license created by [n8n](https://n8n.io) in 
+2022. The license allows you the free right to use, modify, create derivative works, and 
+redistribute, with three limitations:
+
+1. You may use or modify the software only for your own internal business purposes or for 
+non-commercial or personal use.
+2. You may distribute the software or provide it to others only if you do so free of charge for 
+non-commercial purposes.
+3. You may not alter, remove, or obscure any licensing, copyright, or other notices of the licensor 
+in the software. Any use of the licensor's trademarks is subject to applicable law.
+
+If any of these limitations are not met, the [Tanaos Enterprise License](/tanaos-enterprise-license) 
+applies and you must sign a separate commercial agreement with us to use the software. You may
+do so by contacting us at <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+
+## What is and isn't allowed under the Sustainable Use License?
+
+Our license restricts use to "internal business purposes". In practice this means all use is 
+allowed unless you are selling a product, service, or module in which the value derives entirely 
+or substantially from functionalities contained in the Tanaos public software. Here are some 
+examples that wouldn't be allowed:
+
+- Selling a Small Language Model that is built using Artifex.
+- Hosting Artifex and charging users for access to it.
+- Hosting Artifex to create an inference API and charging users for access to it.
+
+All of the following examples are allowed under our license:
+
+- Using Artifex to build a Small Language Model for internal use within your company.
+- Using Artifex to build a Small Language Model for a personal project.
+- Building a Small Language Model with Artifex and sharing it for free on GitHub.
+- Building a Small Language Model with Artifex and sharing it for free on Hugging Face.
+- Building a Small Language Model with Artifex and sharing it for free on your personal website.
+
+## What if I want to use Tanaos software for something that's not permitted by the license?
+
+You must sign a separate commercial agreement with us. We actively encourage software creators to 
+embed Tanaos software and models created with it within their products; we just ask them to sign an 
+agreement laying out the terms of use, and the fees owed to Tanaos for using the product in this way.
+You may do so by contacting us at <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+
+## Why don't you use an open source license?
+
+We've decided the best way for us to operate is to make Tanaos as widely and freely available as 
+possible for users, while ensuring we can build a sustainable, viable business. By making our 
+product free to use, easy to distribute, and source-available we help everyone access the product. 
+By operating as a business, we can continue to release features, fix bugs, and provide reliable 
+software at scale long-term.
+
+## My company has a policy against using code that restricts commercial use – can I still use Tanaos software?
+
+Provided you are using Tanaos software for internal business purposes, and not making Tanaos 
+software available to your customers, you should be able to use Tanaos. If you are unsure whether 
+the use case you have in mind constitutes an internal business purpose or not, take a look at the 
+[examples](#what-is-and-isnt-allowed-under-the-sustainable-use-license), and if you're still unclear,
+email us at <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.

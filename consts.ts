@@ -24,3 +24,10 @@ export const ARTIFEX_GUARDRAIL_TUTORIAL_URL: string = "https://colab.research.go
 export const ARTIFEX_INTENT_CLASSIFIER_TUTORIAL_URL: string = "https://colab.research.google.com/github/tanaos/tanaos-docs/blob/master/blueprints/artifex/intent_classifier.ipynb";
 export const ARTIFEX_LOAD_GUARDRAIL_URL: string = '/artifex/guardrail/load/';
 export const ARTIFEX_LOAD_INTENT_CLASSIFIER_URL: string = '/artifex/intent-classifier/load/';
+
+// Licenses
+export const LICENSES_URL: string = '/licenses/';
+export const FAIR_CODE_LICENSE_URL: string = 'https://faircode.io';
+
+// Email
+export const CONTACT_EMAIL: string = 'info@tanaos.com'
