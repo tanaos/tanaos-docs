@@ -27,11 +27,11 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 		and previously trained models can be further trained using this method:
 		- Fine-tune the base Intent Classification model: 
 			```python
-			Artifex().intent_classifier.train()
+			Artifex().intent_classifier().train()
 			```
 		- Fine-tune a model that was previously trained with Artifex, in order to train it further: 
 			```python
-			Artifex().intent_classifier.load("trained/model/path").train()
+			Artifex().intent_classifier().load("trained/model/path").train()
 			```
 
 		<APIDescriptionSection title='Arguments'>
@@ -73,7 +73,7 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 ```python
 from artifex import Artifex
 
-intent_classifier = Artifex().intent_classifier
+intent_classifier = Artifex().intent_classifier()
 
 intent_classifier.train(
     domain="office assistant",

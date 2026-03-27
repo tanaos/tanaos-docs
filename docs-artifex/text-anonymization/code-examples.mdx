@@ -22,7 +22,7 @@ out-of-the-box:
 ```python
 from artifex import Artifex
 
-ta = Artifex().text_anonymization
+ta = Artifex().text_anonymization()
 
 print(ta("John Doe lives at 123 Main St, New York. His phone number is (555) 123-4567."))
 # >>> ["[MASKED] lives at [MASKED]. His phone number is [MASKED]."]
@@ -38,7 +38,7 @@ Anonymization model, use it locally on CPU and keep it forever:
 ```python
 from artifex import Artifex
 
-ta = Artifex().text_anonymization
+ta = Artifex().text_anonymization()
 
 model_output_path = "./output_model/"
 

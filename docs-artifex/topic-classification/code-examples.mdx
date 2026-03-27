@@ -30,7 +30,7 @@ model, which is trained to recognize the following topics out-of-the-box:
 ```python
 from artifex import Artifex
 
-topic_classification = Artifex().topic_classification
+topic_classification = Artifex().topic_classification()
 
 print(topic_classification("What do you think about the latest AI advancements?"))
 
@@ -48,7 +48,7 @@ and keep it forever:
 ```python
 from artifex import Artifex
 
-topic_classification = Artifex().topic_classification
+topic_classification = Artifex().topic_classification()
 
 model_output_path = "./output_model/"
 

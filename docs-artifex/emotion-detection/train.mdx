@@ -27,11 +27,11 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 		and previously trained models can be further trained using this method:
 		- Fine-tune the base Emotion Detection model: 
 			```python
-			Artifex().emotion_detection.train()
+			Artifex().emotion_detection().train()
 			```
 		- Fine-tune a model that was previously trained with Artifex, in order to train it further: 
 			```python
-			Artifex().emotion_detection.load("trained/model/path").train()
+			Artifex().emotion_detection().load("trained/model/path").train()
 			```
 
 		<APIDescriptionSection title='Arguments'>
@@ -73,7 +73,7 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 ```python
 from artifex import Artifex
 
-emotion_detection = Artifex().emotion_detection
+emotion_detection = Artifex().emotion_detection()
 
 emotion_detection.train(
     domain="customer support for an e-commerce platform",

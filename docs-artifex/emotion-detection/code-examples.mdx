@@ -23,7 +23,7 @@ model, which is trained to recognize eight emotions out-of-the-box:
 ```python
 from artifex import Artifex
 
-emotion_detection = Artifex().emotion_detection
+emotion_detection = Artifex().emotion_detection()
 
 print(emotion_detection("I am absolutely thrilled with the results of my project."))
 
@@ -41,7 +41,7 @@ and keep it forever:
 ```python
 from artifex import Artifex
 
-emotion_detection = Artifex().emotion_detection
+emotion_detection = Artifex().emotion_detection()
 
 model_output_path = "./output_model/"
 

@@ -1,0 +1,35 @@
+---
+title: Available Guardrail Model Languages | Tanaos Artifex
+description: Learn about the languages supported by Guardrail Models in the Artifex library.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, guardrail models, chatbot guardrail, available languages ] 
+hide_table_of_contents: false
+---
+
+# Available Guardrail Model Languages
+
+When initializing a Guardrail model, you can specify the language of the pre-trained model that 
+you want to perform inference or training with, by passing the `language` argument. For example, if 
+you want to perform inference with a Spanish pre-trained model, you should initialize the 
+`guardrail` object as follows:
+
+```python
+from artifex import Artifex
+
+guardrail = Artifex().guardrail(language="spanish")
+```
+
+Artifex supports performing inference and training Guardrail models in the following languages:
+
+- English (`language="english"`)
+- Spanish (`language="spanish"`)
+- German (`language="german"`)
+
+If no language is specified, `language="english"` will be used by default.
+
+## When to specify the model language?
+
+Specifying the model language is only useful when 
+[performing inference](/artifex/guardrail/inference) or [training](/artifex/guardrail/train) with a 
+pre-trained model. If you are loading a previously trained model with 
+[.load()](/artifex/guardrail/load), the `language` argument won't really matter, as the model will 
+be loaded with the same language it was trained with.

@@ -26,11 +26,11 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 		and previously trained models can be further trained using this method:
 		- Fine-tune the base Reranker model: 
 			```python
-			Artifex().reranker.train()
+			Artifex().reranker().train()
 			```
 		- Fine-tune a model that was previously trained with Artifex, in order to train it further: 
 			```python
-			Artifex().reranker.load("trained/model/path").train()
+			Artifex().reranker().load("trained/model/path").train()
 			```
 
 		<APIDescriptionSection title='Arguments'>
@@ -69,7 +69,7 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 ```python
 from artifex import Artifex
 
-reranker = Artifex().reranker
+reranker = Artifex().reranker()
 
 reranker.train(
     domain="e-commerce product search",

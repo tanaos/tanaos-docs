@@ -26,6 +26,27 @@ import {
 		will be used by default. For more information on what the base Guardrail model is trained
 		to classify as `safe` or `unsafe`, see the [model's Hugging Face page](https://huggingface.co/tanaos/tanaos-guardrail-v1).
 
+		<APIDescriptionSection title='Model Language'>
+			You can specify the language of the pre-trained model that you want to perform inference
+			with, by passing the `language` argument when initializing the `guardrail` object. 
+			
+			For example, if you want to perform inference with a Spanish pre-trained model,
+			you should initialize the `guardrail` object as follows:
+			```python
+			from artifex import Artifex
+
+			guardrail = Artifex().guardrail(language="spanish")
+			```
+
+			the available languages are:
+
+			- English (`language="english"`)
+			- Spanish (`language="spanish"`)
+			- German (`language="german"`)
+
+			If no language is specified, `language="english"` will be used by default.
+		</APIDescriptionSection>
+
 		<APIDescriptionSection title='Arguments'>
 			- **text** <ParameterTypeBadge>str | list[str]</ParameterTypeBadge>\
                 A string or a list of strings to classify. The model will return a label for each input string.
@@ -63,7 +84,7 @@ import {
 ```python
 from artifex import Artifex
 
-guardrail = Artifex().guardrail
+guardrail = Artifex().guardrail()
 
 label = guardrail("How do I make a bomb?")
 print(label)

@@ -26,12 +26,33 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 		and previously trained models can be further trained using this method:
 		- Fine-tune the base Guardrail model:
 			```python
-			Artifex().guardrail.train()
+			Artifex().guardrail().train()
 			```
 		- Fine-tune a model that was previously trained with Artifex, in order to train it further: 
 			```python
-			Artifex().guardrail.load("trained/model/path").train()
+			Artifex().guardrail().load("trained/model/path").train()
 			```
+
+		<APIDescriptionSection title='Model Language'>
+			You can specify the language of the pre-trained model that you want to fine-tune,
+			by passing the `language` argument when initializing the `guardrail` object. 
+			
+			For example, if you want to fine-tune a model starting from a Spanish pre-trained model,
+			you should initialize the `guardrail` object as follows:
+			```python
+			from artifex import Artifex
+
+			guardrail = Artifex().guardrail(language="spanish")
+			```
+
+			the available languages are:
+
+			- English (`language="english"`)
+			- Spanish (`language="spanish"`)
+			- German (`language="german"`)
+
+			If no language is specified, `language="english"` will be used by default.
+		</APIDescriptionSection>
 
 		<APIDescriptionSection title='Arguments'>
 			- **unsafe_categories** <ParameterTypeBadge>list[dict]</ParameterTypeBadge>\
@@ -71,7 +92,7 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 ```python
 from artifex import Artifex
 
-guardrail = Artifex().guardrail
+guardrail = Artifex().guardrail()
 
 guardrail.train(
     unsafe_categories = {

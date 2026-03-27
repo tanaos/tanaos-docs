@@ -20,7 +20,7 @@ model, which is trained to recognize five sentiments out-of-the-box:
 ```python
 from artifex import Artifex
 
-sentiment_analysis = Artifex().sentiment_analysis
+sentiment_analysis = Artifex().sentiment_analysis()
 
 print(sentiment_analysis("The product exceeded my expectations and works flawlessly!"))
 
@@ -38,7 +38,7 @@ and keep it forever:
 ```python
 from artifex import Artifex
 
-sentiment_analysis = Artifex().sentiment_analysis
+sentiment_analysis = Artifex().sentiment_analysis()
 
 model_output_path = "./output_model/"
 

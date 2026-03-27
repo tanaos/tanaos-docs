@@ -15,7 +15,7 @@ trained to rank items based on relevance out-of-the-box:
 ```python
 from artifex import Artifex
 
-reranker = Artifex().reranker
+reranker = Artifex().reranker()
 
 ranked_documents = reranker(
     query="Best programming language for data science",
@@ -40,7 +40,7 @@ Reranker model, use it locally on CPU and keep it forever:
 ```python
 from artifex import Artifex
 
-reranker = Artifex().reranker
+reranker = Artifex().reranker()
 
 model_output_path = "./output_model/"
 

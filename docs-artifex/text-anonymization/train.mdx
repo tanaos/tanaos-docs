@@ -27,11 +27,11 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 		and previously trained models can be further trained using this method:
 		- Fine-tune the base Text Anonymization model: 
 			```python
-			Artifex().text_anonymization.train()
+			Artifex().text_anonymization().train()
 			```
 		- Fine-tune a model that was previously trained with Artifex, in order to train it further: 
 			```python
-			Artifex().text_anonymization.load("trained/model/path").train()
+			Artifex().text_anonymization().load("trained/model/path").train()
 			```
 
 		<APIDescriptionSection title='Arguments'>
@@ -70,7 +70,7 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 ```python
 from artifex import Artifex
 
-text_anonym = Artifex().text_anonymization
+text_anonym = Artifex().text_anonymization()
 
 text_anonym.train(
     domain="medical documents",

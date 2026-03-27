@@ -15,7 +15,7 @@ trained to flag spam messages out-of-the-box:
 ```python
 from artifex import Artifex
 
-spam_detection = Artifex().spam_detection
+spam_detection = Artifex().spam_detection()
 
 print(spam_detection("You won an IPhone 16! Click here to claim your prize."))
 
@@ -33,7 +33,7 @@ it locally on CPU and keep it forever:
 ```python
 from artifex import Artifex
 
-spam_detection = Artifex().spam_detection
+spam_detection = Artifex().spam_detection()
 
 model_output_path = "./output_model/"
 

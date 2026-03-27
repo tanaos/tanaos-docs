@@ -20,20 +20,24 @@ on-the-fly, based on your instructions.
 
 All default models are open-source models trained by us with the Artifex library itself (meta 😁),
 are small in size (around 0.1B parameters and 500Mb), can run on CPU for inference and 
-fine-tuning and are hosted on our [Hugging Face account](https://huggingface.co/tanaos).
+fine-tuning and are hosted on our [Hugging Face page](https://huggingface.co/tanaos).
 
 Below is a list of all the available tasks in Artifex, along with the link to the default model 
 for each task.
 
-| Task | Default Model | Default & Fine-Tuned Model Size |
-|--------|-------------|---------------------------------|
-| Text Classification | No default model — must be trained | 0.1B params, 470MB 
-| Guardrail | [tanaos/tanaos-guardrail-v1](https://huggingface.co/tanaos/tanaos-guardrail-v1) | 0.1B params, 500MB |
-| Intent Classification | [tanaos/tanaos-intent-classifier-v1](https://huggingface.co/tanaos/tanaos-intent-classifier-v1) | 0.1B params, 500MB |
-| Reranker | [cross-encoder/mmarco-mMiniLMv2-L12-H384-v1](https://huggingface.co/cross-encoder/mmarco-mMiniLMv2-L12-H384-v1) | 0.1B params, 470MB |
-| Sentiment Analysis | [tanaos/tanaos-sentiment-analysis-v1](https://huggingface.co/tanaos/tanaos-sentiment-analysis-v1) | 0.1B params, 470MB |
-| Emotion Detection | [tanaos/tanaos-emotion-detection-v1](https://huggingface.co/tanaos/tanaos-emotion-detection-v1) | 0.1B params, 470MB |
-| Named Entity Recognition | [tanaos/tanaos-NER-v1](https://huggingface.co/tanaos/tanaos-NER-v1) | 0.1B params, 500MB |
-| Text Anonymization | [tanaos/tanaos-text-anonymizer-v1](https://huggingface.co/tanaos/tanaos-text-anonymizer-v1) | 0.1B params, 500MB |
-| Spam Detection | [tanaos/tanaos-spam-detection-v1](https://huggingface.co/tanaos/tanaos-spam-detection-v1) | 0.1B params, 500MB |
-| Topic Classification | [tanaos/tanaos-topic-classification-v1](https://huggingface.co/tanaos/tanaos-topic-classification-v1) | 0.1B params, 500MB |
+| Task | Language | Default Model | Default & Fine-Tuned Model Size |
+|------|----------|---------------|---------------------------------|
+| Text Classification | English | No default model — must be trained | 0.1B params, 470MB 
+| Guardrail | English | [tanaos/tanaos-guardrail-v1](https://huggingface.co/tanaos/tanaos-guardrail-v1) | 0.1B params, 500MB |
+| Guardrail | Spanish | [tanaos/tanaos-guardrail-spanish](https://huggingface.co/tanaos/tanaos-guardrail-spanish) | 0.1B params, 500MB |
+| Guardrail | German | [tanaos/tanaos-guardrail-german](https://huggingface.co/tanaos/tanaos-guardrail-german) | 0.1B params, 500MB |
+| Intent Classification | English | [tanaos/tanaos-intent-classifier-v1](https://huggingface.co/tanaos/tanaos-intent-classifier-v1) | 0.1B params, 500MB |
+| Reranker | English | [cross-encoder/mmarco-mMiniLMv2-L12-H384-v1](https://huggingface.co/cross-encoder/mmarco-mMiniLMv2-L12-H384-v1) | 0.1B params, 470MB |
+| Sentiment Analysis | English | [tanaos/tanaos-sentiment-analysis-v1](https://huggingface.co/tanaos/tanaos-sentiment-analysis-v1) | 0.1B params, 470MB |
+| Emotion Detection | English | [tanaos/tanaos-emotion-detection-v1](https://huggingface.co/tanaos/tanaos-emotion-detection-v1) | 0.1B params, 470MB |
+| Named Entity Recognition | English | [tanaos/tanaos-NER-v1](https://huggingface.co/tanaos/tanaos-NER-v1) | 0.1B params, 500MB |
+| Text Anonymization | English | [tanaos/tanaos-text-anonymizer-v1](https://huggingface.co/tanaos/tanaos-text-anonymizer-v1) | 0.1B params, 500MB |
+| Spam Detection | English | [tanaos/tanaos-spam-detection-v1](https://huggingface.co/tanaos/tanaos-spam-detection-v1) | 0.1B params, 500MB |
+| Spam Detection | Spanish | [tanaos/tanaos-spam-detection-spanish](https://huggingface.co/tanaos/tanaos-spam-detection-spanish) | 0.1B params, 500MB |
+| Spam Detection | German | [tanaos/tanaos-spam-detection-german](https://huggingface.co/tanaos/tanaos-spam-detection-german) | 0.1B params, 500MB |
+| Topic Classification | English | [tanaos/tanaos-topic-classification-v1](https://huggingface.co/tanaos/tanaos-topic-classification-v1) | 0.1B params, 500MB |

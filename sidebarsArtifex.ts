@@ -50,6 +50,11 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'doc',
+			id: 'guardrail/available-model-languages',
+			label: 'Available Languages',
+		},
+		{
+			type: 'doc',
 			id: 'guardrail/train',
 			label: 'Train',
 		},
@@ -222,6 +227,11 @@ const sidebars: SidebarsConfig = {
 			type: 'html',
 			value: '<div class="section-name">Spam Detection</div>',
 			defaultStyle: true,
+		},
+		{
+			type: 'doc',
+			id: 'spam-detection/available-model-languages',
+			label: 'Available Languages',
 		},
 		{
 			type: 'doc',

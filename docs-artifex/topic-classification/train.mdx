@@ -27,11 +27,11 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 		and previously trained models can be further trained using this method:
 		- Fine-tune the base Topic Classification model: 
 			```python
-			Artifex().topic_classification.train()
+			Artifex().topic_classification().train()
 			```
 		- Fine-tune a model that was previously trained with Artifex, in order to train it further: 
 			```python
-			Artifex().topic_classification.load("trained/model/path").train()
+			Artifex().topic_classification().load("trained/model/path").train()
 			```
 
 		<APIDescriptionSection title='Arguments'>
@@ -73,7 +73,7 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 ```python
 from artifex import Artifex
 
-topic_classification = Artifex().topic_classification
+topic_classification = Artifex().topic_classification()
 
 topic_classification.train(
     domain="News articles found on the internet",

@@ -26,12 +26,33 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 		and previously trained models can be further trained using this method:
 		- Fine-tune the base Spam Detection model:
 			```python
-			Artifex().spam_detection.train()
+			Artifex().spam_detection().train()
 			```
 		- Fine-tune a model that was previously trained with Artifex, in order to train it further: 
 			```python
-			Artifex().spam_detection.load("trained/model/path").train()
+			Artifex().spam_detection().load("trained/model/path").train()
 			```
+
+		<APIDescriptionSection title='Model Language'>
+			You can specify the language of the pre-trained model that you want to perform inference
+			with, by passing the `language` argument when initializing the `spam_detection` object. 
+			
+			For example, if you want to perform inference with a Spanish pre-trained model,
+			you should initialize the `spam_detection` object as follows:
+			```python
+			from artifex import Artifex
+
+			spam_detection = Artifex().spam_detection(language="spanish")
+			```
+
+			the available languages are:
+
+			- English (`language="english"`)
+			- Spanish (`language="spanish"`)
+			- German (`language="german"`)
+
+			If no language is specified, `language="english"` will be used by default.
+		</APIDescriptionSection>
 
 		<APIDescriptionSection title='Arguments'>
 			- **spam_content** <ParameterTypeBadge>list[str]</ParameterTypeBadge>\
@@ -69,7 +90,7 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 ```python
 from artifex import Artifex
 
-spam_detection = Artifex().spam_detection
+spam_detection = Artifex().spam_detection()
 
 spam_detection.train(
     spam_content=[

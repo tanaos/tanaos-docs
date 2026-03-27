@@ -28,11 +28,11 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 		and previously trained models can be further trained using this method:
 		- Fine-tune the base Named Entity Recognition model: 
 			```python
-			Artifex().named_entity_recognition.train()
+			Artifex().named_entity_recognition().train()
 			```
 		- Fine-tune a model that was previously trained with Artifex, in order to train it further: 
 			```python
-			Artifex().named_entity_recognition.load("trained/model/path").train()
+			Artifex().named_entity_recognition().load("trained/model/path").train()
 			```
 
 		<APIDescriptionSection title='Arguments'>
@@ -74,7 +74,7 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 ```python
 from artifex import Artifex
 
-ner = Artifex().named_entity_recognition
+ner = Artifex().named_entity_recognition()
 
 ner.train(
     domain="medical documents",

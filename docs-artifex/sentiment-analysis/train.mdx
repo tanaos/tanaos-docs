@@ -26,11 +26,11 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 		and previously trained models can be further trained using this method:
 		- Fine-tune the base Sentiment Analysis model: 
 			```python
-			Artifex().sentiment_analysis.train()
+			Artifex().sentiment_analysis().train()
 			```
 		- Fine-tune a model that was previously trained with Artifex, in order to train it further: 
 			```python
-			Artifex().sentiment_analysis.load("trained/model/path").train()
+			Artifex().sentiment_analysis().load("trained/model/path").train()
 			```
 
 		<APIDescriptionSection title='Arguments'>
@@ -72,7 +72,7 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 ```python
 from artifex import Artifex
 
-sentiment_analysis = Artifex().sentiment_analysis
+sentiment_analysis = Artifex().sentiment_analysis()
 
 sentiment_analysis.train(
     domain="e-commerce product reviews",
