@@ -7,6 +7,27 @@ hide_table_of_contents: false
 
 # Spam Detection Model
 
+### Choose your language
+
+We offer pre-trained Spam Detection models in [multiple languages](available-model-languages.mdx).
+
+When initializing a Spam Detection model, you can specify the language of the pre-trained model that 
+you want to load, by passing the `language` argument. For example, if you want to perform inference 
+with (or perform fine-tuning starting from) a Spanish pre-trained model, you should initialize the 
+`spam_detection` object as follows:
+
+```python
+from artifex import Artifex
+
+spam_detection = Artifex().spam_detection(language="spanish")
+```
+
+If no language is specified, `language="english"` will be used by default.
+
+In the next sections, we will assume you are interested in using the default English Spam Detection 
+model, but you can easily switch to another language by initializing the `spam_detection` object 
+with the desired language.
+
 ### Use the default Spam Detection model
 
 Need a general-purpose Spam Detection model? You can use Artifex's default Spam Detection model, which is 

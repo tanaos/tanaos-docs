@@ -1,3 +1,17 @@
 # Tanaos Docs
 
-View our documentation at [https://docs.tanaos.com](https://docs.tanaos.com).
+## Installation
+
+Once you've downloaded the code, you can install the project dependencies with
+
+```bash
+npm install
+```
+
+## Running the docs locally
+
+To run the docs locally, use the following command from the root of the project:
+
+```bash
+npm start
+```
