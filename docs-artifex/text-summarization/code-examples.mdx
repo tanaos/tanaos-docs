@@ -1,0 +1,57 @@
+---
+title: Create Text Summarization Models | Tanaos Artifex
+description: Learn how to use the Artifex library to create Text Summarization Models without training data or a GPU.
+keywords: [ artifex, tanaos, task specific llm, nlp, text classification, no training data, topic classification, topic classification, code examples ] 
+hide_table_of_contents: false
+---
+
+# Text Summarization model
+
+### Use the default Text Summarization model
+
+Need a general-purpose Text Summarization model? You can use Artifex's default Text Summarization 
+model, which is trained to recognize the following topics out-of-the-box:
+
+```python
+from artifex import Artifex
+
+text_summarization = Artifex().text_summarization()
+
+text = """
+The Amazon rainforest, often referred to as the "lungs of the Earth", produces about
+20% of the world's oxygen and is home to an estimated 10% of all species on the planet.
+Deforestation driven by agriculture, logging, and infrastructure development has
+destroyed roughly 17% of the forest over the last 50 years, raising urgent concerns
+among scientists and policymakers about biodiversity loss and climate change.
+"""
+
+summary = text_summarization(text)
+print(summary)
+
+# >>> ["The Amazon rainforest produces 20% of the world's oxygen and harbors 10% of all species, but deforestation has been a major concern."]
+```
+
+Learn more about the default Text Summarization model on our [Text Summarization HF model page](https://huggingface.co/tanaos/tanaos-text-summarization-v1).
+
+### Create & use a custom Text Summarization model
+
+Do you want to tailor the model to your specific domain for better results? Fine-tune your own 
+Text Summarization model, use it locally on CPU and keep it forever:
+
+```python
+from artifex import Artifex
+
+text_summarization = Artifex().text_summarization()
+
+model_output_path = "./output_model/"
+
+text_summarization.train(
+    domain="messages posted on social media platforms", # change to your desired domain
+    output_path=model_output_path
+)
+
+text_summarization.load(model_output_path)
+print(text_summarization("I had a great day at the park with John! We played frisbee and had a picnic. We also met some new friends and had a lot of fun!"))
+
+# >>> ["I had a great day at the park with John and I met new friends."]
+```

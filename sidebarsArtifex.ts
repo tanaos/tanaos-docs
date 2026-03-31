@@ -280,6 +280,31 @@ const sidebars: SidebarsConfig = {
 		},
 		{
 			type: 'html',
+			value: '<div class="section-name">Text Summarization</div>',
+			defaultStyle: true,
+		},
+		{
+			type: 'doc',
+			id: 'text-summarization/train',
+			label: 'Train',
+		},
+		{
+			type: 'doc',
+			id: 'text-summarization/inference',
+			label: 'Inference',
+		},
+		{
+			type: 'doc',
+			id: 'text-summarization/load',
+			label: 'Load',
+		},
+		{
+			type: 'doc',
+			id: 'text-summarization/code-examples',
+			label: 'Code Examples',
+		},
+		{
+			type: 'html',
 			value: '<div class="section-name">Monitoring, Evaluation & Observability</div>',
 			defaultStyle: true,
 		},

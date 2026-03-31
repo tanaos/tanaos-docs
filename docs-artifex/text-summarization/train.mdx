@@ -1,0 +1,93 @@
+---
+title: artifex.text_summarization.train() | Tanaos Artifex
+description: Learn how to use the .train() method to train a Text Summarization model with the Artifex library.
+keywords: [ artifex, tanaos, task specific llm, nlp, text summarization, no training data, text summarization models, text summarization, train ]
+hide_table_of_contents: true
+---
+
+import Link from '@docusaurus/Link';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import { APIDescriptionSection } from '../../src/components/APIDescriptionSection';
+import { SYNTHEX_GENERATE_DATA_URL } from '../../consts';
+import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } from '../../src/components/ParameterBadge';
+
+
+<div className='responsive-container'>
+	<div className='text-container'>
+        # `text_summarization.train()`
+
+        Fine-tunes a pre-trained Text Summarization model on a user-specified domain. 
+		**No training data is needed**, as the model uses 
+		<Link to={SYNTHEX_GENERATE_DATA_URL}>`synthex.jobs.generate_data()`</Link> under the
+		hood to generate a synthetic training dataset based on the provided domain.
+
+		Both the base Text Summarization model [tanaos/tanaos-text-summarization-v1](https://huggingface.co/tanaos/tanaos-text-summarization-v1) 
+		and previously trained models can be further trained using this method:
+		- Fine-tune the base Text Summarization model: 
+			```python
+			Artifex().text_summarization().train()
+			```
+		- Fine-tune a model that was previously trained with Artifex, in order to train it further: 
+			```python
+			Artifex().text_summarization().load("trained/model/path").train()
+			```
+
+		<APIDescriptionSection title='Arguments'>
+			- **domain** <ParameterTypeBadge>str</ParameterTypeBadge>\
+				A string which specifies the domain or area that the model will be specialized in.
+			- **language** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='english' />\
+				A string which specifies the language that the model will be trained to understand and perform inference in.
+			- **output_path** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge />\
+				A string which specifies the path where the output files will be generated. 
+				The output files consist of:
+				- The training dataset
+				- The output model `safetensor` and configuration files
+			- **num_samples** <ParameterTypeBadge>int</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='500' />\
+				An integer which specifies the number of datapoints that the synthetic training dataset should consist of, and 
+				that the model will be trained on. The maximum number of datapoints you can train your model on depends on 
+				whether you are on a free or paid plan.
+			- **num_epochs** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='3' />\
+				An integer which specifies the number of epochs to train the model for.
+			- **device** <ParameterTypeBadge>int</ParameterTypeBadge> <OptionalParameterBadge />\
+				A string which specifies the device to use. It can be one of the following:
+				- `0` - Use the first GPU available
+				- `1` - Use the second GPU available
+				- ...
+				- `-1` - Use the CPU
+				
+				If not specified, the method will automatically select the GPU if available, otherwise it will use 
+				the CPU.
+			- **disable_logging** <ParameterTypeBadge>bool</ParameterTypeBadge> <OptionalParameterBadge />\
+				If set to `True`, disables inference metric logging for this call. By default, logging is enabled.
+		</APIDescriptionSection>
+	</div>
+	<div className='code-container'>
+		<div className='tabs-code'>
+			<Tabs>
+				<TabItem value='python' label='Python'>
+```python
+from artifex import Artifex
+
+text_summarization = Artifex().text_summarization()
+
+text_summarization.train(
+    domain="News articles",
+    language="english"
+)
+```
+				</TabItem>
+			</Tabs>
+		</div>
+		<div className='tabs-code'>
+			<Tabs groupId="language">
+				<TabItem value="response" label="Response">
+```python
+None
+```
+				</TabItem>
+			</Tabs>		
+		</div>
+	</div>
+</div>
