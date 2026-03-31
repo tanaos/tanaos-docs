@@ -18,9 +18,11 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 	<div className='text-container'>
         # `reranker.train()`
 
-        Fine-tunes a pre-trained Reranker model on a user-specified domain. **No training data is needed**, as 
-		the model uses <Link to={SYNTHEX_GENERATE_DATA_URL}>`synthex.jobs.generate_data()`</Link> 
-		under the hood to generate a synthetic training dataset based on the provided domain.
+        Fine-tunes a pre-trained Reranker model on a user-specified domain. 
+		If `train_dataset_path` is not provided, synthetic training data will be generated for the
+		specified `domain` and `language`. If `train_dataset_path` is provided, the model 
+		will be trained on the dataset located at the specified path instead, and all arguments 
+		related to synthetic data generation is ignored.
 
 		Both the base Reranker model [cross-encoder/mmarco-mMiniLMv2-L12-H384-v1](https://huggingface.co/cross-encoder/mmarco-mMiniLMv2-L12-H384-v1) 
 		and previously trained models can be further trained using this method:
@@ -34,10 +36,13 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 			```
 
 		<APIDescriptionSection title='Arguments'>
-			- **domain** <ParameterTypeBadge>str</ParameterTypeBadge>\
+			- **domain** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge />\
 				A string which specifies the domain or area that the model will be specialized in.
+				If `train_dataset_path` is not provided, this argument is required. If 
+				`train_dataset_path` is provided, this argument is ignored.
 			- **language** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='english' />\
 				A string which specifies the language that the model will be trained to understand and perform inference in.
+				If `train_dataset_path` is provided, this argument is ignored.
 			- **output_path** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge />\
 				A string which specifies the path where the output files will be generated. 
 				The output files consist of:
@@ -46,7 +51,7 @@ import { ParameterTypeBadge, OptionalParameterBadge, DefaultParameterBadge } fro
 			- **num_samples** <ParameterTypeBadge>int</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='500' />\
 				An integer which specifies the number of datapoints that the synthetic training dataset should consist of, and 
 				that the model will be trained on. The maximum number of datapoints you can train your model on depends on 
-				whether you are on a free or paid plan.
+				whether you are on a free or paid plan. If `train_dataset_path` is provided, this argument is ignored.
 			- **num_epochs** <ParameterTypeBadge>str</ParameterTypeBadge> <OptionalParameterBadge /> <DefaultParameterBadge value='3' />\
 				An integer which specifies the number of epochs to train the model for.
 			- **device** <ParameterTypeBadge>int</ParameterTypeBadge> <OptionalParameterBadge />\
